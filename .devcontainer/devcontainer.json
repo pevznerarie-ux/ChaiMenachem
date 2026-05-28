@@ -1,6 +1,11 @@
 {
   "name": "Chai Menachem",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    }
+  },
   "postCreateCommand": "npm install -g @anthropic-ai/claude-code",
   "forwardPorts": [3456],
   "portsAttributes": {
