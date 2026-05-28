@@ -136,9 +136,17 @@ body.opt-prune {
   padding: 2.5rem 3rem 1.5rem;
 }
 
+/* ── CENTER GROUP: contenu centré verticalement ── */
+.center-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .8rem;
+}
 /* ── CENTER PAIR: LOGO + BIENVENUE ── */
 .center-pair {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,8 +168,8 @@ body.opt-prune {
 }
 /* ── LOGO PNG haute résolution ── */
 .logo-img-wrap {
-  width: 360px;
-  height: 242px;
+  width: 430px;
+  height: 285px;
   overflow: hidden;
   position: relative;
   z-index: 1;
@@ -169,22 +177,27 @@ body.opt-prune {
 }
 .logo-img {
   position: absolute;
-  width: 605px;
-  left: -122px;
-  top: -190px;
-  filter: brightness(0) saturate(100%) invert(72%) sepia(30%) saturate(600%) hue-rotate(10deg) brightness(95%);
-  clip-path: inset(0 0 100% 0);
-  animation: logoRevealWipe 1.4s cubic-bezier(.4,0,.2,1) .2s both;
+  width: 714px;
+  left: -146px;
+  top: -226px;
+  filter: url(#gold-exact);
+  -webkit-mask-image: linear-gradient(to right, black 76%, transparent 100%);
+  mask-image: linear-gradient(to right, black 76%, transparent 100%);
+  -webkit-mask-size: 0% 100%;
+  mask-size: 0% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: logoWrite 2.4s cubic-bezier(.25,.46,.45,.94) .3s both;
 }
-@keyframes logoRevealWipe {
-  from { clip-path: inset(0 0 100% 0); }
-  to   { clip-path: inset(0 0 0% 0); }
+@keyframes logoWrite {
+  from { -webkit-mask-size: 0% 100%;   mask-size: 0% 100%; }
+  to   { -webkit-mask-size: 132% 100%; mask-size: 132% 100%; }
 }
 /* Slogan + localisation centrés */
 .center-bottom-label {
   text-align: center;
-  margin-top: -.5rem;
-  margin-bottom: .8rem;
+  margin-top: 0;
+  margin-bottom: 0;
   opacity: 0;
   animation: fadeIn .8s ease 1.6s both;
 }
@@ -258,7 +271,7 @@ body.opt-prune {
 /* Bem-vindos — italique, une seule ligne */
 .welcome-word {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.8rem, 5vw, 4.4rem);
+  font-size: clamp(3.2rem, 5.8vw, 5.2rem);
   font-weight: 300;
   font-style: italic;
   color: #C4975A;
@@ -565,6 +578,16 @@ body.opt-prune {
 </head>
 <body class="opt-bordeaux">
 
+<!-- Filtre SVG pour teinte or exacte #C4975A sur le logo -->
+<svg width="0" height="0" aria-hidden="true" style="position:absolute;overflow:hidden;pointer-events:none">
+  <defs>
+    <filter id="gold-exact" color-interpolation-filters="sRGB">
+      <feFlood flood-color="#C4975A" flood-opacity="1" result="gold"/>
+      <feComposite in="gold" in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+</svg>
+
 <!-- BARRE SÉLECTION -->
 <div id="option-bar">
   <span class="opt-label">Couleur principale :</span>
@@ -591,7 +614,8 @@ body.opt-prune {
   <!-- Contenu -->
   <div class="landing-content">
 
-    <!-- CENTER: Logo + Bem-vindos -->
+    <!-- CENTER GROUP: Logo + Bem-vindos + Slogan (groupés ensemble) -->
+    <div class="center-group">
     <div class="center-pair">
       <!-- LOGO PNG — identique à l'original, recadré précisément -->
       <div class="logo-area">
@@ -613,11 +637,12 @@ body.opt-prune {
       </div>
     </div>
 
-    <!-- SLOGAN + localisation -->
+    <!-- SLOGAN + localisation (dans le center-group) -->
     <div class="center-bottom-label">
       <span class="slogan-text">Onde cada alma encontra seu lar</span>
       <span class="location-text">Centro Chabad · Higienópolis · São Paulo</span>
     </div>
+    </div><!-- /center-group -->
 
     <!-- MENU BUTTONS -->
     <div class="menu-section">
@@ -685,7 +710,7 @@ function setOpt(opt, btn) {
 
 /* ── OPTION LOGO ── */
 const logoFilters = {
-  gold:   'brightness(0) saturate(100%) invert(72%) sepia(30%) saturate(600%) hue-rotate(10deg) brightness(95%)',
+  gold:   'url(#gold-exact)',
   white:  'brightness(0) invert(1)',
   accent: 'brightness(0) invert(1) sepia(1) saturate(4) hue-rotate(var(--logo-hue, 0deg))'
 };
