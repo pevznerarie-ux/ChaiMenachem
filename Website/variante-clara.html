@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chai Menachem — Variante claire & chaleureuse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ivory:#F7F1E6;
+  --ivory-2:#FCF8F0;
+  --espresso:#2B2118;
+  --taupe:#6E6053;
+  --gold:#C4975A;        /* or de marque (logo) */
+  --gold-deep:#A9742B;   /* or profond (texte, contraste) */
+  --line:rgba(43,33,24,.12);
+  --card:#FFFFFF;
+}
+html,body{height:100%}
+body{
+  font-family:'DM Sans',sans-serif;
+  color:var(--espresso);
+  background:var(--ivory);
+  -webkit-font-smoothing:antialiased;
+  min-height:100%;
+}
+
+/* fond chaleureux : photo lavée de crème + lueur dorée douce */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  isolation:isolate;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:url('WhatsApp Image 2026-05-19 at 10.27.20 (1).jpeg');
+  background-size:cover;background-position:center;
+  filter:saturate(.9);
+}
+.hero-wash{
+  position:absolute;inset:0;z-index:1;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 40%, rgba(196,151,90,.18) 0%, transparent 60%),
+    linear-gradient(to bottom, rgba(252,248,240,.93) 0%, rgba(247,241,230,.95) 45%, rgba(247,241,230,.99) 100%);
+}
+.hero > *{position:relative;z-index:2}
+
+/* ── BARRE HAUTE ── */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem clamp(1.2rem,4vw,3rem);
+}
+.brand{display:flex;align-items:center;gap:.7rem}
+.brand-mark{
+  width:128px;height:84px;overflow:hidden;position:relative;flex-shrink:0;
+  filter:drop-shadow(0 2px 5px rgba(43,33,24,.14));
+}
+.brand-mark img{
+  position:absolute;width:211px;left:-43px;top:-67px;
+  filter:url(#gold-exact);
+}
+.topnav{display:flex;gap:1.8rem}
+.topnav a{
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--taupe);text-decoration:none;font-weight:500;
+  transition:color .25s;
+}
+.topnav a:hover{color:var(--gold-deep)}
+@media(max-width:760px){.topnav{display:none}}
+
+/* ── CONTENU HERO ── */
+.hero-main{
+  flex:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding:1rem clamp(1.2rem,4vw,3rem) 2rem;
+  gap:1.5rem;
+}
+.eyebrow{
+  font-size:.62rem;font-weight:500;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--gold-deep);
+}
+.headline{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:400;font-style:italic;
+  font-size:clamp(2.8rem,6.5vw,5.4rem);
+  line-height:1.02;letter-spacing:-.01em;
+  color:var(--espresso);
+  max-width:14ch;
+}
+.headline .accent{color:var(--gold-deep);font-style:italic}
+.slogan{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-weight:400;
+  font-size:clamp(1.15rem,2.2vw,1.7rem);
+  color:var(--taupe);
+}
+
+/* ── BANDEAU INFOS UTILES ── */
+.info-row{
+  display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;
+  width:100%;max-width:920px;margin-top:.5rem;
+}
+.info-card{
+  flex:1;min-width:210px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:1.1rem 1.3rem;
+  text-align:left;
+  box-shadow:0 10px 30px rgba(43,33,24,.05);
+  display:flex;flex-direction:column;gap:.35rem;
+  transition:transform .3s cubic-bezier(.25,.46,.45,.94), box-shadow .3s;
+}
+.info-card:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(43,33,24,.1)}
+.info-card .ic-label{
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;
+}
+.info-card .ic-main{
+  font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--espresso);line-height:1.1;
+}
+.info-card .ic-sub{font-size:.82rem;color:var(--taupe)}
+
+/* ── CTA ── */
+.cta-row{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center;margin-top:.4rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.95rem 1.9rem;border-radius:40px;
+  font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;
+  transition:transform .2s, box-shadow .3s, background .3s;border:none;
+}
+.btn-wa{background:#25D366;color:#fff;box-shadow:0 8px 22px rgba(37,211,102,.32)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(37,211,102,.42)}
+.btn-pix{background:transparent;color:var(--gold-deep);border:1.5px solid var(--gold-deep)}
+.btn-pix:hover{background:var(--gold-deep);color:#fff;transform:translateY(-2px)}
+
+/* ── MENU ── */
+.menu-row{
+  display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;
+  max-width:780px;margin-top:1.4rem;
+}
+.menu-pill{
+  padding:.7rem 1.4rem;border-radius:40px;
+  background:rgba(255,255,255,.7);
+  border:1px solid var(--line);
+  color:var(--espresso);
+  font-size:.74rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  cursor:pointer;transition:all .25s;
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+}
+.menu-pill:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-2px)}
+
+/* ── ANIMATIONS SUBTILES ── */
+@keyframes upFade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0;animation:upFade .8s cubic-bezier(.25,.46,.45,.94) forwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}
+.d4{animation-delay:.55s}.d5{animation-delay:.7s}.d6{animation-delay:.85s}
+@media(prefers-reduced-motion:reduce){.anim{animation:none;opacity:1}}
+
+/* note bas de page */
+.foot-note{
+  text-align:center;padding:.8rem;font-size:.62rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--taupe);opacity:.7;
+}
+</style>
+</head>
+<body>
+
+<!-- filtre or exact #C4975A pour le logo -->
+<svg width="0" height="0" aria-hidden="true" style="position:absolute;overflow:hidden">
+  <defs>
+    <filter id="gold-exact" color-interpolation-filters="sRGB">
+      <feFlood flood-color="#C4975A" flood-opacity="1" result="g"/>
+      <feComposite in="g" in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+</svg>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-wash"></div>
+
+  <!-- barre haute -->
+  <header class="topbar anim d1">
+    <div class="brand">
+      <div class="brand-mark"><img src="logo-transparent.png" alt="Chai Menachem"></div>
+    </div>
+    <nav class="topnav">
+      <a href="#">Sobre</a>
+      <a href="#">Programas</a>
+      <a href="#">Rezas &amp; Horários</a>
+      <a href="#">Galeria</a>
+      <a href="#">Contato</a>
+    </nav>
+  </header>
+
+  <!-- contenu central -->
+  <div class="hero-main">
+    <span class="eyebrow anim d2">· Bem-vindos ·</span>
+    <h1 class="headline anim d2">Bem-vindos ao <span class="accent">Chai Menachem</span></h1>
+    <p class="slogan anim d3">Onde cada alma encontra seu lar — Higienópolis, São Paulo</p>
+
+    <!-- infos utiles remontées -->
+    <div class="info-row">
+      <div class="info-card anim d3">
+        <span class="ic-label">Próximo Shabat</span>
+        <span class="ic-main">Sexta · 18h12</span>
+        <span class="ic-sub">Acendimento das velas · Kabalat Shabat 18h30</span>
+      </div>
+      <div class="info-card anim d4">
+        <span class="ic-label">Rezas &amp; Horários</span>
+        <span class="ic-main">Shacharit 7h00</span>
+        <span class="ic-sub">Minchá 18h00 · Arvit ao anoitecer</span>
+      </div>
+      <div class="info-card anim d5">
+        <span class="ic-label">Onde estamos</span>
+        <span class="ic-main">Higienópolis</span>
+        <span class="ic-sub">São Paulo · ver no mapa</span>
+      </div>
+    </div>
+
+    <!-- appels à l'action -->
+    <div class="cta-row anim d5">
+      <a href="#" class="btn btn-wa">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Fale Conosco
+      </a>
+      <a href="#" class="btn btn-pix">♥ Doar via PIX</a>
+    </div>
+
+    <!-- menu -->
+    <nav class="menu-row anim d6">
+      <button class="menu-pill">Sobre</button>
+      <button class="menu-pill">Programas</button>
+      <button class="menu-pill">Festas</button>
+      <button class="menu-pill">Rezas &amp; Horários</button>
+      <button class="menu-pill">Aulas</button>
+      <button class="menu-pill">Galeria</button>
+    </nav>
+  </div>
+
+  <div class="foot-note anim d6">Centro Chabad · Higienópolis · São Paulo</div>
+</section>
+
+</body>
+</html>

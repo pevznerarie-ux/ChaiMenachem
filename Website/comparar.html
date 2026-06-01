@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chai Menachem — Comparaison A / B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:'DM Sans',sans-serif;background:#15110d;display:flex;flex-direction:column;height:100vh;overflow:hidden}
+.bar{
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+  padding:.7rem 1.4rem;background:#0d0a07;border-bottom:1px solid rgba(196,151,90,.25);
+}
+.bar .title{
+  color:#C4975A;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin-right:auto;
+}
+.tog{
+  padding:.6rem 1.4rem;border-radius:30px;border:1px solid rgba(255,255,255,.22);
+  background:transparent;color:rgba(255,255,255,.7);
+  font-family:'DM Sans',sans-serif;font-size:.74rem;font-weight:600;letter-spacing:.06em;
+  cursor:pointer;transition:all .25s;
+}
+.tog:hover{border-color:#C4975A;color:#fff}
+.tog.active{background:#C4975A;border-color:#C4975A;color:#1a130a}
+.hint{color:rgba(255,255,255,.4);font-size:.68rem;letter-spacing:.04em}
+.frame-wrap{flex:1;position:relative;background:#000}
+iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.tag{
+  position:absolute;top:.8rem;left:.8rem;z-index:5;
+  background:rgba(13,10,7,.82);color:#C4975A;
+  padding:.4rem .9rem;border-radius:20px;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);pointer-events:none;
+}
+</style>
+</head>
+<body>
+  <div class="bar">
+    <span class="title">Chai Menachem — 2 directions</span>
+    <button class="tog active" id="btnA" onclick="show('A')">A — Premium sombre</button>
+    <button class="tog" id="btnB" onclick="show('B')">B — Chaleureuse claire</button>
+    <span class="hint">Clique pour basculer · même contenu, deux ambiances</span>
+  </div>
+  <div class="frame-wrap">
+    <span class="tag" id="tag">Variante A — Premium sombre</span>
+    <iframe id="view" src="color-preview.html" title="aperçu"></iframe>
+  </div>
+<script>
+  const SRC={A:'color-preview.html',B:'variante-clara.html'};
+  const LBL={A:'Variante A — Premium sombre',B:'Variante B — Chaleureuse claire'};
+  function show(v){
+    document.getElementById('view').src=SRC[v];
+    document.getElementById('tag').textContent=LBL[v];
+    document.getElementById('btnA').classList.toggle('active',v==='A');
+    document.getElementById('btnB').classList.toggle('active',v==='B');
+  }
+</script>
+</body>
+</html>
