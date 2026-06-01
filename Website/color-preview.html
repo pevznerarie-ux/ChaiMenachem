@@ -141,6 +141,40 @@ body.opt-prune {
   background-size: 180px 180px;
 }
 
+/* ── BRAISES DORÉES — animation luxe en arrière-plan ── */
+.embers {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.ember {
+  position: absolute;
+  bottom: -50px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(235,198,138,0.95) 0%,
+    rgba(196,151,90,0.55) 38%,
+    transparent 72%);
+  filter: blur(.6px);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation-name: emberRise;
+  animation-timing-function: cubic-bezier(.4,0,.6,1);
+  animation-iteration-count: infinite;
+}
+@keyframes emberRise {
+  0%   { transform: translateY(0) translateX(0) scale(.55); opacity: 0; }
+  12%  { opacity: .65; }
+  50%  { opacity: .85; }
+  82%  { opacity: .35; }
+  100% { transform: translateY(-92vh) translateX(var(--drift, 24px)) scale(1.15); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ember { display: none; }
+}
+
 /* ── CONTENU ── */
 .landing-content {
   position: relative;
@@ -300,17 +334,44 @@ body.opt-prune {
 }
 /* Bem-vindos — italique, une seule ligne */
 .welcome-word {
+  position: relative;
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(4.8rem, 8.8vw, 8.5rem);
-  font-weight: 300;
+  font-weight: 400;
   font-style: italic;
   color: #C4975A;
-  letter-spacing: -.02em;
+  letter-spacing: -.015em;
   line-height: 1;
   white-space: nowrap;
   display: block;
-  text-shadow: 0 2px 45px rgba(196,151,90,.30), 0 1px 3px rgba(0,0,0,.35);
+  text-shadow: 0 2px 50px rgba(196,151,90,.42),
+               0 0 16px rgba(196,151,90,.28),
+               0 1px 3px rgba(0,0,0,.40);
   animation: clipReveal 1.05s cubic-bezier(.25,.46,.45,.94) .75s both;
+}
+/* Reflet d'or — glint de luxe qui balaie le mot par intermittence */
+.welcome-word::after {
+  content: 'Bem-vindos';
+  position: absolute;
+  left: 0; top: 0;
+  color: transparent;
+  background: linear-gradient(100deg,
+    transparent 0%, transparent 42%,
+    rgba(255,246,228,0.95) 50%,
+    transparent 58%, transparent 100%);
+  background-size: 220% 100%;
+  background-repeat: no-repeat;
+  background-position: 130% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  pointer-events: none;
+  animation: bvShimmer 5.5s ease-in-out 3.2s infinite;
+}
+@keyframes bvShimmer {
+  0%   { background-position: 130% 0; }
+  26%  { background-position: -45% 0; }
+  100% { background-position: -45% 0; }
 }
 /* Ville en bas */
 .welcome-city {
@@ -641,6 +702,7 @@ body.opt-prune {
   </div>
   <div class="overlay"></div>
   <div class="grain"></div>
+  <div class="embers"></div>
   <div class="slide-dots">
     <div class="slide-dot active"></div>
     <div class="slide-dot"></div>
@@ -778,6 +840,25 @@ function restartAnimations() {
     });
   });
 }
+
+/* ── BRAISES DORÉES — génération des particules ── */
+(function() {
+  const layer = document.querySelector('.embers');
+  if (!layer) return;
+  const N = 18;
+  for (let i = 0; i < N; i++) {
+    const e = document.createElement('span');
+    e.className = 'ember';
+    const size = 3 + Math.random() * 7;            // 3–10px
+    e.style.width = e.style.height = size.toFixed(1) + 'px';
+    e.style.left = (Math.random() * 100).toFixed(2) + '%';
+    const dur = 9 + Math.random() * 11;            // 9–20s
+    e.style.animationDuration = dur.toFixed(1) + 's';
+    e.style.animationDelay = (-Math.random() * dur).toFixed(1) + 's'; // déjà en vol au chargement
+    e.style.setProperty('--drift', (Math.random() * 70 - 35).toFixed(0) + 'px');
+    layer.appendChild(e);
+  }
+})();
 
 /* ── SLIDESHOW ── */
 (function() {
