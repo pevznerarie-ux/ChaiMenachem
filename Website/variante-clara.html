@@ -43,14 +43,16 @@ body{
   background-size:cover;background-position:center;
   opacity:0;transition:opacity 1.8s ease-in-out;
   animation:hkb 12s ease-in-out infinite alternate;
+  filter:saturate(1.06) contrast(1.04) brightness(1.02);
 }
 .hslide.active{opacity:1}
 @keyframes hkb{0%{transform:scale(1.02)}100%{transform:scale(1.1)}}
 .hero-wash{
   position:absolute;inset:0;z-index:1;
   background:
-    radial-gradient(ellipse 60% 55% at 50% 40%, rgba(196,151,90,.22) 0%, transparent 62%),
-    linear-gradient(to bottom, rgba(250,244,234,.60) 0%, rgba(248,242,231,.70) 45%, rgba(247,241,230,.88) 100%);
+    radial-gradient(ellipse 56% 54% at 50% 46%, rgba(251,247,239,.82) 0%, rgba(250,245,236,.40) 38%, rgba(250,245,236,0) 70%),
+    radial-gradient(ellipse 70% 60% at 50% 36%, rgba(196,151,90,.18) 0%, transparent 60%),
+    linear-gradient(to bottom, rgba(247,241,230,.16) 0%, rgba(247,241,230,.05) 30%, rgba(247,241,230,.22) 62%, rgba(247,241,230,.66) 100%);
 }
 @media(prefers-reduced-motion:reduce){.hslide{animation:none}}
 .hero > *{position:relative;z-index:2}
@@ -84,8 +86,14 @@ body{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;
   padding:1rem clamp(1.2rem,4vw,3rem) 2rem;
-  gap:1.5rem;
+  gap:1.2rem;
 }
+.hero-logo{
+  width:200px;height:132px;overflow:hidden;position:relative;flex-shrink:0;
+  filter:drop-shadow(0 3px 12px rgba(43,33,24,.22));
+  margin-bottom:.2rem;
+}
+.hero-logo img{position:absolute;width:330px;left:-68px;top:-105px;filter:url(#gold-exact)}
 .eyebrow{
   font-size:.62rem;font-weight:500;letter-spacing:.42em;text-transform:uppercase;
   color:var(--gold-deep);
@@ -202,15 +210,9 @@ body{
   </div>
   <div class="hero-wash"></div>
 
-  <!-- barre haute -->
-  <header class="topbar anim d1">
-    <div class="brand">
-      <div class="brand-mark"><img src="logo-transparent.png" alt="Chai Menachem"></div>
-    </div>
-  </header>
-
   <!-- contenu central -->
   <div class="hero-main">
+    <div class="hero-logo anim d1"><img src="logo-transparent.png" alt="Chai Menachem"></div>
     <span class="eyebrow anim d2">· Sejam ·</span>
     <h1 class="headline anim d2">Bem-vindos ao <span class="accent">Chai Menachem</span></h1>
     <p class="slogan anim d3">Onde cada alma encontra seu lar — Higienópolis, São Paulo</p>
