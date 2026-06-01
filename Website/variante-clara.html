@@ -36,18 +36,23 @@ body{
   overflow:hidden;
   isolation:isolate;
 }
-.hero-bg{
-  position:absolute;inset:0;z-index:0;
-  background-image:url('WhatsApp Image 2026-05-19 at 10.27.20 (1).jpeg');
+/* diaporama animé (fond plus vivant) */
+.hslides{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hslide{
+  position:absolute;inset:0;
   background-size:cover;background-position:center;
-  filter:saturate(.9);
+  opacity:0;transition:opacity 1.8s ease-in-out;
+  animation:hkb 12s ease-in-out infinite alternate;
 }
+.hslide.active{opacity:1}
+@keyframes hkb{0%{transform:scale(1.02)}100%{transform:scale(1.1)}}
 .hero-wash{
   position:absolute;inset:0;z-index:1;
   background:
-    radial-gradient(ellipse 60% 55% at 50% 40%, rgba(196,151,90,.18) 0%, transparent 60%),
-    linear-gradient(to bottom, rgba(252,248,240,.93) 0%, rgba(247,241,230,.95) 45%, rgba(247,241,230,.99) 100%);
+    radial-gradient(ellipse 60% 55% at 50% 40%, rgba(196,151,90,.22) 0%, transparent 62%),
+    linear-gradient(to bottom, rgba(250,244,234,.60) 0%, rgba(248,242,231,.70) 45%, rgba(247,241,230,.88) 100%);
 }
+@media(prefers-reduced-motion:reduce){.hslide{animation:none}}
 .hero > *{position:relative;z-index:2}
 
 /* ── BARRE HAUTE ── */
@@ -84,6 +89,7 @@ body{
 .eyebrow{
   font-size:.62rem;font-weight:500;letter-spacing:.42em;text-transform:uppercase;
   color:var(--gold-deep);
+  text-shadow:0 1px 12px rgba(250,245,236,.85);
 }
 .headline{
   font-family:'Cormorant Garamond',serif;
@@ -92,6 +98,7 @@ body{
   line-height:1.02;letter-spacing:-.01em;
   color:var(--espresso);
   max-width:14ch;
+  text-shadow:0 2px 26px rgba(250,245,236,.92), 0 1px 3px rgba(250,245,236,.7);
 }
 .headline .accent{color:var(--gold-deep);font-style:italic}
 .slogan{
@@ -99,6 +106,7 @@ body{
   font-style:italic;font-weight:400;
   font-size:clamp(1.15rem,2.2vw,1.7rem);
   color:var(--taupe);
+  text-shadow:0 1px 16px rgba(250,245,236,.9);
 }
 
 /* ── BANDEAU INFOS UTILES ── */
@@ -185,7 +193,13 @@ body{
 </svg>
 
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hslides">
+    <div class="hslide active" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.20 (1).jpeg')"></div>
+    <div class="hslide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.20 (2).jpeg')"></div>
+    <div class="hslide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.20 (3).jpeg')"></div>
+    <div class="hslide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.21 (1).jpeg')"></div>
+    <div class="hslide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.21 (2).jpeg')"></div>
+  </div>
   <div class="hero-wash"></div>
 
   <!-- barre haute -->
@@ -200,25 +214,6 @@ body{
     <span class="eyebrow anim d2">· Sejam ·</span>
     <h1 class="headline anim d2">Bem-vindos ao <span class="accent">Chai Menachem</span></h1>
     <p class="slogan anim d3">Onde cada alma encontra seu lar — Higienópolis, São Paulo</p>
-
-    <!-- infos utiles remontées -->
-    <div class="info-row">
-      <div class="info-card anim d3">
-        <span class="ic-label">Próximo Shabat</span>
-        <span class="ic-main">Sexta · 18h12</span>
-        <span class="ic-sub">Acendimento das velas · Kabalat Shabat 18h30</span>
-      </div>
-      <div class="info-card anim d4">
-        <span class="ic-label">Rezas &amp; Horários</span>
-        <span class="ic-main">Shacharit 7h00</span>
-        <span class="ic-sub">Minchá 18h00 · Arvit ao anoitecer</span>
-      </div>
-      <div class="info-card anim d5">
-        <span class="ic-label">Onde estamos</span>
-        <span class="ic-main">Higienópolis</span>
-        <span class="ic-sub">São Paulo · ver no mapa</span>
-      </div>
-    </div>
 
     <!-- appels à l'action -->
     <div class="cta-row anim d5">
@@ -246,6 +241,20 @@ body{
 
   <div class="foot-note anim d6">Centro Chabad · Higienópolis · São Paulo</div>
 </section>
+
+<script>
+/* diaporama du fond — fondu enchaîné */
+(function(){
+  const s = document.querySelectorAll('.hslide');
+  if (s.length < 2) return;
+  let i = 0;
+  setInterval(() => {
+    s[i].classList.remove('active');
+    i = (i + 1) % s.length;
+    s[i].classList.add('active');
+  }, 5000);
+})();
+</script>
 
 </body>
 </html>
