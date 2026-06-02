@@ -3,301 +3,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chai Menachem — Variante claire & chaleureuse</title>
+<title>Chai Menachem — Centro Chabad · Higienópolis</title>
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ivory:#F7F1E6;
-  --ivory-2:#FCF8F0;
-  --espresso:#2B2118;
-  --taupe:#6E6053;
-  --gold:#C4975A;        /* or de marque (logo) */
-  --gold-deep:#A9742B;   /* or profond (texte, contraste) */
-  --line:rgba(43,33,24,.12);
-  --card:#FFFFFF;
+  --bg:#F6F5F2;
+  --ink:#1A1714;
+  --muted:#6B655D;
+  --line:rgba(26,23,20,.12);
+  --gold:#C4975A;
+  --gold-deep:#A9742B;
+  --ease:cubic-bezier(.16,1,.3,1);
 }
 html,body{height:100%}
 body{
-  font-family:'DM Sans',sans-serif;
-  color:var(--espresso);
-  background:var(--ivory);
-  -webkit-font-smoothing:antialiased;
-  min-height:100%;
+  font-family:'Inter',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
 
-/* fond chaleureux : photo lavée de crème + lueur dorée douce */
-.hero{
-  position:relative;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  overflow:hidden;
-  isolation:isolate;
-}
-/* diaporama animé (fond plus vivant) */
+/* ════ HERO ════ */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;overflow:hidden;isolation:isolate;background:var(--bg)}
 .hslides{position:absolute;inset:0;z-index:0;overflow:hidden}
 .hslide{
-  position:absolute;inset:0;
-  background-size:cover;background-position:center;
-  opacity:0;transition:opacity 1.8s ease-in-out;
-  animation:hkb 18s ease-in-out infinite alternate;
-  filter:saturate(1);
+  position:absolute;inset:0;background-size:cover;background-position:center;
+  opacity:0;transition:opacity 2s ease-in-out;
+  animation:hkb 20s ease-in-out infinite alternate;
 }
 .hslide.active{opacity:1}
-@keyframes hkb{0%{transform:scale(1.0) translateY(0)}100%{transform:scale(1.14) translateY(-1.5%)}}
-.hero-wash{
+@keyframes hkb{0%{transform:scale(1.03)}100%{transform:scale(1.13)}}
+/* scrim moderne : photo visible mais texte parfaitement lisible */
+.hero-scrim{
   position:absolute;inset:0;z-index:1;
   background:
-    radial-gradient(ellipse 58% 56% at 50% 46%, rgba(251,247,239,.86) 0%, rgba(250,245,236,.58) 38%, rgba(250,245,236,.18) 72%),
-    radial-gradient(ellipse 70% 60% at 50% 36%, rgba(196,151,90,.16) 0%, transparent 60%),
-    linear-gradient(to bottom, rgba(247,241,230,.46) 0%, rgba(247,241,230,.38) 30%, rgba(247,241,230,.50) 62%, rgba(247,241,230,.82) 100%);
+    radial-gradient(70% 55% at 50% 48%, rgba(246,245,242,.42) 0%, rgba(246,245,242,.66) 60%, transparent 100%),
+    linear-gradient(to bottom, rgba(246,245,242,.72) 0%, rgba(246,245,242,.5) 26%, rgba(246,245,242,.62) 64%, rgba(246,245,242,.92) 100%);
 }
-/* aura dorée qui respire derrière le contenu */
-.hero-aura{
-  position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);z-index:1;pointer-events:none;
-  width:min(72vw,860px);height:min(48vh,540px);
-  background:radial-gradient(ellipse at center, rgba(196,151,90,.24) 0%, rgba(196,151,90,.08) 46%, transparent 72%);
-  animation:auraBreathe 7s ease-in-out infinite;
-}
-@keyframes auraBreathe{
-  0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}
-  50%{opacity:.95;transform:translate(-50%,-50%) scale(1.06)}
-}
-/* fines particules dorées qui montent (écho de l'intro) */
-.hero-embers{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-.hmote{
-  position:absolute;bottom:-20px;border-radius:50%;opacity:0;
-  background:radial-gradient(circle, rgba(214,168,104,.9) 0%, rgba(196,151,90,.45) 42%, transparent 72%);
-  filter:blur(.4px);
-  animation-name:moteRise;animation-timing-function:ease-in-out;animation-iteration-count:infinite;
-}
-@keyframes moteRise{
-  0%{transform:translateY(0) scale(.5);opacity:0}
-  14%{opacity:.5}55%{opacity:.7}
-  100%{transform:translateY(-80vh) translateX(var(--dx,20px)) scale(1.1);opacity:0}
-}
-@media(prefers-reduced-motion:reduce){.hslide{animation:none}.hmote{display:none}.hero-aura{animation:none}}
-.hero-main,.foot-note{position:relative;z-index:2}
+@media(prefers-reduced-motion:reduce){.hslide{animation:none}}
 
-/* ── BARRE HAUTE ── */
-.topbar{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1.1rem clamp(1.2rem,4vw,3rem);
+/* ════ HEADER ════ */
+.site-header{
+  position:absolute;top:0;left:0;right:0;z-index:5;
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+  padding:1.35rem clamp(1.2rem,4vw,3.5rem);
 }
-.brand{display:flex;align-items:center;gap:.7rem}
-.brand-mark{
-  width:128px;height:84px;overflow:hidden;position:relative;flex-shrink:0;
-  filter:drop-shadow(0 2px 5px rgba(43,33,24,.14));
+.brand-mark{width:118px;height:78px;overflow:hidden;position:relative;flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(26,23,20,.16))}
+.brand-mark img{position:absolute;width:195px;left:-40px;top:-62px;filter:url(#gold-exact)}
+.main-nav{display:flex;gap:1.9rem;align-items:center}
+.main-nav a{
+  font-size:.85rem;font-weight:500;color:var(--ink);text-decoration:none;
+  letter-spacing:.005em;opacity:.82;transition:opacity .2s,color .2s;white-space:nowrap;
 }
-.brand-mark img{
-  position:absolute;width:211px;left:-43px;top:-67px;
-  filter:url(#gold-exact);
+.main-nav a:hover{opacity:1;color:var(--gold-deep)}
+.header-ig{
+  display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;
+  border:1px solid var(--line);border-radius:50%;color:var(--ink);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);background:rgba(255,255,255,.45);
+  transition:transform .25s var(--ease),border-color .25s,color .25s;flex-shrink:0;
 }
-.topnav{display:flex;gap:1.8rem}
-.topnav a{
-  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--taupe);text-decoration:none;font-weight:500;
-  transition:color .25s;
-}
-.topnav a:hover{color:var(--gold-deep)}
-@media(max-width:760px){.topnav{display:none}}
+.header-ig:hover{transform:translateY(-2px);border-color:var(--gold);color:var(--gold-deep)}
+@media(max-width:940px){.main-nav{display:none}}
 
-/* ── CONTENU HERO ── */
+/* ════ CONTENU HERO ════ */
 .hero-main{
-  flex:1;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;
-  padding:1rem clamp(1.2rem,4vw,3rem) 2rem;
-  gap:1.2rem;
+  position:relative;z-index:2;flex:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:7rem clamp(1.2rem,5vw,3rem) 3.5rem;gap:1.6rem;
 }
-.hero-logo{
-  width:200px;height:132px;overflow:hidden;position:relative;flex-shrink:0;
-  filter:drop-shadow(0 3px 12px rgba(43,33,24,.22));
-  margin-bottom:.2rem;
-}
-.hero-logo img{position:absolute;width:330px;left:-68px;top:-105px;filter:url(#gold-exact)}
 .eyebrow{
-  display:inline-flex;align-items:center;gap:1rem;
-  font-size:.62rem;font-weight:600;letter-spacing:.42em;text-transform:uppercase;
-  color:var(--gold-deep);
-  text-shadow:0 1px 12px rgba(250,245,236,.85);
+  display:inline-flex;align-items:center;gap:.55rem;
+  padding:.42rem .95rem;border:1px solid var(--line);border-radius:40px;
+  background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);
 }
-.eyebrow::before,.eyebrow::after{content:'';width:38px;height:1px;flex-shrink:0}
-.eyebrow::before{background:linear-gradient(to left,transparent,var(--gold-deep))}
-.eyebrow::after{background:linear-gradient(to right,transparent,var(--gold-deep))}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold)}
 .headline{
-  position:relative;
-  font-family:'Cormorant Garamond',serif;
-  font-weight:400;font-style:italic;
-  font-size:clamp(3.1rem,7.2vw,6rem);
-  line-height:1.0;letter-spacing:-.015em;
-  color:var(--espresso);
-  max-width:14ch;
-  text-shadow:0 2px 26px rgba(250,245,236,.92), 0 1px 3px rgba(250,245,236,.7);
+  font-family:'Sora',sans-serif;font-weight:700;
+  font-size:clamp(2.7rem,6.4vw,5.6rem);line-height:1.03;letter-spacing:-.03em;
+  color:var(--ink);max-width:15ch;
 }
-.headline .accent{color:var(--gold-deep);font-style:italic}
+.headline .accent{color:var(--gold-deep)}
 .slogan{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;font-weight:400;
-  font-size:clamp(1.15rem,2.2vw,1.7rem);
-  color:var(--taupe);
-  text-shadow:0 1px 16px rgba(250,245,236,.9);
+  font-weight:400;font-size:clamp(1.05rem,1.7vw,1.35rem);line-height:1.55;
+  color:var(--muted);max-width:48ch;
 }
-
-/* ── BANDEAU INFOS UTILES ── */
-.info-row{
-  display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;
-  width:100%;max-width:920px;margin-top:.5rem;
-}
-.info-card{
-  flex:1;min-width:210px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:1.1rem 1.3rem;
-  text-align:left;
-  box-shadow:0 10px 30px rgba(43,33,24,.05);
-  display:flex;flex-direction:column;gap:.35rem;
-  transition:transform .3s cubic-bezier(.25,.46,.45,.94), box-shadow .3s;
-}
-.info-card:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(43,33,24,.1)}
-.info-card .ic-label{
-  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;
-}
-.info-card .ic-main{
-  font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--espresso);line-height:1.1;
-}
-.info-card .ic-sub{font-size:.82rem;color:var(--taupe)}
-
-/* ── CTA ── */
-.cta-row{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center;margin-top:.4rem}
+.cta-row{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-top:.7rem}
 .btn{
-  display:inline-flex;align-items:center;gap:.6rem;
-  padding:.95rem 1.9rem;border-radius:40px;
-  font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:600;
-  letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;
-  transition:transform .2s, box-shadow .3s, background .3s;border:none;
+  display:inline-flex;align-items:center;gap:.55rem;
+  padding:.95rem 1.65rem;border-radius:12px;
+  font-family:'Inter',sans-serif;font-size:.92rem;font-weight:600;letter-spacing:0;
+  cursor:pointer;text-decoration:none;border:1px solid transparent;
+  transition:transform .25s var(--ease),box-shadow .25s,background .25s,color .25s,border-color .25s;
 }
-.btn-wa{background:#25D366;color:#fff;box-shadow:0 8px 22px rgba(37,211,102,.32)}
-.btn-wa:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(37,211,102,.42)}
-.btn-pix{background:transparent;color:var(--gold-deep);border:1.5px solid var(--gold-deep)}
-.btn-pix:hover{background:var(--gold-deep);color:#fff;transform:translateY(-2px)}
-.btn-ig{background:linear-gradient(135deg,#833AB4,#C13584,#E1306C);color:#fff;box-shadow:0 8px 22px rgba(193,53,132,.28)}
-.btn-ig:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(193,53,132,.4)}
+.btn svg{flex-shrink:0}
+.btn-primary{background:var(--ink);color:#fff;box-shadow:0 10px 24px rgba(26,23,20,.18)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(26,23,20,.26)}
+.btn-ghost{background:rgba(255,255,255,.55);border-color:var(--line);color:var(--ink);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.btn-ghost:hover{transform:translateY(-2px);border-color:var(--gold);color:var(--gold-deep)}
 
-/* ── MENU ── */
-.menu-row{
-  display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;
-  max-width:780px;margin-top:1.4rem;
-}
-.menu-pill{
-  padding:.7rem 1.4rem;border-radius:40px;
-  background:rgba(255,255,255,.7);
-  border:1px solid var(--line);
-  color:var(--espresso);
-  font-size:.74rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
-  cursor:pointer;transition:all .25s;
-  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
-}
-.menu-pill:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-2px)}
-
-/* ── ANIMATIONS SUBTILES ── */
-@keyframes upFade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.anim{opacity:0}
-html:not(.js) .anim{opacity:1}              /* sans JS : tout reste visible */
-html.js body.revealed .anim{animation:upFade .9s cubic-bezier(.25,.46,.45,.94) both}
-.d1{animation-delay:.05s}.d2{animation-delay:.2s}.d3{animation-delay:.35s}
-.d4{animation-delay:.5s}.d5{animation-delay:.65s}.d6{animation-delay:.8s}
-@media(prefers-reduced-motion:reduce){html.js body.revealed .anim{animation:none;opacity:1}}
-/* révélation dramatique du titre (wipe) + halo or pulsant sur « Chai Menachem » */
-html.js body.revealed .headline{animation:hlReveal 1.15s cubic-bezier(.2,.7,.2,1) .25s both}
-@keyframes hlReveal{
-  from{opacity:0;clip-path:inset(0 0 105% 0);transform:translateY(18px)}
-  to{opacity:1;clip-path:inset(0 0 -12% 0);transform:translateY(0)}
-}
-html.js body.revealed .headline .accent{animation:accentGlow 4.2s ease-in-out 1.5s infinite}
-@keyframes accentGlow{
-  0%,100%{text-shadow:0 2px 20px rgba(196,151,90,.22)}
-  50%{text-shadow:0 2px 34px rgba(196,151,90,.55), 0 0 14px rgba(196,151,90,.42)}
-}
-@media(prefers-reduced-motion:reduce){html.js body.revealed .headline{animation:none;clip-path:none}html.js body.revealed .headline .accent{animation:none}}
-
-/* note bas de page */
+/* ════ FOOTER NOTE ════ */
 .foot-note{
-  text-align:center;padding:.8rem;font-size:.62rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--taupe);opacity:.7;
+  position:relative;z-index:2;text-align:center;padding:1rem;
+  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
 }
 
-/* ══════ INTRO « WOW » — Acender a luz (obscurité → lumière) ══════ */
+/* ════ ANIMATIONS MODERNES (fade + blur-in) ════ */
+@keyframes inUp{from{opacity:0;transform:translateY(22px);filter:blur(9px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes inDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0}
+html:not(.js) .anim{opacity:1}
+html.js body.revealed .anim{animation:inUp .95s var(--ease) both}
+html.js body.revealed .anim-h{animation:inDown .8s var(--ease) both}
+.d1{animation-delay:.05s}.d2{animation-delay:.16s}.d3{animation-delay:.27s}
+.d4{animation-delay:.38s}.d5{animation-delay:.49s}.d6{animation-delay:.6s}
+@media(prefers-reduced-motion:reduce){
+  html.js body.revealed .anim,html.js body.revealed .anim-h{animation:none;opacity:1}
+}
+
+/* ════ INTRO « WOW » — obscurité → lumière ════ */
 #intro{
   position:fixed;inset:0;z-index:9999;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   background:radial-gradient(ellipse at 50% 48%, #161009 0%, #0a0603 55%, #000 100%);
-  overflow:hidden;opacity:1;
-  transition:opacity 1.1s cubic-bezier(.7,0,.3,1), visibility 1.1s;
+  overflow:hidden;opacity:1;transition:opacity 1.1s cubic-bezier(.7,0,.3,1), visibility 1.1s;
 }
-html:not(.js) #intro{display:none}            /* sans JS : pas d'intro bloquante */
+html:not(.js) #intro{display:none}
 #intro.leaving{opacity:0;visibility:hidden}
-/* étincelle qui s'allume puis éclat de lumière */
 .intro-glow{
   position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);
   width:8px;height:8px;border-radius:50%;z-index:1;
   background:radial-gradient(circle, rgba(255,238,200,1) 0%, rgba(214,168,104,.85) 22%, rgba(196,151,90,0) 70%);
-  filter:blur(2px);
-  animation:ignite 3.2s ease-out forwards;
+  filter:blur(2px);animation:ignite 3.2s ease-out forwards;
 }
-@keyframes ignite{
-  0%{width:6px;height:6px;opacity:0}
-  10%{opacity:1}
-  35%{width:460px;height:460px;opacity:.95}
-  100%{width:1300px;height:1300px;opacity:.30}
-}
-/* braises */
+@keyframes ignite{0%{width:6px;height:6px;opacity:0}10%{opacity:1}35%{width:460px;height:460px;opacity:.95}100%{width:1300px;height:1300px;opacity:.3}}
 .intro-embers{position:absolute;inset:0;z-index:2;pointer-events:none}
 .intro-ember{
   position:absolute;bottom:-24px;border-radius:50%;opacity:0;
   background:radial-gradient(circle, rgba(235,198,138,.95) 0%, rgba(196,151,90,.5) 40%, transparent 72%);
-  filter:blur(.5px);
-  animation:introRise 1 ease-in;
+  filter:blur(.5px);animation:introRise 1 ease-in;
 }
-@keyframes introRise{
-  0%{transform:translateY(0) scale(.5);opacity:0}
-  18%{opacity:.85}
-  100%{transform:translateY(-72vh) translateX(var(--dx,0)) scale(1.15);opacity:0}
-}
-/* logo qui se dessine par la lumière */
-.intro-logo{position:relative;z-index:3;width:340px;height:225px;overflow:hidden}
+@keyframes introRise{0%{transform:translateY(0) scale(.5);opacity:0}18%{opacity:.85}100%{transform:translateY(-72vh) translateX(var(--dx,0)) scale(1.15);opacity:0}}
+.intro-logo{position:relative;z-index:3;width:330px;height:218px;overflow:hidden}
 .intro-logo img{
-  position:absolute;width:561px;left:-115px;top:-178px;
+  position:absolute;width:545px;left:-112px;top:-173px;
   filter:url(#gold-exact) drop-shadow(0 0 34px rgba(196,151,90,.55));
   -webkit-mask-image:linear-gradient(105deg,#000 68%,transparent 100%);
   mask-image:linear-gradient(105deg,#000 68%,transparent 100%);
-  -webkit-mask-size:0% 100%;mask-size:0% 100%;
-  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-size:0% 100%;mask-size:0% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
   animation:introDraw 1.9s cubic-bezier(.25,.46,.45,.94) .45s both;
 }
-@keyframes introDraw{
-  from{-webkit-mask-size:0% 100%;mask-size:0% 100%}
-  to{-webkit-mask-size:150% 100%;mask-size:150% 100%}
-}
+@keyframes introDraw{from{-webkit-mask-size:0% 100%;mask-size:0% 100%}to{-webkit-mask-size:150% 100%;mask-size:150% 100%}}
 .intro-tagline{
-  position:relative;z-index:3;margin-top:1.5rem;max-width:24ch;text-align:center;
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
-  font-size:clamp(1.05rem,2.3vw,1.6rem);color:rgba(255,240,214,.82);letter-spacing:.03em;
+  position:relative;z-index:3;margin-top:1.6rem;max-width:30ch;text-align:center;
+  font-weight:400;font-style:italic;font-size:clamp(1rem,2vw,1.4rem);
+  color:rgba(255,240,214,.8);letter-spacing:.01em;line-height:1.5;
   opacity:0;animation:introFade 1.1s ease 2.1s both;
 }
 .intro-skip{
   position:absolute;bottom:1.8rem;right:1.8rem;z-index:4;
-  background:transparent;border:1px solid rgba(196,151,90,.45);color:rgba(255,240,214,.72);
-  padding:.5rem 1.25rem;border-radius:30px;font-family:'DM Sans',sans-serif;
-  font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;
-  opacity:0;animation:introFade .8s ease 1.4s both;transition:background .25s,color .25s;
+  background:transparent;border:1px solid rgba(196,151,90,.45);color:rgba(255,240,214,.75);
+  padding:.55rem 1.3rem;border-radius:40px;font-family:'Inter',sans-serif;
+  font-size:.78rem;font-weight:500;letter-spacing:.04em;cursor:pointer;
+  display:inline-flex;align-items:center;gap:.4rem;
+  opacity:0;animation:introFade .8s ease 1.4s both;transition:background .25s,color .25s,gap .25s;
 }
-.intro-skip:hover{background:rgba(196,151,90,.2);color:#fff}
-@keyframes introFade{from{opacity:0;transform:translateY(8px)}to{opacity:.85;transform:none}}
+.intro-skip:hover{background:rgba(196,151,90,.18);color:#fff;gap:.65rem}
+@keyframes introFade{from{opacity:0;transform:translateY(8px)}to{opacity:.9;transform:none}}
 @media(prefers-reduced-motion:reduce){
   .intro-logo img{-webkit-mask-size:150% 100%;mask-size:150% 100%;animation:none}
   .intro-glow{animation:none;opacity:.4;width:600px;height:600px}
@@ -333,46 +209,43 @@ html:not(.js) #intro{display:none}            /* sans JS : pas d'intro bloquante
     <div class="hslide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.21 (1).jpeg')"></div>
     <div class="hslide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.21 (2).jpeg')"></div>
   </div>
-  <div class="hero-wash"></div>
-  <div class="hero-aura"></div>
-  <div class="hero-embers"></div>
+  <div class="hero-scrim"></div>
 
-  <!-- contenu central -->
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="brand-mark anim-h anim"><img src="logo-transparent.png" alt="Chai Menachem"></div>
+    <nav class="main-nav anim-h anim">
+      <a href="#">Sobre</a>
+      <a href="#">Programas</a>
+      <a href="#">Festas</a>
+      <a href="#">Rezas &amp; Horários</a>
+      <a href="#">Aulas</a>
+      <a href="#">Galeria</a>
+    </nav>
+    <a href="https://instagram.com/chaimenachem" target="_blank" rel="noopener" class="header-ig anim-h anim" aria-label="Instagram">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+  </header>
+
+  <!-- CONTENU CENTRAL -->
   <div class="hero-main">
-    <div class="hero-logo anim d1"><img src="logo-transparent.png" alt="Chai Menachem"></div>
-    <span class="eyebrow anim d2">Sejam bem-vindos</span>
-    <h1 class="headline anim d2">Bem-vindos ao <span class="accent">Chai Menachem</span></h1>
-    <p class="slogan anim d3">Onde cada alma encontra seu lar — Higienópolis, São Paulo</p>
-
-    <!-- appels à l'action -->
-    <div class="cta-row anim d5">
-      <a href="#" class="btn btn-wa">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="eyebrow anim d1">Centro Chabad · Higienópolis</span>
+    <h1 class="headline anim d2">Bem-vindos ao <span class="accent">Chai&nbsp;Menachem</span></h1>
+    <p class="slogan anim d3">Onde cada alma encontra seu lar — um lar de Torá, calor e comunidade no coração de São Paulo.</p>
+    <div class="cta-row anim d4">
+      <a href="#" class="btn btn-primary">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Fale Conosco
       </a>
-      <a href="#" class="btn btn-pix">♥ Doar via PIX</a>
-      <a href="https://instagram.com/chaimenachem" target="_blank" class="btn btn-ig">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        @chaimenachem
-      </a>
+      <a href="#" class="btn btn-ghost">Doar via PIX</a>
     </div>
-
-    <!-- menu -->
-    <nav class="menu-row anim d6">
-      <button class="menu-pill">Sobre</button>
-      <button class="menu-pill">Programas</button>
-      <button class="menu-pill">Festas</button>
-      <button class="menu-pill">Rezas &amp; Horários</button>
-      <button class="menu-pill">Aulas</button>
-      <button class="menu-pill">Galeria</button>
-    </nav>
   </div>
 
-  <div class="foot-note anim d6">Centro Chabad · Higienópolis · São Paulo</div>
+  <div class="foot-note anim d5">Centro Chabad · Higienópolis · São Paulo</div>
 </section>
 
 <script>
-/* ── INTRO « WOW » : braises + révélation obscurité → lumière ── */
+/* ── INTRO : braises + révélation obscurité → lumière ── */
 (function(){
   const intro = document.getElementById('intro');
   if (!intro) return;
@@ -390,8 +263,8 @@ html:not(.js) #intro{display:none}            /* sans JS : pas d'intro bloquante
   let done = false;
   function reveal(){
     if (done) return; done = true;
-    document.body.classList.add('revealed');   // déclenche les animations du hero
-    intro.classList.add('leaving');             // lève le rideau sombre
+    document.body.classList.add('revealed');
+    intro.classList.add('leaving');
     setTimeout(function(){ intro.style.display = 'none'; }, 1200);
   }
   const auto = setTimeout(reveal, 3700);
@@ -400,32 +273,16 @@ html:not(.js) #intro{display:none}            /* sans JS : pas d'intro bloquante
   intro.addEventListener('click', function(ev){ if (ev.target === intro){ clearTimeout(auto); reveal(); } });
 })();
 
-/* particules dorées du hero (écho de l'intro) */
-(function(){
-  const layer = document.querySelector('.hero-embers');
-  if (!layer) return;
-  for (let i = 0; i < 14; i++){
-    const e = document.createElement('span'); e.className = 'hmote';
-    const sz = 2 + Math.random()*5;
-    e.style.width = e.style.height = sz.toFixed(1) + 'px';
-    e.style.left = (Math.random()*100).toFixed(1) + '%';
-    e.style.animationDuration = (11 + Math.random()*9).toFixed(1) + 's';
-    e.style.animationDelay = (-Math.random()*16).toFixed(1) + 's';
-    e.style.setProperty('--dx', (Math.random()*60-30).toFixed(0) + 'px');
-    layer.appendChild(e);
-  }
-})();
-
-/* diaporama du fond — fondu enchaîné */
+/* ── diaporama du fond ── */
 (function(){
   const s = document.querySelectorAll('.hslide');
   if (s.length < 2) return;
   let i = 0;
-  setInterval(() => {
+  setInterval(function(){
     s[i].classList.remove('active');
     i = (i + 1) % s.length;
     s[i].classList.add('active');
-  }, 5000);
+  }, 5500);
 })();
 </script>
 
