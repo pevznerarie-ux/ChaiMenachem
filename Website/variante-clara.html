@@ -43,11 +43,11 @@ body{
   position:absolute;inset:0;
   background-size:cover;background-position:center;
   opacity:0;transition:opacity 1.8s ease-in-out;
-  animation:hkb 12s ease-in-out infinite alternate;
-  filter:saturate(.97);
+  animation:hkb 18s ease-in-out infinite alternate;
+  filter:saturate(1);
 }
 .hslide.active{opacity:1}
-@keyframes hkb{0%{transform:scale(1.02)}100%{transform:scale(1.1)}}
+@keyframes hkb{0%{transform:scale(1.0) translateY(0)}100%{transform:scale(1.14) translateY(-1.5%)}}
 .hero-wash{
   position:absolute;inset:0;z-index:1;
   background:
@@ -55,7 +55,31 @@ body{
     radial-gradient(ellipse 70% 60% at 50% 36%, rgba(196,151,90,.16) 0%, transparent 60%),
     linear-gradient(to bottom, rgba(247,241,230,.46) 0%, rgba(247,241,230,.38) 30%, rgba(247,241,230,.50) 62%, rgba(247,241,230,.82) 100%);
 }
-@media(prefers-reduced-motion:reduce){.hslide{animation:none}}
+/* aura dorée qui respire derrière le contenu */
+.hero-aura{
+  position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);z-index:1;pointer-events:none;
+  width:min(72vw,860px);height:min(48vh,540px);
+  background:radial-gradient(ellipse at center, rgba(196,151,90,.24) 0%, rgba(196,151,90,.08) 46%, transparent 72%);
+  animation:auraBreathe 7s ease-in-out infinite;
+}
+@keyframes auraBreathe{
+  0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}
+  50%{opacity:.95;transform:translate(-50%,-50%) scale(1.06)}
+}
+/* fines particules dorées qui montent (écho de l'intro) */
+.hero-embers{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.hmote{
+  position:absolute;bottom:-20px;border-radius:50%;opacity:0;
+  background:radial-gradient(circle, rgba(214,168,104,.9) 0%, rgba(196,151,90,.45) 42%, transparent 72%);
+  filter:blur(.4px);
+  animation-name:moteRise;animation-timing-function:ease-in-out;animation-iteration-count:infinite;
+}
+@keyframes moteRise{
+  0%{transform:translateY(0) scale(.5);opacity:0}
+  14%{opacity:.5}55%{opacity:.7}
+  100%{transform:translateY(-80vh) translateX(var(--dx,20px)) scale(1.1);opacity:0}
+}
+@media(prefers-reduced-motion:reduce){.hslide{animation:none}.hmote{display:none}.hero-aura{animation:none}}
 .hero-main,.foot-note{position:relative;z-index:2}
 
 /* ── BARRE HAUTE ── */
@@ -96,15 +120,20 @@ body{
 }
 .hero-logo img{position:absolute;width:330px;left:-68px;top:-105px;filter:url(#gold-exact)}
 .eyebrow{
-  font-size:.62rem;font-weight:500;letter-spacing:.42em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:1rem;
+  font-size:.62rem;font-weight:600;letter-spacing:.42em;text-transform:uppercase;
   color:var(--gold-deep);
   text-shadow:0 1px 12px rgba(250,245,236,.85);
 }
+.eyebrow::before,.eyebrow::after{content:'';width:38px;height:1px;flex-shrink:0}
+.eyebrow::before{background:linear-gradient(to left,transparent,var(--gold-deep))}
+.eyebrow::after{background:linear-gradient(to right,transparent,var(--gold-deep))}
 .headline{
+  position:relative;
   font-family:'Cormorant Garamond',serif;
   font-weight:400;font-style:italic;
-  font-size:clamp(2.8rem,6.5vw,5.4rem);
-  line-height:1.02;letter-spacing:-.01em;
+  font-size:clamp(3.1rem,7.2vw,6rem);
+  line-height:1.0;letter-spacing:-.015em;
   color:var(--espresso);
   max-width:14ch;
   text-shadow:0 2px 26px rgba(250,245,236,.92), 0 1px 3px rgba(250,245,236,.7);
@@ -183,6 +212,18 @@ html.js body.revealed .anim{animation:upFade .9s cubic-bezier(.25,.46,.45,.94) b
 .d1{animation-delay:.05s}.d2{animation-delay:.2s}.d3{animation-delay:.35s}
 .d4{animation-delay:.5s}.d5{animation-delay:.65s}.d6{animation-delay:.8s}
 @media(prefers-reduced-motion:reduce){html.js body.revealed .anim{animation:none;opacity:1}}
+/* révélation dramatique du titre (wipe) + halo or pulsant sur « Chai Menachem » */
+html.js body.revealed .headline{animation:hlReveal 1.15s cubic-bezier(.2,.7,.2,1) .25s both}
+@keyframes hlReveal{
+  from{opacity:0;clip-path:inset(0 0 105% 0);transform:translateY(18px)}
+  to{opacity:1;clip-path:inset(0 0 -12% 0);transform:translateY(0)}
+}
+html.js body.revealed .headline .accent{animation:accentGlow 4.2s ease-in-out 1.5s infinite}
+@keyframes accentGlow{
+  0%,100%{text-shadow:0 2px 20px rgba(196,151,90,.22)}
+  50%{text-shadow:0 2px 34px rgba(196,151,90,.55), 0 0 14px rgba(196,151,90,.42)}
+}
+@media(prefers-reduced-motion:reduce){html.js body.revealed .headline{animation:none;clip-path:none}html.js body.revealed .headline .accent{animation:none}}
 
 /* note bas de page */
 .foot-note{
@@ -293,11 +334,13 @@ html:not(.js) #intro{display:none}            /* sans JS : pas d'intro bloquante
     <div class="hslide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.21 (2).jpeg')"></div>
   </div>
   <div class="hero-wash"></div>
+  <div class="hero-aura"></div>
+  <div class="hero-embers"></div>
 
   <!-- contenu central -->
   <div class="hero-main">
     <div class="hero-logo anim d1"><img src="logo-transparent.png" alt="Chai Menachem"></div>
-    <span class="eyebrow anim d2">· Sejam ·</span>
+    <span class="eyebrow anim d2">Sejam bem-vindos</span>
     <h1 class="headline anim d2">Bem-vindos ao <span class="accent">Chai Menachem</span></h1>
     <p class="slogan anim d3">Onde cada alma encontra seu lar — Higienópolis, São Paulo</p>
 
@@ -355,6 +398,22 @@ html:not(.js) #intro{display:none}            /* sans JS : pas d'intro bloquante
   const skip = intro.querySelector('.intro-skip');
   if (skip) skip.addEventListener('click', function(){ clearTimeout(auto); reveal(); });
   intro.addEventListener('click', function(ev){ if (ev.target === intro){ clearTimeout(auto); reveal(); } });
+})();
+
+/* particules dorées du hero (écho de l'intro) */
+(function(){
+  const layer = document.querySelector('.hero-embers');
+  if (!layer) return;
+  for (let i = 0; i < 14; i++){
+    const e = document.createElement('span'); e.className = 'hmote';
+    const sz = 2 + Math.random()*5;
+    e.style.width = e.style.height = sz.toFixed(1) + 'px';
+    e.style.left = (Math.random()*100).toFixed(1) + '%';
+    e.style.animationDuration = (11 + Math.random()*9).toFixed(1) + 's';
+    e.style.animationDelay = (-Math.random()*16).toFixed(1) + 's';
+    e.style.setProperty('--dx', (Math.random()*60-30).toFixed(0) + 'px');
+    layer.appendChild(e);
+  }
 })();
 
 /* diaporama du fond — fondu enchaîné */
