@@ -12,10 +12,9 @@
 <style>
 
 /* ════════════════════════════════════
-   HEADER — logo + hamburger seulement
+   HEADER — caché sur la page d'accueil
    ════════════════════════════════════ */
-.page-nav .nav-links,
-.page-nav .nav-right { display:none }
+.page-nav { display:none }
 
 .hamburger{
   background:none;border:1px solid var(--line-2);border-radius:4px;
@@ -82,7 +81,7 @@
 .home-hero{
   min-height:92vh;display:flex;flex-direction:column;align-items:center;
   justify-content:center;text-align:center;
-  padding:9rem clamp(1.4rem,5vw,3rem) 6rem;gap:1.8rem;
+  padding:5rem clamp(1.4rem,5vw,3rem) 6rem;gap:1.8rem;
   position:relative;overflow:hidden;
   background:
     linear-gradient(rgba(250,248,242,.87) 0%,rgba(250,248,242,.79) 55%,rgba(236,228,212,.93) 100%),
@@ -115,17 +114,35 @@
 }
 .home-hero .cta-band{justify-content:center;margin-top:.8rem;position:relative;z-index:1}
 
-/* Animations hero — se déclenchent dès que body.revealed est ajouté */
+/* Animations hero — jouent automatiquement après l'intro (2.6s) */
 @keyframes heroIn{
-  from{opacity:0;transform:translateY(36px);filter:blur(6px)}
-  to  {opacity:1;transform:translateY(0);filter:blur(0)}
+  from{opacity:0;transform:translateY(44px) scale(.97);filter:blur(10px)}
+  60% {filter:blur(0)}
+  to  {opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
 }
+@keyframes heroLineIn{from{width:0}to{width:60px}}
+
 .home-hero .reveal{opacity:0}
 html:not(.js) .home-hero .reveal{opacity:1}
-body.revealed .home-hero .r1{animation:heroIn 1.1s var(--ease) .05s both}
-body.revealed .home-hero .r2{animation:heroIn 1.2s var(--ease) .28s both}
-body.revealed .home-hero .r3{animation:heroIn 1.1s var(--ease) .5s both}
-body.revealed .home-hero .r4{animation:heroIn 1s var(--ease) .72s both}
+
+/* Joue directement avec délais calés sur la fin de l'intro */
+.home-hero .r1{animation:heroIn 1.3s var(--ease) 2.5s both}
+.home-hero .r2{animation:heroIn 1.5s var(--ease) 2.75s both}
+.home-hero .r3{animation:heroIn 1.3s var(--ease) 3.05s both}
+.home-hero .r4{animation:heroIn 1.2s var(--ease) 3.3s both}
+
+/* Ligne or décorative après l'eyebrow */
+.hero-line{
+  width:0;height:1px;background:var(--gold);margin:-.4rem auto 0;
+  animation:heroLineIn .9s var(--ease) 3.6s both;
+}
+
+/* Si l'utilisateur clique sur Entrar, les animations jouent instantanément */
+body.revealed .home-hero .r1{animation-delay:.05s}
+body.revealed .home-hero .r2{animation-delay:.25s}
+body.revealed .home-hero .r3{animation-delay:.45s}
+body.revealed .home-hero .r4{animation-delay:.65s}
+body.revealed .hero-line{animation-delay:.9s}
 
 /* ════════════════════════════════════
    NAVIGATION TILES — sur la page
@@ -273,6 +290,7 @@ html:not(.js) #intro{display:none}
 <!-- HERO -->
 <section class="home-hero">
   <span class="eyebrow reveal r1">Centro Chabad · Higienópolis</span>
+  <div class="hero-line"></div>
   <h1 class="reveal r2">Bem-vindos ao <span class="accent">Chai&nbsp;Menachem</span></h1>
   <p class="slogan reveal r3">Onde cada alma encontra seu lar — um lar de Torá, luz e calor humano, no coração de São Paulo.</p>
   <div class="cta-band reveal r4">
