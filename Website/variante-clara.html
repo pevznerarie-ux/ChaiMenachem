@@ -76,34 +76,22 @@
 .nav-overlay.open .overlay-tag{opacity:1}
 
 /* ════════════════════════════════════
-   HERO — fond vidéo + overlay crème
+   HERO — fond photo + overlay crème
    ════════════════════════════════════ */
 .home-hero{
   min-height:92vh;display:flex;flex-direction:column;align-items:center;
   justify-content:center;text-align:center;
   padding:5rem clamp(1.4rem,5vw,3rem) 6rem;gap:1.8rem;
   position:relative;overflow:hidden;
-  background:var(--bg);
-}
-/* vidéo en fond */
-.hero-video{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;opacity:.32;z-index:0;pointer-events:none;
-}
-/* overlay crème + vignette bords */
-.hero-overlay{
-  position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    radial-gradient(ellipse 85% 85% at 50% 45%,rgba(250,248,242,.76) 0%,rgba(250,248,242,.6) 55%,rgba(230,218,196,.88) 100%),
-    linear-gradient(to bottom,rgba(250,248,242,.5) 0%,transparent 30%,transparent 70%,rgba(236,225,210,.7) 100%);
+    linear-gradient(rgba(250,248,242,.87) 0%,rgba(250,248,242,.79) 55%,rgba(236,228,212,.93) 100%),
+    url('espaco2.jpg') center/cover no-repeat;
 }
 /* ligne or en haut */
 .home-hero::after{
   content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:1px;height:80px;background:linear-gradient(to bottom,transparent,var(--gold));opacity:.5;z-index:2;
+  width:1px;height:80px;background:linear-gradient(to bottom,transparent,var(--gold));opacity:.5;
 }
-/* tous les enfants au-dessus de la vidéo */
-.home-hero > *:not(.hero-video):not(.hero-overlay){position:relative;z-index:2}
 .home-hero .eyebrow{
   display:inline-flex;align-items:center;gap:.9rem;
   font-size:.7rem;font-weight:600;letter-spacing:.36em;text-transform:uppercase;color:var(--gold);
@@ -213,9 +201,8 @@ body.revealed .home-hero h1 .accent{animation-delay:3s}
 }
 .nav-tile:hover .tile-arrow{transform:translateX(6px)}
 
-/* apparition des tiles au scroll */
-.nav-tile{opacity:0;transform:translateY(20px);transition:background .3s,border-color .3s,opacity .6s var(--ease),transform .6s var(--ease)}
-.nav-tile.visible{opacity:1;transform:translateY(0)}
+/* tiles toujours visibles */
+.nav-tile{opacity:1;transform:none;transition:background .3s,border-color .3s}
 
 /* ════════════════════════════════════
    DÉFILEMENT PHOTOS + animation entrée
@@ -317,10 +304,6 @@ html:not(.js) #intro{display:none}
 
 <!-- HERO -->
 <section class="home-hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto">
-    <source src="chai-teens.mp4" type="video/mp4">
-  </video>
-  <div class="hero-overlay"></div>
   <span class="eyebrow reveal r1">Centro Chabad · Higienópolis</span>
   <div class="hero-line"></div>
   <h1 class="reveal r2">Bem-vindos ao <span class="accent">Chai&nbsp;Menachem</span></h1>
@@ -376,19 +359,6 @@ html:not(.js) #intro{display:none}
   </div>
 </section>
 
-<!-- DÉFILEMENT PHOTOS -->
-<section class="photo-marquee" id="photo-marquee">
-  <div class="marquee-track">
-    <img src="espaco2.jpg" alt=""><img src="espaco5.jpg" alt=""><img src="espaco8.jpg" alt="">
-    <img src="espaco10.jpg" alt=""><img src="espaco14.jpg" alt=""><img src="espaco18.jpg" alt="">
-    <img src="espaco20.jpg" alt=""><img src="espaco25.jpg" alt=""><img src="espaco28.jpg" alt="">
-    <img src="espaco32.jpg" alt=""><img src="espaco35.jpg" alt=""><img src="espaco40.jpg" alt="">
-    <img src="espaco2.jpg" alt=""><img src="espaco5.jpg" alt=""><img src="espaco8.jpg" alt="">
-    <img src="espaco10.jpg" alt=""><img src="espaco14.jpg" alt=""><img src="espaco18.jpg" alt="">
-    <img src="espaco20.jpg" alt=""><img src="espaco25.jpg" alt=""><img src="espaco28.jpg" alt="">
-    <img src="espaco32.jpg" alt=""><img src="espaco35.jpg" alt=""><img src="espaco40.jpg" alt="">
-  </div>
-</section>
 
 <!-- FOOTER -->
 <footer class="site-footer">
