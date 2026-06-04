@@ -201,8 +201,9 @@ body.revealed .home-hero h1 .accent{animation-delay:3s}
 }
 .nav-tile:hover .tile-arrow{transform:translateX(6px)}
 
-/* tiles toujours visibles */
-.nav-tile{opacity:1;transform:none;transition:background .3s,border-color .3s}
+/* fondu des tiles au scroll */
+.nav-tile{opacity:0;transform:translateY(24px);transition:background .3s,border-color .3s,opacity .7s var(--ease),transform .7s var(--ease)}
+.nav-tile.visible{opacity:1;transform:translateY(0)}
 
 /* ════════════════════════════════════
    DÉFILEMENT PHOTOS + animation entrée
@@ -359,6 +360,20 @@ html:not(.js) #intro{display:none}
   </div>
 </section>
 
+
+<!-- DÉFILEMENT PHOTOS -->
+<section class="photo-marquee" id="photo-marquee">
+  <div class="marquee-track">
+    <img src="espaco2.jpg" alt=""><img src="espaco5.jpg" alt=""><img src="espaco8.jpg" alt="">
+    <img src="espaco10.jpg" alt=""><img src="espaco14.jpg" alt=""><img src="espaco18.jpg" alt="">
+    <img src="espaco20.jpg" alt=""><img src="espaco25.jpg" alt=""><img src="espaco28.jpg" alt="">
+    <img src="espaco32.jpg" alt=""><img src="espaco35.jpg" alt=""><img src="espaco40.jpg" alt="">
+    <img src="espaco2.jpg" alt=""><img src="espaco5.jpg" alt=""><img src="espaco8.jpg" alt="">
+    <img src="espaco10.jpg" alt=""><img src="espaco14.jpg" alt=""><img src="espaco18.jpg" alt="">
+    <img src="espaco20.jpg" alt=""><img src="espaco25.jpg" alt=""><img src="espaco28.jpg" alt="">
+    <img src="espaco32.jpg" alt=""><img src="espaco35.jpg" alt=""><img src="espaco40.jpg" alt="">
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer class="site-footer">
