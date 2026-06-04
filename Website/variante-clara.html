@@ -10,24 +10,92 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 <style>
-/* ── HERO accueil — luxe, fond photo voilé ── */
+
+/* ════════════════════════════════════
+   HEADER — logo + hamburger seulement
+   ════════════════════════════════════ */
+.page-nav .nav-links,
+.page-nav .nav-right { display:none }
+
+.hamburger{
+  background:none;border:1px solid var(--line-2);border-radius:4px;
+  width:44px;height:44px;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:5px;cursor:pointer;padding:0;
+  transition:border-color .2s;flex-shrink:0;
+}
+.hamburger:hover{border-color:var(--gold)}
+.hamburger span{display:block;width:20px;height:1.5px;background:var(--ink);transition:transform .35s var(--ease),opacity .25s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ════════════════════════════════════
+   OVERLAY MENU
+   ════════════════════════════════════ */
+.nav-overlay{
+  position:fixed;inset:0;z-index:500;
+  background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;
+  transition:opacity .45s var(--ease),visibility .45s;
+}
+.nav-overlay.open{opacity:1;visibility:visible}
+
+.overlay-close{
+  position:absolute;top:1.5rem;right:1.5rem;
+  background:none;border:1px solid var(--line-2);border-radius:50%;
+  width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:1.1rem;color:var(--ink);
+  transition:border-color .2s,color .2s
+}
+.overlay-close:hover{border-color:var(--gold);color:var(--gold)}
+
+.overlay-nav{
+  display:flex;flex-direction:column;align-items:center;gap:clamp(1rem,2.5vh,1.8rem);
+  text-align:center;
+}
+.overlay-nav a{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(2.2rem,5vw,3.8rem);
+  color:var(--ink);text-decoration:none;
+  opacity:0;transform:translateY(22px);
+  transition:color .2s,opacity .5s var(--ease),transform .5s var(--ease);
+}
+.nav-overlay.open .overlay-nav a{opacity:1;transform:translateY(0)}
+.nav-overlay.open .overlay-nav a:nth-child(1){transition-delay:.04s}
+.nav-overlay.open .overlay-nav a:nth-child(2){transition-delay:.1s}
+.nav-overlay.open .overlay-nav a:nth-child(3){transition-delay:.16s}
+.nav-overlay.open .overlay-nav a:nth-child(4){transition-delay:.22s}
+.nav-overlay.open .overlay-nav a:nth-child(5){transition-delay:.28s}
+.nav-overlay.open .overlay-nav a:nth-child(6){transition-delay:.34s}
+.overlay-nav a:hover{color:var(--gold)}
+
+.overlay-tag{
+  margin-top:3rem;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--muted);opacity:0;transition:opacity .4s .4s;
+}
+.nav-overlay.open .overlay-tag{opacity:1}
+
+/* ════════════════════════════════════
+   HERO — fond photo, animations fortes
+   ════════════════════════════════════ */
 .home-hero{
-  min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
-  padding:9rem clamp(1.4rem,5vw,3rem) 6rem;gap:1.8rem;position:relative;overflow:hidden;
+  min-height:92vh;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;
+  padding:9rem clamp(1.4rem,5vw,3rem) 6rem;gap:1.8rem;
+  position:relative;overflow:hidden;
   background:
-    linear-gradient(rgba(250,248,242,.88) 0%, rgba(250,248,242,.80) 60%, rgba(236,228,212,.92) 100%),
+    linear-gradient(rgba(250,248,242,.87) 0%,rgba(250,248,242,.79) 55%,rgba(236,228,212,.93) 100%),
     url('espaco2.jpg') center/cover no-repeat;
 }
-/* grain texture subtil */
 .home-hero::before{
   content:'';position:absolute;inset:0;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
   background-size:200px;opacity:.4;
 }
-/* ornement or en haut */
 .home-hero::after{
   content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:1px;height:80px;background:linear-gradient(to bottom, transparent, var(--gold));opacity:.5;
+  width:1px;height:80px;background:linear-gradient(to bottom,transparent,var(--gold));opacity:.45;
 }
 .home-hero .eyebrow{
   display:inline-flex;align-items:center;gap:.9rem;
@@ -37,32 +105,112 @@
 .home-hero .eyebrow::before,.home-hero .eyebrow::after{content:'';width:36px;height:1px;background:var(--gold);opacity:.7}
 .home-hero h1{
   font-family:'DM Serif Display',serif;font-weight:400;
-  font-size:clamp(3.2rem,10vw,7.5rem);line-height:1.02;letter-spacing:-.018em;color:var(--ink);max-width:15ch;
-  position:relative;z-index:1;
+  font-size:clamp(3.2rem,10vw,7.5rem);line-height:1.02;letter-spacing:-.018em;
+  color:var(--ink);max-width:15ch;position:relative;z-index:1;
 }
 .home-hero h1 .accent{font-style:italic;color:var(--gold)}
 .home-hero .slogan{
-  font-size:clamp(1.05rem,1.7vw,1.3rem);color:var(--ink-soft);font-weight:300;line-height:1.7;max-width:44ch;
-  position:relative;z-index:1;
+  font-size:clamp(1.05rem,1.7vw,1.3rem);color:var(--ink-soft);font-weight:300;
+  line-height:1.7;max-width:44ch;position:relative;z-index:1;
 }
-.home-hero .cta-band{justify-content:center;margin-top:.8rem;position:relative;z-index:1;}
+.home-hero .cta-band{justify-content:center;margin-top:.8rem;position:relative;z-index:1}
 
-/* révélation après l'intro */
-.home-hero .reveal{opacity:0;animation:none}
+/* Animations hero — se déclenchent dès que body.revealed est ajouté */
+@keyframes heroIn{
+  from{opacity:0;transform:translateY(36px);filter:blur(6px)}
+  to  {opacity:1;transform:translateY(0);filter:blur(0)}
+}
+.home-hero .reveal{opacity:0}
 html:not(.js) .home-hero .reveal{opacity:1}
-html.js body.revealed .home-hero .reveal{animation:fadeUp 1s var(--ease) both}
+body.revealed .home-hero .r1{animation:heroIn 1.1s var(--ease) .05s both}
+body.revealed .home-hero .r2{animation:heroIn 1.2s var(--ease) .28s both}
+body.revealed .home-hero .r3{animation:heroIn 1.1s var(--ease) .5s both}
+body.revealed .home-hero .r4{animation:heroIn 1s var(--ease) .72s both}
 
-/* ── Défilement photo infini ── */
-.photo-marquee{overflow:hidden;background:var(--bg-warm);padding:2.4rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.marquee-track{display:flex;gap:12px;width:max-content;animation:scroll-left 40s linear infinite}
+/* ════════════════════════════════════
+   NAVIGATION TILES — sur la page
+   ════════════════════════════════════ */
+.home-nav{background:var(--bg);border-top:1px solid var(--line)}
+.nav-tiles{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  max-width:var(--maxw);margin:0 auto;
+}
+@media(max-width:700px){.nav-tiles{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.nav-tiles{grid-template-columns:1fr}}
+
+.nav-tile{
+  display:flex;flex-direction:column;
+  padding:2.4rem 2rem 2rem;
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  text-decoration:none;color:inherit;
+  position:relative;overflow:hidden;
+  transition:background .3s,border-color .3s;
+}
+.nav-tile:nth-child(3n){border-right:none}
+@media(max-width:700px){.nav-tile:nth-child(3n){border-right:1px solid var(--line)}.nav-tile:nth-child(2n){border-right:none}}
+.nav-tile::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:2px;background:var(--gold);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);
+}
+.nav-tile:hover::before{transform:scaleX(1)}
+.nav-tile:hover{background:var(--bg-warm)}
+
+.tile-num{
+  font-size:.68rem;font-weight:600;letter-spacing:.22em;color:var(--gold);
+  margin-bottom:1.2rem;font-family:'Inter',sans-serif;
+}
+.nav-tile h3{font-size:1.65rem;color:var(--ink);margin-bottom:.5rem;line-height:1.1}
+.nav-tile p{font-size:.88rem;color:var(--ink-soft);line-height:1.6;font-weight:300;flex:1}
+.tile-arrow{
+  display:inline-block;margin-top:1.4rem;font-size:1rem;color:var(--gold);
+  transition:transform .3s var(--ease);
+}
+.nav-tile:hover .tile-arrow{transform:translateX(6px)}
+
+/* apparition des tiles au scroll */
+.nav-tile{opacity:0;transform:translateY(20px);transition:background .3s,border-color .3s,opacity .6s var(--ease),transform .6s var(--ease)}
+.nav-tile.visible{opacity:1;transform:translateY(0)}
+
+/* ════════════════════════════════════
+   DÉFILEMENT PHOTOS + animation entrée
+   ════════════════════════════════════ */
+.photo-marquee{
+  overflow:hidden;background:var(--bg-warm);
+  padding:2.8rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  position:relative;
+  opacity:0;transform:translateY(30px);
+  transition:opacity .8s var(--ease),transform .8s var(--ease);
+}
+.photo-marquee.visible{opacity:1;transform:translateY(0)}
+/* vignette sur les bords */
+.photo-marquee::before,.photo-marquee::after{
+  content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;
+}
+.photo-marquee::before{left:0;background:linear-gradient(to right,var(--bg-warm),transparent)}
+.photo-marquee::after{right:0;background:linear-gradient(to left,var(--bg-warm),transparent)}
+
+.marquee-track{
+  display:flex;gap:10px;width:max-content;
+  animation:scroll-left 40s linear infinite;
+}
 .marquee-track:hover{animation-play-state:paused}
-.marquee-track img{height:260px;width:auto;object-fit:cover;flex-shrink:0;display:block;border-radius:2px}
+.marquee-track img{
+  height:260px;width:auto;object-fit:cover;flex-shrink:0;display:block;
+  border-radius:2px;transition:transform .5s var(--ease),filter .5s;filter:saturate(.88);
+}
+.marquee-track img:hover{transform:scale(1.03);filter:saturate(1)}
 @keyframes scroll-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media(prefers-reduced-motion:reduce){.marquee-track{animation:none;flex-wrap:wrap;width:100%;padding:0 1.4rem}}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none;flex-wrap:wrap;width:100%;padding:0 1.4rem}.photo-marquee{opacity:1;transform:none}}
 
-/* ── INTRO légère (clair) ── */
-#intro{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  background:var(--bg);opacity:1;transition:opacity .9s var(--ease),visibility .9s}
+/* ════════════════════════════════════
+   INTRO légère
+   ════════════════════════════════════ */
+#intro{
+  position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  background:var(--bg);opacity:1;transition:opacity .9s var(--ease),visibility .9s;
+}
 html:not(.js) #intro{display:none}
 #intro.leaving{opacity:0;visibility:hidden}
 .intro-logo{width:240px;height:158px;overflow:hidden;position:relative;opacity:0;animation:introIn 1.1s var(--ease) .2s both}
@@ -73,10 +221,13 @@ html:not(.js) #intro{display:none}
 .intro-tag{margin-top:1.3rem;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
   opacity:0;animation:introTag .9s ease 1.25s both}
 @keyframes introTag{from{opacity:0}to{opacity:1}}
-.intro-skip{position:absolute;bottom:1.8rem;right:1.8rem;background:transparent;border:1px solid var(--line-2);
-  color:var(--ink-soft);padding:.5rem 1.2rem;border-radius:4px;font-family:'Inter',sans-serif;font-size:.74rem;
-  font-weight:500;letter-spacing:.04em;cursor:pointer;opacity:0;animation:introTag .8s ease 1.5s both;
-  transition:border-color .2s,color .2s}
+.intro-skip{
+  position:absolute;bottom:1.8rem;right:1.8rem;background:transparent;
+  border:1px solid var(--line-2);color:var(--ink-soft);
+  padding:.5rem 1.2rem;border-radius:4px;font-family:'Inter',sans-serif;
+  font-size:.74rem;font-weight:500;letter-spacing:.04em;cursor:pointer;
+  opacity:0;animation:introTag .8s ease 1.5s both;transition:border-color .2s,color .2s
+}
 .intro-skip:hover{border-color:var(--gold);color:var(--gold)}
 @media(prefers-reduced-motion:reduce){.intro-logo,.intro-line,.intro-tag{animation:none;opacity:1}.intro-line{width:90px}}
 </style>
@@ -87,7 +238,7 @@ html:not(.js) #intro{display:none}
 <filter id="gold-soft" color-interpolation-filters="sRGB"><feFlood flood-color="#C4975A" flood-opacity="1" result="g"/><feComposite in="g" in2="SourceGraphic" operator="in"/></filter>
 </defs></svg>
 
-<!-- INTRO légère -->
+<!-- INTRO -->
 <div id="intro">
   <div class="intro-logo"><img src="logo-transparent.png" alt="Chai Menachem"></div>
   <div class="intro-line"></div>
@@ -95,10 +246,10 @@ html:not(.js) #intro{display:none}
   <button class="intro-skip" type="button">Entrar</button>
 </div>
 
-<!-- HEADER (partagé) -->
-<header class="page-nav">
-  <a class="brand" href="variante-clara.html" aria-label="Início — Chai Menachem"><span class="brand-mark"><img src="logo-transparent.png" alt="Chai Menachem"></span></a>
-  <nav class="nav-links">
+<!-- OVERLAY MENU -->
+<div class="nav-overlay" id="nav-overlay" role="dialog" aria-label="Menu">
+  <button class="overlay-close" id="overlay-close" aria-label="Fechar">✕</button>
+  <nav class="overlay-nav">
     <a href="sobre.html">Sobre</a>
     <a href="programas.html">Programas</a>
     <a href="festas.html">Festas</a>
@@ -106,9 +257,17 @@ html:not(.js) #intro{display:none}
     <a href="aulas.html">Aulas</a>
     <a href="galeria.html">Galeria</a>
   </nav>
-  <div class="nav-right">
-    <a class="ig-btn" href="https://instagram.com/chaimenachem" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-  </div>
+  <p class="overlay-tag">Centro Chabad · Higienópolis · São Paulo</p>
+</div>
+
+<!-- HEADER — logo + hamburger -->
+<header class="page-nav">
+  <a class="brand" href="variante-clara.html" aria-label="Início — Chai Menachem">
+    <span class="brand-mark"><img src="logo-transparent.png" alt="Chai Menachem"></span>
+  </a>
+  <button class="hamburger" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
 <!-- HERO -->
@@ -125,14 +284,55 @@ html:not(.js) #intro{display:none}
   </div>
 </section>
 
+<!-- NAVIGATION TILES -->
+<section class="home-nav">
+  <div class="nav-tiles">
+    <a href="sobre.html" class="nav-tile">
+      <span class="tile-num">01</span>
+      <h3>Sobre</h3>
+      <p>Nossa história, missão e o Rabino</p>
+      <span class="tile-arrow">→</span>
+    </a>
+    <a href="programas.html" class="nav-tile">
+      <span class="tile-num">02</span>
+      <h3>Programas</h3>
+      <p>Rezas, aulas e encontros semanais</p>
+      <span class="tile-arrow">→</span>
+    </a>
+    <a href="festas.html" class="nav-tile">
+      <span class="tile-num">03</span>
+      <h3>Festas</h3>
+      <p>Shabat, Pessach, Rosh Hashaná e mais</p>
+      <span class="tile-arrow">→</span>
+    </a>
+    <a href="rezas-horarios.html" class="nav-tile">
+      <span class="tile-num">04</span>
+      <h3>Rezas &amp; Horários</h3>
+      <p>Shacharit, Minchá, Arvit e Shabat</p>
+      <span class="tile-arrow">→</span>
+    </a>
+    <a href="aulas.html" class="nav-tile">
+      <span class="tile-num">05</span>
+      <h3>Aulas</h3>
+      <p>Torah, Tanya e estudos para toda família</p>
+      <span class="tile-arrow">→</span>
+    </a>
+    <a href="galeria.html" class="nav-tile">
+      <span class="tile-num">06</span>
+      <h3>Galeria</h3>
+      <p>Fotos do nosso espaço e eventos</p>
+      <span class="tile-arrow">→</span>
+    </a>
+  </div>
+</section>
+
 <!-- DÉFILEMENT PHOTOS -->
-<section class="photo-marquee">
+<section class="photo-marquee" id="photo-marquee">
   <div class="marquee-track">
     <img src="espaco2.jpg" alt=""><img src="espaco5.jpg" alt=""><img src="espaco8.jpg" alt="">
     <img src="espaco10.jpg" alt=""><img src="espaco14.jpg" alt=""><img src="espaco18.jpg" alt="">
     <img src="espaco20.jpg" alt=""><img src="espaco25.jpg" alt=""><img src="espaco28.jpg" alt="">
     <img src="espaco32.jpg" alt=""><img src="espaco35.jpg" alt=""><img src="espaco40.jpg" alt="">
-    <!-- duplicate pour boucle sans saut -->
     <img src="espaco2.jpg" alt=""><img src="espaco5.jpg" alt=""><img src="espaco8.jpg" alt="">
     <img src="espaco10.jpg" alt=""><img src="espaco14.jpg" alt=""><img src="espaco18.jpg" alt="">
     <img src="espaco20.jpg" alt=""><img src="espaco25.jpg" alt=""><img src="espaco28.jpg" alt="">
@@ -140,7 +340,7 @@ html:not(.js) #intro{display:none}
   </div>
 </section>
 
-<!-- FOOTER (identique partout) -->
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="f-grid">
     <div class="f-brand">
@@ -176,26 +376,57 @@ html:not(.js) #intro{display:none}
 </footer>
 
 <script>
-/* INTRO légère : révélation */
+/* ── Intro ── */
 (function(){
-  const intro=document.getElementById('intro'); if(!intro) return;
-  let done=false;
-  function reveal(){ if(done)return; done=true;
+  var intro=document.getElementById('intro'); if(!intro) return;
+  var done=false;
+  function reveal(){
+    if(done) return; done=true;
     document.body.classList.add('revealed');
     intro.classList.add('leaving');
     setTimeout(function(){intro.style.display='none';},1000);
   }
-  const auto=setTimeout(reveal,2600);
-  const skip=intro.querySelector('.intro-skip');
+  var auto=setTimeout(reveal,2600);
+  var skip=intro.querySelector('.intro-skip');
   if(skip) skip.addEventListener('click',function(){clearTimeout(auto);reveal();});
   intro.addEventListener('click',function(e){if(e.target===intro){clearTimeout(auto);reveal();}});
 })();
 
-/* diaporama de la bande image */
+/* ── Hamburger menu ── */
 (function(){
-  const s=document.querySelectorAll('.home-image .hslide'); if(s.length<2) return;
-  let i=0;
-  setInterval(function(){ s[i].classList.remove('active'); i=(i+1)%s.length; s[i].classList.add('active'); },5500);
+  var btn=document.getElementById('menu-toggle');
+  var overlay=document.getElementById('nav-overlay');
+  var close=document.getElementById('overlay-close');
+  if(!btn||!overlay) return;
+  function open(){btn.classList.add('open');overlay.classList.add('open');btn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){btn.classList.remove('open');overlay.classList.remove('open');btn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  btn.addEventListener('click',open);
+  if(close) close.addEventListener('click',shut);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)shut();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')shut();});
+})();
+
+/* ── Scroll reveal : tiles + marquee ── */
+(function(){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        if(e.target.classList.contains('nav-tile')){
+          var tiles=document.querySelectorAll('.nav-tile');
+          tiles.forEach(function(t,i){
+            setTimeout(function(){t.classList.add('visible');},i*90);
+          });
+          io.unobserve(e.target);
+        } else {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      }
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('.nav-tile').forEach(function(t){ io.observe(t); });
+  var marquee=document.getElementById('photo-marquee');
+  if(marquee) io.observe(marquee);
 })();
 </script>
 
