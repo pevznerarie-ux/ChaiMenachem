@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.chaimenachem.org.br)",
+      "Bash(npx --version)",
+      "mcp__Claude_Preview__preview_start",
+      "PowerShell(Invoke-WebRequest -Uri \"https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Cow_female_black_white.jpg/800px-Cow_female_black_white.jpg\" -OutFile \"cow.jpg\" -UserAgent \"Mozilla/5.0\" ; if \\(Test-Path \"cow.jpg\"\\) { \\(Get-Item \"cow.jpg\"\\).Length } else { \"failed\" })",
+      "Read(//c/Users/mende/AppData/Roaming/Claude/local-agent-mode-sessions/skills-plugin/daca5d8b-cdcb-491a-a3ad-328feb69a92b/a9d73c7d-8d73-416b-810d-5be16ac991cc/skills/docx/**)",
+      "Bash(node -e \"require\\('docx'\\); console.log\\('docx ok'\\)\")",
+      "Bash(npm install *)",
+      "Bash(node gen.js)",
+      "Bash(find /mnt/c/Users/mende -maxdepth 4 \\\\\\( -iname \"*chai*\" -o -iname \"*menachem*\" -o -iname \"*logo*\" -o -iname \"*chabad*\" \\\\\\) 2>/dev/null | grep -i \"\\\\.\\\\\\(png\\\\|jpg\\\\|jpeg\\\\|svg\\\\|webp\\\\\\)\")",
+      "Bash(ffmpeg -version)",
+      "PowerShell(ffmpeg -version 2>&1)",
+      "WebFetch(domain:albertocamachofotografo.pic-time.com)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\mende\\\\OneDrive\\\\Desktop\\\\Website\" | Where-Object { $_.PSIsContainer })",
+      "PowerShell(Copy-Item \"C:\\\\Users\\\\mende\\\\Downloads\\\\WhatsApp Video 2026-05-19 at 11.05.54.mp4\" \"C:\\\\Users\\\\mende\\\\OneDrive\\\\Desktop\\\\Website\\\\chai-teens-2.mp4\")",
+      "PowerShell(Copy-Item \"C:\\\\Users\\\\mende\\\\Downloads\\\\WhatsApp Video 2026-05-14 at 23.36.06.mp4\" \"C:\\\\Users\\\\mende\\\\OneDrive\\\\Desktop\\\\Website\\\\chai-teens-3.mp4\")",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(findstr /i \"logo\\\\|icon\\\\|favicon\\\\|star\\\\|chai\\\\|menachem\")",
+      "Bash(dir \"C:\\\\Users\\\\mende\\\\OneDrive\\\\Desktop\\\\Website\" /b)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\mende\\\\OneDrive\\\\Desktop\\\\Website\" -File -Recurse | Where-Object { $_.Extension -match \"\\\\.\\(jpg|jpeg|png\\)$\" } | Sort-Object LastWriteTime -Descending | Select-Object -First 15 | Format-Table Name, LastWriteTime)"
+    ]
+  }
+}

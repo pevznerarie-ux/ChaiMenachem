@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git -C \"C:/Users/ravar/Downloads/Website-20260527T135826Z-3-001\" pull --quiet 2>&1 | head -3"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git -C \"C:/Users/ravar/Downloads/Website-20260527T135826Z-3-001\" add . && git -C \"C:/Users/ravar/Downloads/Website-20260527T135826Z-3-001\" diff --staged --quiet || git -C \"C:/Users/ravar/Downloads/Website-20260527T135826Z-3-001\" commit -m \"Auto-save: fin de session\" && git -C \"C:/Users/ravar/Downloads/Website-20260527T135826Z-3-001\" push --quiet"
+          }
+        ]
+      }
+    ]
+  }
+}

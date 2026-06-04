@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Chai Menachem — Centro Chabad יחי המלך המשיח</title>
+<link rel="icon" type="image/png" href="logo.png"/>
+<meta name="description" content="Chai Menachem — Centro Chabad em Higienópolis, São Paulo. Shabbat, festas judaicas, aulas de Torá, programas para jovens e toda a família."/>
+<meta property="og:title" content="Chai Menachem — Centro Chabad | São Paulo"/>
+<meta property="og:description" content="Shabbat, festas judaicas, aulas de Torá e programas para toda a família em Higienópolis, São Paulo."/>
+<meta property="og:image" content="https://www.chaimenachem.org.br/logo.png"/>
+<link rel="canonical" href="https://www.chaimenachem.org.br/"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600&family=Frank+Ruhl+Libre:wght@300;400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- FAB -->
+<button class="fab-doar" onclick="openDoar()">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+  Doar
+</button>
+
+<!-- MOBILE TOGGLE -->
+<button id="mobile-toggle" aria-label="Menu">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+</button>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <a href="#" class="sb-brand">
+    <div class="sb-emblem">
+      <svg width="22" height="22" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="21" y="2" width="6" height="44"/><rect x="6" y="16" width="36" height="4"/>
+        <rect x="6" y="16" width="4" height="14"/><rect x="17" y="16" width="4" height="12"/>
+        <rect x="27" y="16" width="4" height="12"/><rect x="38" y="16" width="4" height="14"/>
+        <circle cx="8" cy="13" r="3" fill="currentColor" stroke="none"/><circle cx="19" cy="13" r="3" fill="currentColor" stroke="none"/>
+        <circle cx="24" cy="11" r="4" fill="currentColor" stroke="none"/><circle cx="29" cy="13" r="3" fill="currentColor" stroke="none"/>
+        <circle cx="40" cy="13" r="3" fill="currentColor" stroke="none"/>
+      </svg>
+    </div>
+    <div class="sb-text">Chai Menachem<small>Centro Chabad · SP</small></div>
+  </a>
+  <div class="sb-rule"></div>
+  <ul class="sb-nav">
+    <li><a href="#sobre"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Sobre</a></li>
+    <li><a href="#programas"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>Programas</a></li>
+    <li><a href="#festas"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>Festas</a></li>
+    <li><a href="#rabi"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Rezas</a></li>
+    <li><a href="#aprender"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Aprender</a></li>
+    <li><a href="#contato"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Contato</a></li>
+    <li><a href="#" onclick="openDoar();return false;"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>Doação</a></li>
+  </ul>
+  <div class="sb-footer">
+    <button class="sb-btn sb-btn-gold" onclick="openDoar()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      Doar
+    </button>
+    <a href="#contato" class="sb-btn sb-btn-dark">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 0112 18.82 19.5 19.5 0 015.18 12 19.79 19.79 0 012.1 3.18 2 2 0 014.09 1h3a2 2 0 012 1.72c.127.96.36 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Conectar
+    </a>
+  </div>
+</nav>
+
+<!-- TOP BAR -->
+<div class="top-bar" id="topBar">
+  <span class="top-bar-heb">יחי המלך המשיח</span>
+  <div class="top-bar-right">
+    <a href="https://wa.me/5511991969797" target="_blank" rel="noopener" class="top-bar-link">+55 (11) 99196-9797</a>
+    <a href="https://instagram.com/chaimenachem" target="_blank" rel="noopener" class="top-bar-link">@chaimenachem</a>
+  </div>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.20 (1).jpeg')"></div>
+    <div class="hero-slide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.21 (3).jpeg')"></div>
+    <div class="hero-slide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.20.jpeg')"></div>
+    <div class="hero-slide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.20 (2).jpeg')"></div>
+    <div class="hero-slide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.21 (4).jpeg')"></div>
+    <div class="hero-slide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.21 (1).jpeg')"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><div class="hero-badge-dot"></div><span class="hero-badge-text">Centro Chabad · Higienópolis · São Paulo</span></div>
+    <div class="hero-logo-svg"><img src="logo-transparent.png" alt="Chai Menachem — Chabad Center"/></div>
+    <h1 class="hero-welcome">Bem-vindos</h1>
+    <p class="hero-sub">Um lar para o seu judaísmo</p>
+    <p class="hero-desc">Um lugar onde todos podem se sentir em casa dentro de um contexto judaico alegre e harmonioso, onde o Judaísmo oferece perspectivas relevantes para a nossa vida cotidiana.</p>
+    <div class="hero-actions">
+      <a href="#sobre" class="btn-primary">Conheça-nos</a>
+      <a href="#contato" class="btn-ghost">Fale Conosco</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div><span class="scroll-txt">Descubra</span></div>
+  <div class="hero-dots">
+    <div class="hero-dot active"></div><div class="hero-dot"></div><div class="hero-dot"></div>
+    <div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="inner">
+    <div class="sobre-layout">
+      <div class="reveal">
+        <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Quem somos</span></div>
+        <h2 class="sec-title">Uma comunidade<br><em>viva e acolhedora</em></h2>
+        <p class="sec-body">O Chai Menachem é um Centro Comunitário afiliado ao movimento Chabad mundial, localizado no coração de Higienópolis, São Paulo. Nossa missão é criar um espaço onde cada indivíduo — independentemente de seu nível de observância — possa vivenciar a riqueza, a profundidade e a alegria do Judaísmo.</p>
+        <div class="orn"><div class="orn-line"></div><span class="orn-star">✦</span><div class="orn-line"></div></div>
+        <p class="sec-body">Oferecemos uma vasta gama de programas educativos, eventos comunitários, serviços religiosos e recursos de aprendizado — tudo com o calor e a abertura que caracterizam a filosofia Chabad.</p>
+        <div class="sobre-stats">
+          <div class="stat-box"><span class="stat-n">∞</span><span class="stat-l">Portas Abertas</span></div>
+          <div class="stat-box"><span class="stat-n">SP</span><span class="stat-l">Higienópolis</span></div>
+          <div class="stat-box"><span class="stat-n">932</span><span class="stat-l">R. Cons. Brotero</span></div>
+        </div>
+      </div>
+      <div class="sobre-visual reveal" style="transition-delay:.15s">
+        <div class="sobre-photo-wrap">
+          <img src="WhatsApp Image 2026-05-19 at 10.27.21 (3).jpeg" alt="Chai Menachem" class="sobre-photo"/>
+          <div class="sobre-badge"><span class="badge-n">חי</span><span class="badge-t">Chai · Vida</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA ESPAÇO -->
+<section id="espaco" style="padding:0;background:var(--bg3)">
+  <div class="espaco-grid">
+    <div class="espaco-item"><img src="WhatsApp Image 2026-05-19 at 10.27.20 (1).jpeg" alt="Salão de Rezas Masculino"/><div class="espaco-overlay"><span>Salão de Rezas Masculino</span></div></div>
+    <div class="espaco-item"><img src="WhatsApp Image 2026-05-19 at 10.27.20 (2).jpeg" alt="Salão de Rezas Feminino"/><div class="espaco-overlay"><span>Salão de Rezas Feminino</span></div></div>
+    <div class="espaco-item espaco-item--tall"><img src="WhatsApp Image 2026-05-19 at 10.27.21 (4).jpeg" alt="O Rebe"/><div class="espaco-overlay"><span>O Rebe</span></div></div>
+    <div class="espaco-item"><img src="WhatsApp Image 2026-05-19 at 10.27.20 (3).jpeg" alt="Netilat Yadaim"/><div class="espaco-overlay"><span>Netilat Yadaim</span></div></div>
+    <div class="espaco-item"><img src="WhatsApp Image 2026-05-19 at 10.27.21 (1).jpeg" alt="Entrada"/><div class="espaco-overlay"><span>Entrada</span></div></div>
+    <div class="espaco-item"><img src="WhatsApp Image 2026-05-19 at 10.27.20.jpeg" alt="Bimá"/><div class="espaco-overlay"><span>Bimá</span></div></div>
+    <div class="espaco-item"><img src="WhatsApp Image 2026-05-19 at 10.27.21 (2).jpeg" alt="Sidurim"/><div class="espaco-overlay"><span>Sidurim</span></div></div>
+  </div>
+</section>
+
+<!-- RABINO -->
+<section id="rabino">
+  <div class="inner">
+    <div class="rabino-layout">
+      <div class="reveal">
+        <div class="rabino-wrap">
+          <div class="rabino-circle"><img src="rabino foto.jpg" alt="Rabino Belinow"/></div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:.15s">
+        <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Liderança</span></div>
+        <h2 class="sec-title">Rabino<br><em>Belinow</em></h2>
+        <div class="orn"><div class="orn-line"></div><span class="orn-star">✦</span><div class="orn-line"></div></div>
+        <p class="sec-body">O Rabino Belinow nasceu em Milão, em uma família ligada aos valores da Torá e da tradição judaica. Desde jovem, dedicou-se aos estudos judaicos e à formação rabínica, desenvolvendo uma forte paixão pelo trabalho comunitário e pela missão de aproximar judeus de suas raízes.</p>
+        <p class="sec-body" style="margin-top:1rem">Posteriormente, casou-se com Chanie nos Estados Unidos, e juntos decidiram dedicar suas vidas à shlichut do movimento Chabad-Lubavitch.</p>
+        <blockquote class="rabino-quote">Com esse propósito, vieram para o Brasil, estabelecendo-se em São Paulo, onde passaram a atuar no fortalecimento da vida judaica da comunidade.</blockquote>
+        <a href="https://wa.me/5511980808880" target="_blank" rel="noopener" class="btn-primary" style="margin-top:1rem">Fale com o Rabino</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMAS -->
+<section id="programas">
+  <div class="inner">
+    <div class="prog-header reveal">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">O que oferecemos</span></div>
+        <h2 class="sec-title">Nossos<br><em>Programas</em></h2>
+      </div>
+      <a href="#contato" class="btn-ghost">Ver calendário</a>
+    </div>
+    <div class="prog-grid">
+      <div class="prog-card reveal" style="cursor:pointer" onclick="toggleHorarios(this)">
+        <div class="prog-num">01</div>
+        <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 4L24 44M4 24L44 24" stroke-linecap="round"/><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="8"/></svg>
+        <h3 class="prog-name">Serviços Religiosos</h3>
+        <p class="prog-desc" style="margin-bottom:.8rem">Rezas e ofícios regulares. Todos são bem-vindos.</p>
+        <div class="horarios-toggle" style="font-size:.78rem;color:var(--muted);line-height:2;margin-bottom:1rem;display:none;overflow:hidden">
+          <div style="color:var(--gold);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem">Shabat</div>
+          <div style="display:flex;justify-content:space-between"><span>Cabalat Shabat + Kidush</span><span style="color:var(--text)">18h30</span></div>
+          <div style="display:flex;justify-content:space-between"><span>Tehilim</span><span style="color:var(--text)">7h</span></div>
+          <div style="display:flex;justify-content:space-between"><span>Shacharit + Kidush</span><span style="color:var(--text)">9h30</span></div>
+          <div style="display:flex;justify-content:space-between"><span>Minchá + Seudat Shlishit</span><span style="color:var(--text)">17h</span></div>
+        </div>
+        <div class="prog-link horarios-hint">Ver horários<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prog-card reveal" style="transition-delay:.08s;cursor:pointer" onclick="openGallery('casais')">
+        <div class="prog-num">02</div>
+        <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="16" r="6"/><circle cx="30" cy="16" r="6"/><path d="M6 38C6 30 12 26 18 26C22 26 26 28 28 32"/><path d="M28 32C30 28 36 26 42 38"/></svg>
+        <h3 class="prog-name">Eventos para Casais</h3>
+        <p class="prog-desc">Encontros especiais para casais que desejam aprofundar valores judaicos e harmonia no lar com sabedoria da Torá.</p>
+        <div class="gallery-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Ver fotos</div>
+      </div>
+      <div class="prog-card reveal" style="transition-delay:.16s;cursor:pointer" onclick="openInfoModal()">
+        <div class="prog-num">03</div>
+        <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 8C24 8 12 14 12 26C12 36 20 42 24 42C28 42 36 36 36 26C36 14 24 8 24 8Z"/><path d="M18 28C20 22 26 18 30 24"/></svg>
+        <h3 class="prog-name">Aulas para Mulheres</h3>
+        <p class="prog-desc">Classes de Torá exclusivas para mulheres com chá da tarde — espiritualidade, fé e força renovada.</p>
+        <div class="gallery-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Saiba mais</div>
+      </div>
+      <div class="prog-card reveal" style="transition-delay:.08s">
+        <div class="prog-num">04</div>
+        <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="12" width="32" height="24" rx="2"/><path d="M16 20L32 20M16 28L26 28"/><path d="M32 34L40 42"/></svg>
+        <h3 class="prog-name">Pergunte ao Rabino</h3>
+        <p class="prog-desc">Tire suas dúvidas sobre Halachá, Judaísmo e vida cotidiana diretamente com o Rabino. Gratuito e acessível a todos.</p>
+        <a href="https://wa.me/5511980808880" target="_blank" rel="noopener" class="prog-link">Perguntar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="prog-card reveal" style="transition-delay:.16s;cursor:pointer" onclick="openVideoGallery()">
+        <div class="prog-num">05</div>
+        <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="14" r="6"/><path d="M12 42C12 32 18 28 24 28C30 28 36 32 36 42"/><path d="M16 22L10 30M32 22L38 30"/><path d="M10 30L8 38M38 30L40 38"/></svg>
+        <h3 class="prog-name">Chai Teens</h3>
+        <p class="prog-desc">Programa especial para jovens que desejam explorar sua identidade judaica de forma divertida, significativa e conectada à comunidade.</p>
+        <div class="gallery-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>Ver vídeo</div>
+      </div>
+      <div class="prog-card reveal" style="transition-delay:.08s">
+        <div class="prog-num">06</div>
+        <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 6C14 6 8 14 8 22C8 30 14 36 24 36C34 36 40 30 40 22C40 14 34 6 24 6Z"/><path d="M16 22L20 26L32 14" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 36L24 44M16 44L32 44"/></svg>
+        <h3 class="prog-name">Voz de Rachel</h3>
+        <p class="prog-desc">Encontro mensal exclusivo para mulheres. Lemos o Tehilim juntas, seguido de almoço especial e palestra inspiradora com convidada diferente a cada mês.</p>
+        <a href="#contato" class="prog-link">Participar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FESTAS -->
+<section id="festas">
+  <div class="inner">
+    <div class="festas-intro reveal">
+      <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">O calendário judaico</span></div>
+      <h2 class="sec-title">Fotos de Eventos<br><em>&amp; Festas</em></h2>
+      <p class="sec-body">Cada festa judaica é uma oportunidade de nos reconectar com nossa herança, nossa família e com D'us. Celebramos juntos cada momento sagrado do ano.</p>
+    </div>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee">
+      <div class="mq-item"><b>✦</b>Rosh Hashaná</div><div class="mq-item"><b>✦</b>Yom Kipur</div><div class="mq-item"><b>✦</b>Sucot</div>
+      <div class="mq-item"><b>✦</b>Chanucá</div><div class="mq-item"><b>✦</b>Purim</div><div class="mq-item"><b>✦</b>Pessach</div>
+      <div class="mq-item"><b>✦</b>Lag Ba'Omer</div><div class="mq-item"><b>✦</b>Shavuot</div><div class="mq-item"><b>✦</b>Shabat</div>
+      <div class="mq-item"><b>✦</b>Rosh Hashaná</div><div class="mq-item"><b>✦</b>Yom Kipur</div><div class="mq-item"><b>✦</b>Sucot</div>
+      <div class="mq-item"><b>✦</b>Chanucá</div><div class="mq-item"><b>✦</b>Purim</div><div class="mq-item"><b>✦</b>Pessach</div>
+      <div class="mq-item"><b>✦</b>Lag Ba'Omer</div><div class="mq-item"><b>✦</b>Shavuot</div><div class="mq-item"><b>✦</b>Shabat</div>
+    </div>
+  </div>
+  <div class="inner">
+    <div class="festa-grid">
+      <div class="festa-tile reveal" style="cursor:pointer" onclick="openGallery('chanuca')">
+        <div class="festa-glow"></div><span class="festa-tile-num">I</span>
+        <div class="festa-heb">חֲנֻכָּה</div><h3 class="festa-name">Chanucá</h3>
+        <p class="festa-desc">Oito noites de luz e milagres. Acendimento público da Chanukiá com toda a comunidade.</p>
+        <div class="festa-tile-gallery-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Ver fotos</div>
+      </div>
+      <div class="festa-tile reveal" style="transition-delay:.07s;cursor:pointer" onclick="openGallery('purim')">
+        <div class="festa-glow"></div><span class="festa-tile-num">II</span>
+        <div class="festa-heb">פּוּרִים</div><h3 class="festa-name">Purim</h3>
+        <p class="festa-desc">Alegria, fantasias e a leitura do Meguilá. Uma das festas mais vibrantes do ano.</p>
+        <div class="festa-tile-gallery-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Ver fotos</div>
+      </div>
+      <div class="festa-tile reveal" style="transition-delay:.14s;cursor:pointer" onclick="openGallery('lag_baomer')">
+        <div class="festa-glow"></div><span class="festa-tile-num">III</span>
+        <div class="festa-heb">ל"ג בָּעוֹמֶר</div><h3 class="festa-name">Lag Ba'Omer</h3>
+        <p class="festa-desc">Fogueiras, arcos e flechas e a celebração do legado do Rabi Shimon Bar Yochai.</p>
+        <div class="festa-tile-gallery-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Ver fotos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RABI — SERVIÇOS -->
+<section id="rabi">
+  <div class="rabi-bg" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.21 (3).jpeg')"></div>
+  <div class="inner">
+    <div class="rabi-layout">
+      <div class="reveal">
+        <span class="big-quote">"</span>
+        <blockquote class="blockquote-text">O lugar mais elevado onde um ser humano pode estar é quando ele está em plena conexão com sua essência judaica — e esse lugar está sempre disponível para você, aqui e agora.</blockquote>
+      </div>
+      <div class="reveal" style="transition-delay:.15s">
+        <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Serviços Religiosos</span></div>
+        <h2 class="svc-title">Rezas &amp;<br>Serviços</h2>
+        <p class="svc-desc">Nossos serviços religiosos são abertos a toda a comunidade judaica. Venha participar em um ambiente caloroso e acolhedor.</p>
+        <div class="svc-label">Shacharit</div>
+        <div class="svc-list">
+          <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Domingo e feriados</span></div><span class="svc-time">8h</span></div>
+          <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Segunda a sexta</span></div><span class="svc-time">6h30</span></div>
+          <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Segunda e quinta</span></div><span class="svc-time">7h45</span></div>
+        </div>
+        <div class="svc-label" style="margin-top:1.5rem">Minchá e Arvit</div>
+        <div class="svc-list">
+          <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Domingo a quinta</span></div><span class="svc-time">17h25</span></div>
+        </div>
+        <div class="svc-label" style="margin-top:1.5rem">Shabat</div>
+        <div class="svc-list">
+          <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Acendimento de velas</span></div><span class="svc-time">Ver calendário</span></div>
+          <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Cabalat Shabat — seguido de Kidush</span></div><span class="svc-time">18h30</span></div>
+          <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Tehilim</span></div><span class="svc-time">7h</span></div>
+          <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Shacharit — seguido de Kidush</span></div><span class="svc-time">9h30</span></div>
+          <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Minchá + Seudat Shlishit</span></div><span class="svc-time">17h</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APRENDER -->
+<section id="aprender">
+  <div class="inner">
+    <div class="reveal">
+      <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Conhecimento</span></div>
+      <h2 class="sec-title">Programação<br><em>de Aulas</em></h2>
+      <p class="sec-body">O estudo é o pilar central do Judaísmo. Aulas semanais para todos os níveis, presenciais e abertas à comunidade.</p>
+    </div>
+    <div class="aulas-table reveal">
+      <div class="aula-row"><span class="aula-dia">Dom</span><span class="aula-hora">8h45</span><span class="aula-nome">Fatos Fundamentais do Judaísmo</span><span class="aula-prof">Rabino Mendi Simonowits</span><span class="aula-pub">Homens e Mulheres</span></div>
+      <div class="aula-row"><span class="aula-dia">Seg</span><span class="aula-hora">18h30</span><span class="aula-nome">Conceitos Chassídicos Profundos e Místicos</span><span class="aula-prof">Rabino Belinow</span><span class="aula-pub aula-pub--h">Homens</span></div>
+      <div class="aula-row"><span class="aula-dia">Ter</span><span class="aula-hora">19h30</span><span class="aula-nome">Aula de Talmud</span><span class="aula-prof">Joe Faintuch</span><span class="aula-pub aula-pub--h">Homens</span></div>
+      <div class="aula-row"><span class="aula-dia">Ter</span><span class="aula-hora">20h</span><span class="aula-nome">O Lado Místico e Prático das Festas Judaicas</span><span class="aula-prof">Chanie Belinow</span><span class="aula-pub aula-pub--m">Mulheres</span></div>
+      <div class="aula-row"><span class="aula-dia">Qua</span><span class="aula-hora">19h30</span><span class="aula-nome">Curso de Cabala para Vida Real</span><span class="aula-prof">Rabino Mendi Simonowits</span><span class="aula-pub">Homens e Mulheres</span></div>
+      <div class="aula-row"><span class="aula-dia">Qui</span><span class="aula-hora">19h30</span><span class="aula-nome">Aula de Tanya</span><span class="aula-prof">Rafa Susskind</span><span class="aula-pub">Homens e Mulheres</span></div>
+      <div class="aula-row aula-row--sh"><span class="aula-dia">Shabat</span><span class="aula-hora">8h45</span><span class="aula-nome">Aula de Chassidut</span><span class="aula-prof">Rabino Mendi Simonowits</span><span class="aula-pub aula-pub--h">Homens</span></div>
+      <div class="aula-row aula-row--sh"><span class="aula-dia">Shabat</span><span class="aula-hora">16h15</span><span class="aula-nome">Aula sobre Parashat</span><span class="aula-prof">Rabino Belinow</span><span class="aula-pub aula-pub--h">Homens</span></div>
+      <div class="aula-row aula-row--sh"><span class="aula-dia">Shabat</span><span class="aula-hora">16h30</span><span class="aula-nome">Aula sobre Parashat</span><span class="aula-prof">Chanie Belinow / Chana Labkowski</span><span class="aula-pub aula-pub--m">Mulheres</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="inner reveal">
+    <div class="nl-eyebrow">Comunidade</div>
+    <h2 class="nl-title">Fique conectado à<br><em>nossa comunidade</em></h2>
+    <p class="nl-sub">Receba artigos semanais, horários de Shabat e novidades do Chai Menachem</p>
+    <form class="nl-form" action="https://formsubmit.co/ajax/chaimenachemadm@gmail.com" method="POST" onsubmit="handleNewsletter(event)">
+      <input class="nl-input" type="email" name="email" placeholder="Seu endereço de e-mail" required/>
+      <input type="hidden" name="_subject" value="Nova inscrição na newsletter — Chai Menachem"/>
+      <input type="hidden" name="_template" value="box"/>
+      <input type="hidden" name="_captcha" value="false"/>
+      <button class="nl-btn" type="submit" id="newsletter-btn">Inscrever</button>
+    </form>
+    <p id="newsletter-msg" style="display:none;margin-top:1rem;color:rgba(201,168,76,.9);font-size:.82rem"></p>
+    <div style="margin-top:2.5rem;display:flex;flex-direction:column;align-items:center;gap:1rem">
+      <span style="font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,168,76,.45)">ou siga-nos nas redes</span>
+      <a href="https://instagram.com/chaimenachem" target="_blank" rel="noopener"
+        style="display:inline-flex;align-items:center;gap:.75rem;padding:.8rem 2rem;border:1px solid rgba(201,168,76,.35);color:var(--gold2);font-family:'Raleway',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:background .3s,border-color .3s"
+        onmouseover="this.style.background='rgba(201,168,76,.1)';this.style.borderColor='var(--gold)'"
+        onmouseout="this.style.background='';this.style.borderColor='rgba(201,168,76,.35)'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        @chaimenachem
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="inner">
+    <div class="contato-layout">
+      <div class="reveal">
+        <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Fale conosco</span></div>
+        <h2 class="sec-title">Venha nos<br><em>visitar</em></h2>
+        <p class="sec-body">Nossas portas estão sempre abertas. Não importa seu nível de observância ou conhecimento — você é bem-vindo aqui.</p>
+        <div class="cinfo-list">
+          <div class="cinfo-row"><div class="cinfo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="cinfo-label">Endereço</div><div class="cinfo-value">Rua Conselheiro Brotero, 932<br>Higienópolis, São Paulo — SP, Brasil</div></div></div>
+          <div class="cinfo-row"><div class="cinfo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.12 2.18 2 2 0 012.1 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="cinfo-label">WhatsApp</div><div class="cinfo-value"><a href="https://wa.me/5511991969797" target="_blank" rel="noopener">(11) 99196-9797</a></div></div></div>
+          <div class="cinfo-row"><div class="cinfo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="cinfo-label">E-mail</div><div class="cinfo-value"><a href="mailto:chaimenachem.adm@gmail.com">chaimenachem.adm@gmail.com</a></div></div></div>
+          <div class="cinfo-row"><div class="cinfo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div><div><div class="cinfo-label">Instagram</div><div class="cinfo-value"><a href="https://instagram.com/chaimenachem" target="_blank" rel="noopener">@chaimenachem</a></div></div></div>
+          <div class="cinfo-row"><div class="cinfo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><div><div class="cinfo-label">Website</div><div class="cinfo-value"><a href="https://www.chaimenachem.org.br" target="_blank" rel="noopener">chaimenachem.org.br</a></div></div></div>
+        </div>
+        <div class="soc-row">
+          <a href="https://instagram.com/chaimenachem" target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://www.chaimenachem.org.br" target="_blank" rel="noopener" class="soc-btn" aria-label="Website"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></a>
+          <a href="tel:+551136630203" class="soc-btn" aria-label="Telefone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.12 2.18 2 2 0 012.1 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:.15s">
+        <div class="map-panel">
+          <iframe src="https://maps.google.com/maps?q=Rua+Conselheiro+Brotero+932+Higienopolis+Sao+Paulo+SP+Brasil&output=embed&hl=pt-BR" width="100%" height="100%" style="border:0;position:absolute;inset:0;width:100%;height:100%" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localização — Chai Menachem"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <span class="footer-brand">Chai <span>Menachem</span></span>
+        <span class="footer-heb">חַי מנחם · יחי המלך המשיח</span>
+        <p class="footer-desc">Um centro comunitário Chabad em Higienópolis, São Paulo. Um lugar onde todos são bem-vindos e onde o Judaísmo vive.</p>
+      </div>
+      <div>
+        <span class="footer-col-head">Programas</span>
+        <ul class="footer-nav">
+          <li><a href="#programas">Serviços Religiosos</a></li>
+          <li><a href="#programas">Aulas para Mulheres</a></li>
+          <li><a href="#programas">Eventos para Casais</a></li>
+          <li><a href="#programas">Pergunte ao Rabino</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-col-head">Festas</span>
+        <ul class="footer-nav">
+          <li><a href="#festas">Shabat</a></li><li><a href="#festas">Rosh Hashaná</a></li>
+          <li><a href="#festas">Pessach</a></li><li><a href="#festas">Chanucá</a></li><li><a href="#festas">Purim</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-col-head">Contato</span>
+        <ul class="footer-nav">
+          <li><a href="tel:+551136630203">+55 (11) 3663-0203</a></li>
+          <li><a href="#contato">R. Cons. Brotero, 932</a></li>
+          <li><a href="#contato">Higienópolis, SP</a></li>
+          <li><a href="https://instagram.com/chaimenachem" target="_blank">@chaimenachem</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Chai Menachem Centro Chabad · São Paulo</span>
+      <span class="footer-chabad">Afiliado ao movimento Chabad-Lubavitch mundial</span>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<!-- MODAL DOAÇÃO -->
+<div class="doar-overlay" id="doarOverlay" role="dialog" aria-modal="true">
+  <div class="doar-modal">
+    <button class="doar-close" onclick="closeDoar()" aria-label="Fechar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="doar-step active" id="doarStep1">
+      <h2 class="doar-title">Faça uma <em>doação</em></h2>
+      <p class="doar-sub">Escolha um valor — ao clicar, abrirá a tela de pagamento PIX.<br>Sua contribuição sustenta nossa comunidade em São Paulo.</p>
+      <div class="doar-amounts">
+        <button class="doar-amt-btn" onclick="goToPayment('18')">R$ 18<span>Básico</span></button>
+        <button class="doar-amt-btn" onclick="goToPayment('36')">R$ 36<span>Apoiador</span></button>
+        <button class="doar-amt-btn" onclick="goToPayment('72')">R$ 72<span>Amigo</span></button>
+        <button class="doar-amt-btn" onclick="goToPayment('180')">R$ 180<span>Benfeitor</span></button>
+        <button class="doar-amt-btn" onclick="goToPayment('360')">R$ 360<span>Patrono</span></button>
+        <button class="doar-amt-btn" onclick="goToPayment('613')">R$ 613<span>Mitsvot</span></button>
+      </div>
+      <div class="doar-custom-row">
+        <span class="doar-custom-prefix">R$</span>
+        <input class="doar-custom-input" id="customAmt" type="number" min="1" placeholder="Outro valor"/>
+      </div>
+      <button class="pix-copy-btn" style="width:100%;padding:.75rem;font-size:.78rem" onclick="goToPaymentCustom()">Confirmar valor →</button>
+    </div>
+    <div class="doar-step" id="doarStep2">
+      <button class="pay-back" onclick="goBackStep1()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Voltar</button>
+      <div class="pay-amount-display"><span class="pay-label">Valor da doação</span><span class="pay-value" id="payAmountDisplay">R$ 0,00</span></div>
+      <div class="pay-qr-wrap"><img id="pixQRImg" src="" alt="QR Code PIX" width="200" height="200" style="border:6px solid var(--bg3);border-radius:6px;display:block"/></div>
+      <div class="pay-copy-row"><span class="pay-copy-code" id="pixCopiaCola"></span><button class="pay-copy-btn2" onclick="copyPixCode(this)">Copiar</button></div>
+      <p class="pay-instructions">Abra o app do seu banco → PIX → Pagar com QR Code<br>ou cole o código "Pix Copia e Cola" acima.<br><br>Após o pagamento, se desejar um recibo envie o comprovante para<br><a href="mailto:chaimenachem.adm@gmail.com" style="color:var(--gold)">chaimenachem.adm@gmail.com</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- INFO MODAL MULHERES -->
+<div id="info-modal" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(7,5,10,.92);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:2rem">
+  <div style="background:var(--bg2);border:1px solid var(--border2);border-radius:8px;max-width:480px;width:100%;padding:2.5rem;position:relative;text-align:center">
+    <button onclick="closeInfoModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer">✕</button>
+    <div style="font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem">Aula com Chá da Tarde · Para as Mulheres</div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--text);font-style:italic;line-height:1.3;margin-bottom:.8rem">A redenção já<br>começou em você!</h3>
+    <div style="font-size:.8rem;color:var(--gold);letter-spacing:.1em;margin-bottom:1.5rem">COM CHANIE BELINOW</div>
+    <p style="color:var(--muted);font-size:.9rem;line-height:1.7;margin-bottom:1rem">Você sente que a alma quer mais? Mais fé, mais sentido, mais esperança?<br><br>Que tal um bate papo sobre Mashiach e Gueulá, de forma leve, profunda e prática?</p>
+    <div style="border:1px solid var(--border);border-radius:4px;padding:1rem;margin-bottom:1.5rem">
+      <div style="color:var(--text);font-size:.85rem;font-weight:600;margin-bottom:.3rem">☕ Quartas-feiras · 14h</div>
+      <div style="color:var(--muted);font-size:.8rem">Na Sinagoga Chai Menachem</div>
+    </div>
+    <p style="color:var(--text);font-size:.85rem;font-style:italic;margin-bottom:1.5rem">Entre com o coração aberto e saia com alegria e força renovada!</p>
+    <a href="https://wa.me/5511932010811" target="_blank" rel="noopener" style="display:inline-block;background:var(--gold);color:var(--bg);font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.75rem 2rem;border-radius:2px;text-decoration:none">Participar pelo WhatsApp</a>
+  </div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div id="video-modal">
+  <div class="vm-header">
+    <span id="vm-title"></span>
+    <span id="vm-counter" style="color:rgba(201,168,76,.6);font-size:.75rem"></span>
+    <button class="vm-close" onclick="closeVideoModal()">✕</button>
+  </div>
+  <div style="display:flex;align-items:center;gap:1rem;width:min(90vw,900px)">
+    <button class="lb-arrow" onclick="playVideo(vmIndex-1)">&#8592;</button>
+    <video id="vm-player" controls style="flex:1;max-height:65vh;border-radius:4px;background:#000"><source id="vm-source" src="" type="video/mp4"></video>
+    <button class="lb-arrow" onclick="playVideo(vmIndex+1)">&#8594;</button>
+  </div>
+  <div id="vm-thumbs" style="display:flex;gap:.6rem;margin-top:.5rem"></div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <div class="lb-header"><span class="lb-title" id="lb-title"></span><button class="lb-close" onclick="closeLightbox()">✕</button></div>
+  <div class="lb-main">
+    <button class="lb-arrow" onclick="setPhoto(lbIndex-1)">&#8592;</button>
+    <div class="lb-img-wrap"><img id="lb-img" src="" alt=""/></div>
+    <button class="lb-arrow" onclick="setPhoto(lbIndex+1)">&#8594;</button>
+  </div>
+  <div class="lb-thumbs" id="lb-thumbs"></div>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chai Menachem — Design Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#F7F4EF;color:#1A1815;-webkit-font-smoothing:antialiased}
+
+/* ── GUIDE LABEL ── */
+.guide-label{background:#1A1815;color:#C4975A;font-size:.6rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;padding:.4rem 1rem;display:inline-block;margin-bottom:2rem}
+
+/* ── SECTION ── */
+.preview-block{padding:5rem 3rem;border-bottom:1px solid #E2D9CC;max-width:1200px;margin:0 auto}
+
+/* ════════════════════════
+   1. PALETTE
+════════════════════════ */
+.swatches{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.5rem}
+.swatch{display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.swatch-color{width:80px;height:80px;border-radius:2px}
+.swatch-name{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:#7A6E65}
+.swatch-hex{font-size:.7rem;font-weight:500;color:#1A1815}
+
+/* ════════════════════════
+   2. TYPOGRAPHY
+════════════════════════ */
+.typo-block{margin-top:2rem;display:flex;flex-direction:column;gap:2.5rem}
+.typo-sample{padding:2rem;background:#fff;border-left:2px solid #C4975A}
+.typo-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#C4975A;margin-bottom:.8rem}
+
+/* ════════════════════════
+   3. HEADER PREVIEW
+════════════════════════ */
+.header-preview-wrap{margin-top:2rem;border:1px solid #E2D9CC;overflow:hidden;border-radius:2px}
+.header-demo{display:flex;align-items:center;justify-content:space-between;padding:1.3rem 2.5rem;background:rgba(247,244,239,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,.06)}
+.header-demo--dark{background:rgba(28,59,96,0.55);border-bottom:1px solid rgba(255,255,255,.08)}
+.hd-logo{display:flex;flex-direction:column}
+.hd-logo-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:#1C3B60;letter-spacing:.02em}
+.hd-logo-name--w{color:#fff}
+.hd-logo-sub{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#7A6E65;margin-top:.1rem}
+.hd-logo-sub--w{color:rgba(255,255,255,.55)}
+.hd-nav{display:flex;align-items:center;gap:2.2rem}
+.hd-link{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#4A4540;text-decoration:none;position:relative}
+.hd-link--w{color:rgba(255,255,255,.8)}
+.hd-link::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:#C4975A;transition:width .3s}
+.hd-link:hover::after{width:100%}
+.hd-cta{font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.6rem 1.4rem;background:#C4975A;color:#fff;border:none;cursor:pointer;transition:all .3s}
+.hd-cta:hover{background:#D4A86E}
+.header-demo-label{background:#EDE5D8;padding:.5rem 1rem;font-size:.65rem;color:#7A6E65;letter-spacing:.1em}
+
+/* ════════════════════════
+   4. HERO PREVIEW
+════════════════════════ */
+.hero-demo{
+  height:520px;
+  background:linear-gradient(to bottom right,#1C3B60,#254D7A);
+  position:relative;
+  overflow:hidden;
+  display:flex;align-items:flex-end;
+}
+.hero-demo::before{
+  content:'';position:absolute;inset:0;
+  background:url('WhatsApp Image 2026-05-19 at 10.27.20 (1).jpeg') center/cover no-repeat;
+  opacity:.35;
+}
+.hero-demo-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(28,59,96,.85) 0%,rgba(28,59,96,.2) 60%,transparent 100%);
+}
+.hero-demo-content{position:relative;z-index:2;padding:3rem 3.5rem;max-width:700px}
+.hero-eyebrow{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:#D4A86E;margin-bottom:1rem}
+.hero-title-demo{font-family:'Cormorant Garamond',serif;font-size:3.8rem;font-weight:300;color:#fff;line-height:1.05;letter-spacing:-.02em;margin-bottom:1.2rem}
+.hero-title-demo em{font-style:italic;color:rgba(255,255,255,.8)}
+.hero-sub-demo{font-size:.9rem;color:rgba(255,255,255,.65);font-weight:300;line-height:1.7;margin-bottom:2rem;max-width:440px}
+.hero-btns{display:flex;gap:1rem}
+.btn-hero-primary{padding:.85rem 2rem;background:#C4975A;color:#fff;font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border:none;cursor:pointer}
+.btn-hero-ghost{padding:.85rem 2rem;border:1px solid rgba(255,255,255,.4);color:#fff;font-size:.7rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;background:none;cursor:pointer}
+.hero-scroll-hint{position:absolute;bottom:1.5rem;right:2rem;display:flex;flex-direction:column;align-items:center;gap:.4rem}
+.scroll-line-demo{width:1px;height:40px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.4))}
+.scroll-txt-demo{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+
+/* ════════════════════════
+   5. SECTION SOBRE PREVIEW
+════════════════════════ */
+.sobre-demo{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:2rem}
+.sobre-text-demo{}
+.eyebrow-demo{display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
+.eyebrow-line-demo{width:24px;height:1px;background:#C4975A}
+.eyebrow-text-demo{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#C4975A}
+.sec-title-demo{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;line-height:1.12;color:#1A1815;margin-bottom:1.5rem}
+.sec-title-demo em{font-style:italic;color:#1C3B60}
+.sec-body-demo{font-size:.9rem;line-height:1.85;color:#7A6E65;font-weight:300;max-width:480px;margin-bottom:1.5rem}
+.quote-demo{border-left:2px solid #C4975A;padding-left:1.3rem;margin:2rem 0}
+.quote-demo-text{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-style:italic;font-weight:300;color:#1A1815;line-height:1.6}
+.sobre-img-demo{
+  background:url('WhatsApp Image 2026-05-19 at 10.27.21 (3).jpeg') center/cover;
+  height:420px;
+  position:relative;
+}
+.sobre-img-badge{
+  position:absolute;bottom:-1.5rem;right:-1.5rem;
+  background:#1C3B60;color:#fff;
+  padding:1.2rem 1.5rem;
+  font-family:'Cormorant Garamond',serif;
+}
+.sobre-badge-heb{font-size:2rem;font-weight:300;color:#C4975A;display:block;line-height:1}
+.sobre-badge-txt{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.3rem;display:block}
+
+/* ════════════════════════
+   6. CARD PROGRAMAS PREVIEW
+════════════════════════ */
+.cards-demo{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:2rem}
+.card-demo{
+  padding:2.5rem 2rem;background:#fff;position:relative;overflow:hidden;
+  border-bottom:2px solid transparent;
+  transition:border-color .3s,background .3s;
+  cursor:default;
+}
+.card-demo:hover{border-bottom-color:#C4975A}
+.card-demo::after{
+  content:'';position:absolute;inset:0;
+  background:#1C3B60;
+  transform:translateY(100%);
+  transition:transform .5s cubic-bezier(.25,.46,.45,.94);
+  z-index:0;
+}
+.card-demo:hover::after{transform:translateY(0)}
+.card-inner{position:relative;z-index:1}
+.card-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:rgba(0,0,0,.05);position:absolute;top:.5rem;right:1rem;line-height:1;transition:color .4s}
+.card-demo:hover .card-num{color:rgba(255,255,255,.05)}
+.card-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:#1A1815;margin-bottom:.8rem;margin-top:3rem;transition:color .4s}
+.card-demo:hover .card-name{color:#fff}
+.card-text{font-size:.82rem;color:#7A6E65;line-height:1.75;transition:color .4s}
+.card-demo:hover .card-text{color:rgba(255,255,255,.6)}
+.card-link{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:#C4975A;margin-top:1.2rem;display:block;transition:color .3s}
+.card-demo:hover .card-link{color:#D4A86E}
+
+/* ════════════════════════
+   7. REZAS (HORÁRIOS) PREVIEW
+════════════════════════ */
+.rezas-demo{background:#1C3B60;padding:4rem 3rem;margin-top:2rem}
+.rezas-label-demo{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#C4975A;margin-bottom:1rem}
+.rezas-title-demo{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:#fff;margin-bottom:2rem}
+.svc-list-demo{display:flex;flex-direction:column;gap:0}
+.svc-row-demo{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.svc-name-demo{font-size:.85rem;color:rgba(255,255,255,.6);font-weight:300}
+.svc-time-demo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#fff}
+
+/* ════════════════════════
+   8. AULAS TABLE PREVIEW
+════════════════════════ */
+.aulas-demo{margin-top:2rem;background:#EDE5D8;padding:2rem}
+.aula-row-demo{display:grid;grid-template-columns:60px 70px 1fr 1fr 100px;gap:1rem;padding:1rem 1.5rem;background:#fff;margin-bottom:2px;align-items:center;font-size:.82rem;color:#4A4540}
+.aula-row-demo:nth-child(even){background:#F7F4EF}
+.aula-dia-demo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#1C3B60;font-weight:400}
+.aula-hora-demo{font-weight:500;color:#1A1815}
+.aula-pub-h{color:#1C3B60;font-size:.65rem;letter-spacing:.08em}
+.aula-pub-m{color:#8A5C3A;font-size:.65rem;letter-spacing:.08em}
+
+/* ════════════════════════
+   9. NEWSLETTER PREVIEW
+════════════════════════ */
+.nl-demo{background:#1C3B60;padding:5rem 3rem;text-align:center;margin-top:2rem}
+.nl-tag{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#C4975A;margin-bottom:.8rem}
+.nl-title-demo{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:#fff;margin-bottom:.8rem}
+.nl-title-demo em{font-style:italic}
+.nl-sub-demo{font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:2rem;font-weight:300}
+.nl-form-demo{display:flex;gap:0;max-width:460px;margin:0 auto}
+.nl-input-demo{flex:1;padding:.9rem 1.2rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:#fff;font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none}
+.nl-input-demo::placeholder{color:rgba(255,255,255,.3)}
+.nl-btn-demo{padding:.9rem 1.6rem;background:#C4975A;border:none;color:#fff;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+
+/* ════════════════════════
+   10. BUTTONS
+════════════════════════ */
+.btns-demo{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;align-items:center}
+.btn-p{padding:.85rem 2rem;background:#1C3B60;color:#fff;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border:none;cursor:pointer}
+.btn-g{padding:.85rem 2rem;background:#C4975A;color:#fff;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border:none;cursor:pointer}
+.btn-o{padding:.85rem 2rem;background:transparent;color:#1C3B60;border:1px solid #1C3B60;font-size:.72rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.btn-wa{padding:.85rem 2rem;background:#25D366;color:#fff;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;display:flex;align-items:center;gap:.6rem}
+
+/* ════════════════════════
+   11. MOBILE MENU PREVIEW
+════════════════════════ */
+.mobile-menu-demo{background:#F7F4EF;border:1px solid #E2D9CC;padding:3rem 2rem;max-width:360px;margin-top:2rem}
+.mob-link-demo{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:#1A1815;padding:.5rem 0;border-bottom:1px solid #E2D9CC;display:block}
+.mob-link-demo:last-child{border-bottom:none}
+.mob-ctas{display:flex;gap:.8rem;margin-top:2rem}
+
+/* ════════════════════════
+   UTIL
+════════════════════════ */
+.row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+h3.section-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:#1A1815}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#C4975A,transparent);margin:1rem 0}
+.badge-preview{display:inline-block;padding:.3rem 1rem;background:#1C3B60;color:#C4975A;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div style="background:#1A1815;color:#C4975A;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;padding:.8rem 3rem;font-family:'DM Sans',sans-serif">
+  ✦ Design Preview — Chai Menachem · Abra no navegador para validar
+</div>
+
+<div class="preview-block">
+  <div class="guide-label">01 — Palette de couleurs</div>
+  <div class="swatches">
+    <div class="swatch"><div class="swatch-color" style="background:#F7F4EF;border:1px solid #E2D9CC"></div><span class="swatch-name">Ivoire</span><span class="swatch-hex">#F7F4EF</span></div>
+    <div class="swatch"><div class="swatch-color" style="background:#EDE5D8"></div><span class="swatch-name">Sable</span><span class="swatch-hex">#EDE5D8</span></div>
+    <div class="swatch"><div class="swatch-color" style="background:#C8BFB2"></div><span class="swatch-name">Pierre</span><span class="swatch-hex">#C8BFB2</span></div>
+    <div class="swatch"><div class="swatch-color" style="background:#1C3B60"></div><span class="swatch-name">Bleu nuit</span><span class="swatch-hex">#1C3B60</span></div>
+    <div class="swatch"><div class="swatch-color" style="background:#254D7A"></div><span class="swatch-name">Bleu mid</span><span class="swatch-hex">#254D7A</span></div>
+    <div class="swatch"><div class="swatch-color" style="background:#C4975A"></div><span class="swatch-name">Or discret</span><span class="swatch-hex">#C4975A</span></div>
+    <div class="swatch"><div class="swatch-color" style="background:#D4A86E"></div><span class="swatch-name">Or clair</span><span class="swatch-hex">#D4A86E</span></div>
+    <div class="swatch"><div class="swatch-color" style="background:#1A1815"></div><span class="swatch-name">Encre</span><span class="swatch-hex">#1A1815</span></div>
+    <div class="swatch"><div class="swatch-color" style="background:#7A6E65"></div><span class="swatch-name">Gris brun</span><span class="swatch-hex">#7A6E65</span></div>
+  </div>
+</div>
+
+<div class="preview-block">
+  <div class="guide-label">02 — Typographie</div>
+  <div class="typo-block">
+    <div class="typo-sample">
+      <div class="typo-label">Cormorant Garamond 300 — Titres principaux</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:#1A1815;line-height:1.1">Uma casa para<br><em style="color:#1C3B60">toda família</em></div>
+    </div>
+    <div class="typo-sample">
+      <div class="typo-label">Cormorant Garamond Italic 300 — Citations & accents</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;font-weight:300;color:#4A4540;line-height:1.5;border-left:2px solid #C4975A;padding-left:1.2rem">"Um lugar onde todos podem se sentir em casa dentro de um contexto judaico alegre e harmonioso."</div>
+    </div>
+    <div class="typo-sample">
+      <div class="typo-label">DM Sans 300 — Corps de texte</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:300;color:#7A6E65;line-height:1.85;max-width:560px">O Chai Menachem é um Centro Comunitário afiliado ao movimento Chabad mundial, localizado no coração de Higienópolis, São Paulo. Nossa missão é criar um espaço onde cada indivíduo possa vivenciar a riqueza e a alegria do Judaísmo.</div>
+    </div>
+    <div class="typo-sample">
+      <div class="typo-label">DM Sans 500 — Labels capsules</div>
+      <div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap">
+        <span style="font-family:'DM Sans',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#C4975A">Quem somos</span>
+        <span style="font-family:'DM Sans',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#1C3B60">Programas</span>
+        <span style="font-family:'DM Sans',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#7A6E65">Serviços religiosos</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="preview-block" style="padding-top:2rem;padding-bottom:0">
+  <div class="guide-label">03 — Navigation (top bar)</div>
+  <div class="header-preview-wrap">
+    <div class="header-demo-label">Estado: scrolled (fundo ivoire + blur)</div>
+    <div class="header-demo">
+      <div class="hd-logo">
+        <span class="hd-logo-name">Chai Menachem</span>
+        <span class="hd-logo-sub">Centro Chabad · São Paulo</span>
+      </div>
+      <div class="hd-nav">
+        <a class="hd-link">Sobre</a>
+        <a class="hd-link">Programas</a>
+        <a class="hd-link">Festas</a>
+        <a class="hd-link">Rezas</a>
+        <a class="hd-link">Aulas</a>
+        <a class="hd-link">Contato</a>
+        <button class="hd-cta">Contribuir</button>
+      </div>
+    </div>
+    <div class="header-demo-label" style="margin-top:1px">Estado: hero (fundo transparent, texto branco)</div>
+    <div class="header-demo header-demo--dark">
+      <div class="hd-logo">
+        <span class="hd-logo-name hd-logo-name--w">Chai Menachem</span>
+        <span class="hd-logo-sub hd-logo-sub--w">Centro Chabad · São Paulo</span>
+      </div>
+      <div class="hd-nav">
+        <a class="hd-link hd-link--w">Sobre</a>
+        <a class="hd-link hd-link--w">Programas</a>
+        <a class="hd-link hd-link--w">Festas</a>
+        <a class="hd-link hd-link--w">Rezas</a>
+        <a class="hd-link hd-link--w">Aulas</a>
+        <a class="hd-link hd-link--w">Contato</a>
+        <button class="hd-cta">Contribuir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="preview-block" style="padding:0">
+  <div style="padding:2rem 3rem"><div class="guide-label">04 — Section Hero</div></div>
+  <div class="hero-demo">
+    <div class="hero-demo-overlay"></div>
+    <div class="hero-demo-content">
+      <div class="hero-eyebrow">Centro Chabad · Higienópolis · São Paulo</div>
+      <h1 class="hero-title-demo">Um lar para<br><em>o seu judaísmo</em></h1>
+      <p class="hero-sub-demo">Um lugar onde todos podem se sentir em casa — dentro de um contexto judaico alegre, acolhedor e relevante para a vida cotidiana.</p>
+      <div class="hero-btns">
+        <button class="btn-hero-primary">Conheça-nos</button>
+        <button class="btn-hero-ghost">Fale Conosco</button>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line-demo"></div>
+      <span class="scroll-txt-demo">Descubra</span>
+    </div>
+  </div>
+</div>
+
+<div class="preview-block" style="background:#F7F4EF">
+  <div class="guide-label">05 — Section Sobre (layout asymétrique)</div>
+  <div class="sobre-demo">
+    <div class="sobre-text-demo">
+      <div class="eyebrow-demo">
+        <div class="eyebrow-line-demo"></div>
+        <span class="eyebrow-text-demo">Quem somos</span>
+      </div>
+      <h2 class="sec-title-demo">Uma comunidade<br><em>viva e acolhedora</em></h2>
+      <p class="sec-body-demo">O Chai Menachem é um Centro Comunitário afiliado ao movimento Chabad mundial, localizado no coração de Higienópolis, São Paulo.</p>
+      <div class="quote-demo">
+        <p class="quote-demo-text">"Um espaço onde cada indivíduo — independentemente de seu nível de observância — possa vivenciar a riqueza e a alegria do Judaísmo."</p>
+      </div>
+      <p class="sec-body-demo">Oferecemos programas educativos, eventos comunitários, serviços religiosos e recursos de aprendizado — tudo com o calor que caracteriza a filosofia Chabad.</p>
+      <div style="margin-top:2rem;display:flex;gap:1rem">
+        <button class="btn-p">Conheça-nos</button>
+        <button class="btn-o">Ver programas</button>
+      </div>
+    </div>
+    <div style="position:relative">
+      <div class="sobre-img-demo"></div>
+      <div class="sobre-img-badge">
+        <span class="sobre-badge-heb">חַי</span>
+        <span class="sobre-badge-txt">Chai · Vida</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="preview-block" style="background:#EDE5D8">
+  <div class="guide-label">06 — Cards Programas (hover → bleu nuit)</div>
+  <p style="font-size:.8rem;color:#7A6E65;margin-bottom:2rem">Passez la souris sur les cartes pour voir l'effet hover</p>
+  <div class="cards-demo">
+    <div class="card-demo">
+      <div class="card-inner">
+        <span class="card-num">01</span>
+        <h3 class="card-name">Serviços Religiosos</h3>
+        <p class="card-text">Rezas e ofícios regulares. Cabalat Shabat, Shacharit e Minchá — todos são bem-vindos.</p>
+        <span class="card-link">Ver horários →</span>
+      </div>
+    </div>
+    <div class="card-demo">
+      <div class="card-inner">
+        <span class="card-num">02</span>
+        <h3 class="card-name">Chai Teens</h3>
+        <p class="card-text">Programa especial para jovens que desejam explorar sua identidade judaica de forma divertida e significativa.</p>
+        <span class="card-link">Ver vídeo →</span>
+      </div>
+    </div>
+    <div class="card-demo">
+      <div class="card-inner">
+        <span class="card-num">03</span>
+        <h3 class="card-name">Voz de Rachel</h3>
+        <p class="card-text">Encontro mensal para mulheres — Tehilim, almoço especial e palestra com convidada inspiradora.</p>
+        <span class="card-link">Participar →</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="preview-block" style="padding:0">
+  <div style="padding:2rem 3rem"><div class="guide-label">07 — Serviços / Rezas (fundo bleu nuit)</div></div>
+  <div class="rezas-demo">
+    <div class="rezas-label-demo">Serviços Religiosos</div>
+    <h2 class="rezas-title-demo">Horários de <em style="font-style:italic">Rezas</em></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem">
+      <div>
+        <div style="font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(196,151,90,.6);margin-bottom:.8rem">Shacharit — Semana</div>
+        <div class="svc-list-demo">
+          <div class="svc-row-demo"><span class="svc-name-demo">Segunda a sexta</span><span class="svc-time-demo">6h30</span></div>
+          <div class="svc-row-demo"><span class="svc-name-demo">Domingo e feriados</span><span class="svc-time-demo">8h00</span></div>
+          <div class="svc-row-demo"><span class="svc-name-demo">Minchá + Arvit</span><span class="svc-time-demo">17h25</span></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(196,151,90,.6);margin-bottom:.8rem">Shabat</div>
+        <div class="svc-list-demo">
+          <div class="svc-row-demo"><span class="svc-name-demo">Cabalat Shabat + Kidush</span><span class="svc-time-demo">18h30</span></div>
+          <div class="svc-row-demo"><span class="svc-name-demo">Tehilim</span><span class="svc-time-demo">7h00</span></div>
+          <div class="svc-row-demo"><span class="svc-name-demo">Shacharit + Kidush</span><span class="svc-time-demo">9h30</span></div>
+          <div class="svc-row-demo"><span class="svc-name-demo">Minchá + Seudat Shlishit</span><span class="svc-time-demo">17h00</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="preview-block" style="background:#EDE5D8">
+  <div class="guide-label">08 — Tabela de Aulas</div>
+  <div class="aulas-demo">
+    <div class="aula-row-demo"><span class="aula-dia-demo">Dom</span><span class="aula-hora-demo">8h45</span><span>Fatos Fundamentais do Judaísmo</span><span style="color:#7A6E65;font-size:.78rem">Rabino Mendi Simonowits</span><span class="aula-pub-h">Todos</span></div>
+    <div class="aula-row-demo"><span class="aula-dia-demo">Seg</span><span class="aula-hora-demo">18h30</span><span>Conceitos Chassídicos Profundos</span><span style="color:#7A6E65;font-size:.78rem">Rabino Belinow</span><span class="aula-pub-h">Homens</span></div>
+    <div class="aula-row-demo"><span class="aula-dia-demo">Ter</span><span class="aula-hora-demo">20h00</span><span>O Lado Místico das Festas Judaicas</span><span style="color:#7A6E65;font-size:.78rem">Chanie Belinow</span><span class="aula-pub-m">Mulheres</span></div>
+    <div class="aula-row-demo"><span class="aula-dia-demo">Qui</span><span class="aula-hora-demo">19h30</span><span>Aula de Tanya</span><span style="color:#7A6E65;font-size:.78rem">Rafa Susskind</span><span class="aula-pub-h">Todos</span></div>
+  </div>
+</div>
+
+<div class="preview-block" style="padding:0">
+  <div style="padding:2rem 3rem"><div class="guide-label">09 — Newsletter (fundo bleu nuit)</div></div>
+  <div class="nl-demo">
+    <div class="nl-tag">Comunidade</div>
+    <h2 class="nl-title-demo">Fique conectado à<br><em>nossa comunidade</em></h2>
+    <p class="nl-sub-demo">Receba artigos semanais, horários de Shabat e novidades do Chai Menachem</p>
+    <div class="nl-form-demo">
+      <input class="nl-input-demo" type="email" placeholder="Seu endereço de e-mail"/>
+      <button class="nl-btn-demo">Inscrever</button>
+    </div>
+  </div>
+</div>
+
+<div class="preview-block" style="background:#F7F4EF">
+  <div class="guide-label">10 — Botões & CTAs</div>
+  <div class="btns-demo">
+    <button class="btn-p">Conheça-nos</button>
+    <button class="btn-g">Contribuir</button>
+    <button class="btn-o">Ver programas</button>
+    <button class="btn-wa">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Fale com o Rabino
+    </button>
+  </div>
+</div>
+
+<div class="preview-block" style="background:#EDE5D8">
+  <div class="guide-label">11 — Menu Mobile (overlay)</div>
+  <p style="font-size:.8rem;color:#7A6E65;margin-bottom:1rem">Aperçu du menu plein écran sur mobile — les liens entrent en stagger de gauche</p>
+  <div class="mobile-menu-demo">
+    <a class="mob-link-demo">Sobre</a>
+    <a class="mob-link-demo">Programas</a>
+    <a class="mob-link-demo">Festas</a>
+    <a class="mob-link-demo">Rezas & Aulas</a>
+    <a class="mob-link-demo">Contato</a>
+    <div class="mob-ctas">
+      <button class="btn-g" style="flex:1">Contribuir</button>
+      <button class="btn-o" style="flex:1">WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<div style="background:#1A1815;color:rgba(255,255,255,.3);font-size:.65rem;letter-spacing:.12em;text-align:center;padding:2rem;font-family:'DM Sans',sans-serif">
+  CHAI MENACHEM — DESIGN PREVIEW · Validez chaque section puis dites-moi ce que vous voulez changer
+</div>
+
+</body>
+</html>
