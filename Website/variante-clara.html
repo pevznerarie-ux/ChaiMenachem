@@ -10,41 +10,55 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 <style>
-/* ── HERO accueil (clair, minimal, type-forward) ── */
+/* ── HERO accueil — luxe, fond photo voilé ── */
 .home-hero{
-  min-height:86vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
-  padding:8rem clamp(1.4rem,5vw,3rem) 5rem;gap:1.6rem;position:relative;
+  min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:9rem clamp(1.4rem,5vw,3rem) 6rem;gap:1.8rem;position:relative;overflow:hidden;
+  background:
+    linear-gradient(rgba(250,248,242,.88) 0%, rgba(250,248,242,.80) 60%, rgba(236,228,212,.92) 100%),
+    url('espaco2.jpg') center/cover no-repeat;
+}
+/* grain texture subtil */
+.home-hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+  background-size:200px;opacity:.4;
+}
+/* ornement or en haut */
+.home-hero::after{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:1px;height:80px;background:linear-gradient(to bottom, transparent, var(--gold));opacity:.5;
 }
 .home-hero .eyebrow{
-  display:inline-flex;align-items:center;gap:.7rem;
-  font-size:.72rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+  display:inline-flex;align-items:center;gap:.9rem;
+  font-size:.7rem;font-weight:600;letter-spacing:.36em;text-transform:uppercase;color:var(--gold);
+  position:relative;z-index:1;
 }
-.home-hero .eyebrow::before,.home-hero .eyebrow::after{content:'';width:28px;height:1px;background:var(--gold);opacity:.6}
+.home-hero .eyebrow::before,.home-hero .eyebrow::after{content:'';width:36px;height:1px;background:var(--gold);opacity:.7}
 .home-hero h1{
   font-family:'DM Serif Display',serif;font-weight:400;
-  font-size:clamp(3rem,9vw,7rem);line-height:1.04;letter-spacing:-.015em;color:var(--ink);max-width:15ch;
+  font-size:clamp(3.2rem,10vw,7.5rem);line-height:1.02;letter-spacing:-.018em;color:var(--ink);max-width:15ch;
+  position:relative;z-index:1;
 }
 .home-hero h1 .accent{font-style:italic;color:var(--gold)}
-.home-hero .slogan{font-size:clamp(1.1rem,1.8vw,1.4rem);color:var(--ink-soft);font-weight:300;line-height:1.6;max-width:46ch}
-.home-hero .cta-band{justify-content:center;margin-top:.6rem}
+.home-hero .slogan{
+  font-size:clamp(1.05rem,1.7vw,1.3rem);color:var(--ink-soft);font-weight:300;line-height:1.7;max-width:44ch;
+  position:relative;z-index:1;
+}
+.home-hero .cta-band{justify-content:center;margin-top:.8rem;position:relative;z-index:1;}
 
 /* révélation après l'intro */
 .home-hero .reveal{opacity:0;animation:none}
 html:not(.js) .home-hero .reveal{opacity:1}
 html.js body.revealed .home-hero .reveal{animation:fadeUp 1s var(--ease) both}
 
-/* ── Bande image (pleine largeur, sobre) ── */
-.home-image{position:relative;height:min(72vh,660px);overflow:hidden;background:var(--bg-warm)}
-.home-image .hslide{position:absolute;inset:0;background-size:cover;background-position:center;
-  opacity:0;transition:opacity 2s ease-in-out;animation:hkb 24s ease-in-out infinite alternate}
-.home-image .hslide.active{opacity:1}
-@keyframes hkb{0%{transform:scale(1.03)}100%{transform:scale(1.12)}}
-.home-image::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(28,24,19,.12),transparent 30%,transparent 70%,rgba(28,24,19,.32))}
-.home-image .cap{position:absolute;left:0;right:0;bottom:1.6rem;text-align:center;z-index:2;
-  font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(250,248,242,.9);
-  text-shadow:0 1px 14px rgba(0,0,0,.5)}
-@media(prefers-reduced-motion:reduce){.home-image .hslide{animation:none}}
+/* ── Défilement photo infini ── */
+.photo-marquee{overflow:hidden;background:var(--bg-warm);padding:2.4rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.marquee-track{display:flex;gap:12px;width:max-content;animation:scroll-left 40s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-track img{height:260px;width:auto;object-fit:cover;flex-shrink:0;display:block;border-radius:2px}
+@keyframes scroll-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none;flex-wrap:wrap;width:100%;padding:0 1.4rem}}
 
 /* ── INTRO légère (clair) ── */
 #intro{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -111,14 +125,19 @@ html:not(.js) #intro{display:none}
   </div>
 </section>
 
-<!-- BANDE IMAGE -->
-<section class="home-image">
-  <div class="hslide active" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.20 (1).jpeg')"></div>
-  <div class="hslide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.20 (2).jpeg')"></div>
-  <div class="hslide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.20 (3).jpeg')"></div>
-  <div class="hslide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.21 (1).jpeg')"></div>
-  <div class="hslide" style="background-image:url('WhatsApp Image 2026-05-19 at 10.27.21 (2).jpeg')"></div>
-  <span class="cap">Higienópolis · São Paulo</span>
+<!-- DÉFILEMENT PHOTOS -->
+<section class="photo-marquee">
+  <div class="marquee-track">
+    <img src="espaco2.jpg" alt=""><img src="espaco5.jpg" alt=""><img src="espaco8.jpg" alt="">
+    <img src="espaco10.jpg" alt=""><img src="espaco14.jpg" alt=""><img src="espaco18.jpg" alt="">
+    <img src="espaco20.jpg" alt=""><img src="espaco25.jpg" alt=""><img src="espaco28.jpg" alt="">
+    <img src="espaco32.jpg" alt=""><img src="espaco35.jpg" alt=""><img src="espaco40.jpg" alt="">
+    <!-- duplicate pour boucle sans saut -->
+    <img src="espaco2.jpg" alt=""><img src="espaco5.jpg" alt=""><img src="espaco8.jpg" alt="">
+    <img src="espaco10.jpg" alt=""><img src="espaco14.jpg" alt=""><img src="espaco18.jpg" alt="">
+    <img src="espaco20.jpg" alt=""><img src="espaco25.jpg" alt=""><img src="espaco28.jpg" alt="">
+    <img src="espaco32.jpg" alt=""><img src="espaco35.jpg" alt=""><img src="espaco40.jpg" alt="">
+  </div>
 </section>
 
 <!-- FOOTER (identique partout) -->
