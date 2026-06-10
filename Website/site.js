@@ -11,6 +11,8 @@
     ['Sobre', 'sobre.html'],
     ['Programas', 'programas.html'],
     ['Festas', 'festas.html'],
+    ['Eventos', 'eventos.html'],
+    ['Notícias', 'noticias.html'],
     ['Rezas & Horários', 'rezas-horarios.html'],
     ['Aulas', 'aulas.html'],
     ['Galeria', 'galeria.html']

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Portal · Chai Menachem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+.admin-bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:1rem;
+  padding:.9rem clamp(1.4rem,5vw,3rem);background:rgba(250,248,242,.9);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.admin-bar .brand-mark{width:92px;height:60px;overflow:hidden;position:relative;flex-shrink:0}
+.admin-bar .brand-mark img{position:absolute;width:152px;left:-31px;top:-48px;filter:url(#gold-soft)}
+.admin-bar .admin-title{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.admin-bar .spacer{flex:1}
+.admin-main{max-width:760px;margin:0 auto;padding:clamp(2rem,5vw,3.5rem) clamp(1.4rem,5vw,3rem) 5rem}
+.admin-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:clamp(1.6rem,4vw,2.4rem);
+  box-shadow:0 14px 40px rgba(42,29,14,.05)}
+.admin-card h1{font-size:clamp(2rem,5vw,2.8rem);margin-bottom:.4rem}
+.admin-card .muted,.muted{color:var(--muted)}
+label{display:block;font-size:.82rem;font-weight:500;color:var(--ink-soft);margin-top:1.1rem}
+input,textarea,select{width:100%;margin-top:.4rem;padding:.8rem .9rem;border:1px solid var(--line-2);
+  border-radius:8px;font-family:'Inter',sans-serif;font-size:.98rem;color:var(--ink);background:#fff}
+input:focus,textarea:focus{outline:none;border-color:var(--gold)}
+textarea{resize:vertical;line-height:1.6}
+.err{color:#b3261e;font-size:.88rem;margin-top:.8rem}
+.ok{color:#2e7d32;font-size:.88rem;font-weight:600}
+.form-actions{display:flex;align-items:center;gap:.8rem;margin-top:1.4rem;flex-wrap:wrap}
+
+.dash-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.dash-head h1{font-size:clamp(2rem,5vw,2.8rem)}
+.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:40px;overflow:hidden;background:#fff}
+.seg button{padding:.55rem 1.1rem;border:none;background:none;cursor:pointer;font-family:'Inter',sans-serif;
+  font-size:.84rem;font-weight:500;color:var(--ink-soft);transition:background .2s,color .2s}
+.seg button.on{background:var(--gold);color:#fff}
+#post-form{margin-bottom:2rem}
+#post-form h2{font-size:1.5rem;margin-bottom:.4rem}
+
+.post-list{display:flex;flex-direction:column;gap:.6rem}
+.post-list .row{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  background:#fff;border:1px solid var(--line);border-radius:10px;padding:.9rem 1.1rem}
+.row-actions{display:flex;gap:.5rem;flex-shrink:0}
+.row-actions button{border:1px solid var(--line-2);background:#fff;border-radius:6px;padding:.4rem .8rem;
+  cursor:pointer;font-family:'Inter',sans-serif;font-size:.8rem;color:var(--ink-soft);transition:border-color .2s,color .2s}
+.row-actions button:hover{border-color:var(--gold);color:var(--gold)}
+.row-actions button.danger:hover{border-color:#b3261e;color:#b3261e}
+.steps{font-size:.95rem;line-height:1.8;color:var(--ink-soft)}
+.steps code{background:var(--bg-warm);padding:.1rem .4rem;border-radius:4px;font-size:.88em}
+</style>
+</head>
+<body class="page">
+
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs>
+<filter id="gold-soft" color-interpolation-filters="sRGB"><feFlood flood-color="#C4975A" flood-opacity="1" result="g"/><feComposite in="g" in2="SourceGraphic" operator="in"/></filter>
+</defs></svg>
+
+<header class="admin-bar">
+  <span class="brand-mark"><img src="logo-transparent.png" alt="Chai Menachem"></span>
+  <span class="admin-title">Portal de publicações</span>
+  <span class="spacer"></span>
+  <a class="back-home" href="variante-clara.html">Ver site →</a>
+  <button id="logout" class="btn btn-ghost" hidden style="padding:.5rem 1.1rem">Sair</button>
+</header>
+
+<main class="admin-main">
+
+  <!-- Firebase pas encore configuré -->
+  <section id="cfg-warn" class="admin-card" hidden>
+    <h1>Portal quase pronto</h1>
+    <p class="muted" style="margin:.6rem 0 1.2rem">Falta apenas conectar o Firebase. Siga o guia que o desenvolvedor te enviou e cole os valores em <code>firebase-config.js</code>.</p>
+    <p class="steps">1. Criar projeto Firebase &nbsp;·&nbsp; 2. Ativar Authentication (E-mail/senha) &nbsp;·&nbsp; 3. Criar Firestore &nbsp;·&nbsp; 4. Colar a configuração.</p>
+  </section>
+
+  <!-- Connexion -->
+  <section id="login-view" class="admin-card" hidden>
+    <h1>Entrar</h1>
+    <p class="muted">Acesso reservado à equipe do Chai Menachem.</p>
+    <form id="login-form" autocomplete="on">
+      <label>E-mail<input type="email" id="email" required autocomplete="username"></label>
+      <label>Senha<input type="password" id="password" required autocomplete="current-password"></label>
+      <div class="form-actions"><button class="btn btn-primary" type="submit">Entrar</button></div>
+      <p id="login-error" class="err" hidden></p>
+    </form>
+  </section>
+
+  <!-- Tableau de bord -->
+  <section id="dash" hidden>
+    <div class="dash-head">
+      <h1>Publicações</h1>
+      <div class="seg" id="cat-seg">
+        <button type="button" data-cat="festa" class="on">Festas</button>
+        <button type="button" data-cat="evento">Eventos</button>
+        <button type="button" data-cat="noticia">Notícias</button>
+      </div>
+    </div>
+
+    <form id="post-form" class="admin-card">
+      <input type="hidden" id="edit-id">
+      <h2 id="form-title">Nova publicação</h2>
+      <label>Título <input id="f-title" required maxlength="120"></label>
+      <label>Data (texto livre — ex.: « 15 de julho » ou « Sexta, 20h »)<input id="f-date" maxlength="60"></label>
+      <label>Link da imagem (opcional — cole o endereço de uma foto)<input id="f-image" placeholder="https://…"></label>
+      <label>Texto<textarea id="f-body" rows="6" placeholder="Descreva a festa, o evento ou a notícia…"></textarea></label>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit" id="save-btn">Publicar</button>
+        <button class="btn btn-ghost" type="button" id="cancel-edit" hidden>Cancelar</button>
+        <span id="save-msg" class="ok" hidden>Salvo ✓</span>
+      </div>
+    </form>
+
+    <div id="list" class="post-list"></div>
+  </section>
+
+</main>
+
+<script type="module">
+import { auth, db, isConfigured } from "./firebase-config.js";
+import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { collection, addDoc, getDocs, deleteDoc, updateDoc, doc, query, where, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const $ = function(id){ return document.getElementById(id); };
+let currentCat = "festa";
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+if (!isConfigured){
+  $("cfg-warn").hidden = false;
+} else {
+  onAuthStateChanged(auth, function(user){
+    const on = !!user;
+    $("login-view").hidden = on;
+    $("dash").hidden = !on;
+    $("logout").hidden = !on;
+    if (on) loadList();
+  });
+
+  $("login-form").addEventListener("submit", async function(e){
+    e.preventDefault(); $("login-error").hidden = true;
+    try { await signInWithEmailAndPassword(auth, $("email").value.trim(), $("password").value); }
+    catch (err){ $("login-error").textContent = "E-mail ou senha incorretos."; $("login-error").hidden = false; }
+  });
+  $("logout").addEventListener("click", function(){ signOut(auth); });
+
+  $("cat-seg").addEventListener("click", function(e){
+    const b = e.target.closest("button"); if (!b) return;
+    currentCat = b.dataset.cat;
+    Array.prototype.forEach.call($("cat-seg").children, function(x){ x.classList.toggle("on", x===b); });
+    resetForm(); loadList();
+  });
+
+  $("post-form").addEventListener("submit", async function(e){
+    e.preventDefault();
+    const data = {
+      category: currentCat,
+      title: $("f-title").value.trim(),
+      date:  $("f-date").value.trim(),
+      image: $("f-image").value.trim(),
+      body:  $("f-body").value.trim()
+    };
+    if (!data.title){ return; }
+    const id = $("edit-id").value;
+    $("save-btn").disabled = true;
+    try {
+      if (id){ await updateDoc(doc(db,"posts",id), data); }
+      else {
+        data.createdAt = serverTimestamp();
+        data.author = auth.currentUser ? auth.currentUser.email : "";
+        await addDoc(collection(db,"posts"), data);
+      }
+      resetForm(); showSaved(); loadList();
+    } catch (err){ console.error(err); alert("Erro ao salvar. Verifique a conexão e as permissões do Firestore."); }
+    $("save-btn").disabled = false;
+  });
+  $("cancel-edit").addEventListener("click", resetForm);
+}
+
+function resetForm(){
+  $("edit-id").value = "";
+  $("post-form").reset();
+  $("form-title").textContent = "Nova publicação";
+  $("save-btn").textContent = "Publicar";
+  $("cancel-edit").hidden = true;
+}
+function showSaved(){ const m = $("save-msg"); m.hidden = false; setTimeout(function(){ m.hidden = true; }, 1800); }
+
+async function loadList(){
+  const list = $("list"); list.innerHTML = '<p class="muted">A carregar…</p>';
+  try {
+    const snap = await getDocs(query(collection(db,"posts"), where("category","==",currentCat)));
+    let arr = snap.docs.map(function(d){ return Object.assign({ id:d.id }, d.data()); });
+    arr.sort(function(a,b){ return ((b.createdAt&&b.createdAt.seconds)||0) - ((a.createdAt&&a.createdAt.seconds)||0); });
+    if (!arr.length){ list.innerHTML = '<p class="muted">Nenhuma publicação nesta seção.</p>'; return; }
+    list.innerHTML = arr.map(function(p){
+      return '<div class="row"><div><strong>' + esc(p.title) + '</strong> <span class="muted">· ' + esc(p.date||"") + '</span></div>' +
+        '<div class="row-actions"><button data-edit="' + p.id + '">Editar</button>' +
+        '<button data-del="' + p.id + '" class="danger">Excluir</button></div></div>';
+    }).join("");
+    list.querySelectorAll("[data-edit]").forEach(function(b){ b.addEventListener("click", function(){ startEdit(arr.find(function(x){ return x.id===b.dataset.edit; })); }); });
+    list.querySelectorAll("[data-del]").forEach(function(b){ b.addEventListener("click", function(){ del(b.dataset.del); }); });
+  } catch (e){ console.error(e); list.innerHTML = '<p class="err">Erro ao carregar.</p>'; }
+}
+function startEdit(p){
+  if(!p) return;
+  $("edit-id").value = p.id;
+  $("f-title").value = p.title||""; $("f-date").value = p.date||"";
+  $("f-image").value = p.image||""; $("f-body").value = p.body||"";
+  $("form-title").textContent = "Editar publicação";
+  $("save-btn").textContent = "Salvar alterações";
+  $("cancel-edit").hidden = false;
+  window.scrollTo({ top:0, behavior:"smooth" });
+}
+async function del(id){
+  if (!confirm("Excluir esta publicação? Esta ação não pode ser desfeita.")) return;
+  try { await deleteDoc(doc(db,"posts",id)); loadList(); }
+  catch (e){ console.error(e); alert("Erro ao excluir."); }
+}
+</script>
+</body>
+</html>

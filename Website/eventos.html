@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Festas — Chai Menachem</title>
+<title>Eventos — Chai Menachem</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 </head>
 <body class="page">
@@ -20,7 +20,7 @@
   <nav class="nav-links">
     <a href="sobre.html">Sobre</a>
     <a href="programas.html">Programas</a>
-    <a href="festas.html" class="current">Festas</a>
+    <a href="festas.html">Festas</a>
     <a href="rezas-horarios.html">Rezas &amp; Horários</a>
     <a href="aulas.html">Aulas</a>
     <a href="galeria.html">Galeria</a>
@@ -34,33 +34,14 @@
 <section class="page-hero">
   <div class="container">
     <div class="crumbs"><a class="back-home" href="variante-clara.html">← Voltar ao início</a></div>
-    <span class="eyebrow">O ano judaico</span>
-    <h1>Festas &amp; <span class="accent">celebrações</span></h1>
-    <p class="lede">Cada festa é um encontro. Celebre conosco os momentos mais luminosos do calendário judaico — com música, sabor e comunidade.</p>
+    <span class="eyebrow">Agenda</span>
+    <h1>Nossos <span class="accent">eventos</span></h1>
+    <p class="lede">Encontros, palestras, comemorações e momentos especiais da comunidade. Acompanhe e participe.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="cards">
-      <div class="card reveal r1"><div class="ic">🍎</div><h3>Rosh Hashaná</h3><p>O ano novo judaico — rezas, shofar e a doçura do mel para um ano bom e doce.</p><span class="tag">Tishrei</span></div>
-      <div class="card reveal r2"><div class="ic">🕊️</div><h3>Yom Kipur</h3><p>O dia mais sagrado do ano — um dia de retorno, perdão e reencontro com a alma.</p><span class="tag">Tishrei</span></div>
-      <div class="card reveal r3"><div class="ic">🌿</div><h3>Sucot</h3><p>Sete dias de alegria na sucá, com lulav e etrog, sob o céu e em comunidade.</p><span class="tag">Tishrei</span></div>
-      <div class="card reveal r1"><div class="ic">🕎</div><h3>Chanucá</h3><p>A festa das luzes — acendimento público da menorá, sufganiot e muita alegria.</p><span class="tag">Kislev</span></div>
-      <div class="card reveal r2"><div class="ic">🎭</div><h3>Purim</h3><p>Leitura da Meguilá, fantasias, festa e mishloach manot. A alegria toma conta!</p><span class="tag">Adar</span></div>
-      <div class="card reveal r3"><div class="ic">🍷</div><h3>Pessach</h3><p>Seder de Pessach em comunidade — a história da liberdade, contada à mesa, juntos.</p><span class="tag">Nissan</span></div>
-    </div>
-    <div class="cta-band reveal r4">
-      <a href="#" class="btn btn-primary">Participar da próxima festa</a>
-      <a href="galeria.html" class="btn btn-ghost">Ver a galeria</a>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="festa-feed">
-  <div class="container">
-    <span class="sub">Publicações</span>
-    <h2>Próximas festas no Chai Menachem</h2>
     <div id="feed" class="feed"></div>
   </div>
 </section>
@@ -103,7 +84,7 @@
 
 <script type="module">
   import { renderFeed } from "./posts.js";
-  renderFeed("festa", "feed");
+  renderFeed("evento", "feed");
 </script>
 <script src="site.js" defer></script>
 </body>

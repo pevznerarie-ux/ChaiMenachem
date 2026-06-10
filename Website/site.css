@@ -188,7 +188,28 @@ h1,h2,h3{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-heigh
 #m-overlay.open .overlay-nav a:nth-child(5){transition-delay:.25s}
 #m-overlay.open .overlay-nav a:nth-child(6){transition-delay:.3s}
 #m-overlay.open .overlay-nav a:nth-child(7){transition-delay:.35s}
+#m-overlay.open .overlay-nav a:nth-child(8){transition-delay:.4s}
+#m-overlay.open .overlay-nav a:nth-child(9){transition-delay:.45s}
 #m-overlay .overlay-nav a:hover{color:var(--gold)}
 #m-overlay .overlay-tag{margin-top:2.4rem;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;
   color:var(--muted);opacity:0;transition:opacity .4s .35s}
 #m-overlay.open .overlay-tag{opacity:1}
+
+/* ════════════════════════════════════════════════
+   PUBLICATIONS (festas / eventos / notícias)
+   Rendues dynamiquement depuis Firebase (posts.js)
+   ════════════════════════════════════════════════ */
+.feed{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.6rem;margin-top:1rem}
+.feed-empty{grid-column:1/-1;color:var(--muted);font-style:italic;padding:1.4rem 0;font-weight:300}
+.post{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:16px;
+  overflow:hidden;box-shadow:0 14px 36px rgba(42,29,14,.05);
+  transition:transform .3s var(--ease),box-shadow .3s}
+.post:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(42,29,14,.1)}
+.post-media{display:block;overflow:hidden;aspect-ratio:16/10;background:var(--bg-warm)}
+.post-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}
+.post:hover .post-media img{transform:scale(1.04)}
+.post-body{padding:1.4rem 1.5rem 1.6rem}
+.post-date{display:block;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.5rem}
+.post-body h3{font-size:1.5rem;color:var(--ink);margin-bottom:.6rem;line-height:1.15}
+.post-body p{color:var(--ink-soft);line-height:1.7;font-weight:300;font-size:.98rem}
