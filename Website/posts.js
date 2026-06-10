@@ -1,10 +1,9 @@
 /* ════════════════════════════════════════════════
    CHAI MENACHEM — Afficheur public des publications
    Lit les articles d'une catégorie (festa/evento/noticia)
-   dans Firestore et les rend dans un conteneur.
+   dans Supabase et les rend (texte + galerie de photos).
    ════════════════════════════════════════════════ */
-import { db, isConfigured } from "./firebase-config.js";
-import { collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { supabase, isConfigured } from "./supabase-config.js";
 
 function esc(s){
   return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
@@ -12,11 +11,21 @@ function esc(s){
   });
 }
 
-function card(p){
-  var media = p.image
-    ? '<a class="post-media" href="' + esc(p.image) + '" target="_blank" rel="noopener"><img src="' + esc(p.image) + '" alt="" loading="lazy"></a>'
+function media(images){
+  if (!images || !images.length) return "";
+  var cover = '<a class="post-cover" href="' + esc(images[0]) + '" target="_blank" rel="noopener">' +
+              '<img src="' + esc(images[0]) + '" alt="" loading="lazy"></a>';
+  var rest = images.length > 1
+    ? '<div class="post-thumbs">' + images.slice(1).map(function(u){
+        return '<a href="' + esc(u) + '" target="_blank" rel="noopener"><img src="' + esc(u) + '" alt="" loading="lazy"></a>';
+      }).join("") + '</div>'
     : "";
-  return '<article class="post">' + media +
+  return cover + rest;
+}
+
+function card(p){
+  var images = Array.isArray(p.images) ? p.images : (p.images ? [p.images] : []);
+  return '<article class="post">' + media(images) +
     '<div class="post-body">' +
       (p.date ? '<span class="post-date">' + esc(p.date) + "</span>" : "") +
       "<h3>" + esc(p.title) + "</h3>" +
@@ -30,13 +39,13 @@ export async function renderFeed(category, containerId){
   if (!isConfigured){ el.innerHTML = '<p class="feed-empty">Publicações em breve.</p>'; return; }
   el.innerHTML = '<p class="feed-empty">A carregar…</p>';
   try {
-    var snap = await getDocs(query(collection(db, "posts"), where("category", "==", category)));
-    var arr = snap.docs.map(function (d){ return d.data(); });
-    arr.sort(function (a, b){
-      return ((b.createdAt && b.createdAt.seconds) || 0) - ((a.createdAt && a.createdAt.seconds) || 0);
-    });
-    if (!arr.length){ el.innerHTML = '<p class="feed-empty">Nenhuma publicação por enquanto.</p>'; return; }
-    el.innerHTML = arr.map(card).join("");
+    const { data, error } = await supabase
+      .from("posts").select("*")
+      .eq("category", category)
+      .order("created_at", { ascending: false });
+    if (error) throw error;
+    if (!data || !data.length){ el.innerHTML = '<p class="feed-empty">Nenhuma publicação por enquanto.</p>'; return; }
+    el.innerHTML = data.map(card).join("");
   } catch (e){
     console.error(e);
     el.innerHTML = '<p class="feed-empty">Não foi possível carregar as publicações.</p>';
