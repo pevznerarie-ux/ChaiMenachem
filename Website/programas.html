@@ -1,96 +1,147 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Programas — Chai Menachem</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<link rel="icon" type="image/png" href="logo.png"/>
+<link rel="stylesheet" href="nova.css">
+<style>
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:var(--maxw);margin:0 auto}
+@media(max-width:720px){.prog-grid{grid-template-columns:1fr;max-width:480px}}
+.prog-card{padding:2.2rem 1.8rem;border:1px solid var(--line);background:var(--bg);display:flex;flex-direction:column;gap:.8rem;transition:border-color .3s,background .3s}
+.prog-card:hover{border-color:var(--gold);background:var(--bg-warm)}
+.prog-num{font-family:'DM Serif Display',serif;font-size:2.6rem;font-weight:400;color:rgba(176,130,58,.15);line-height:1}
+.prog-icon{width:34px;height:34px;color:var(--gold);opacity:.7}
+.prog-name{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--ink);line-height:1.3}
+.prog-desc{font-size:.86rem;line-height:1.8;color:var(--ink-soft);flex:1}
+.participar-btn{display:block;text-align:center;margin-top:.8rem;padding:.72rem 1rem;background:transparent;border:1px solid var(--line-2);color:var(--gold);font-family:'Inter',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:background .3s,border-color .3s}
+.participar-btn:hover{border-color:var(--gold);background:rgba(176,130,58,.06)}
+</style>
 </head>
-<body class="page">
+<body>
 
-<svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs>
-<filter id="gold-soft" color-interpolation-filters="sRGB"><feFlood flood-color="#E1B877" flood-opacity="1" result="g"/><feComposite in="g" in2="SourceGraphic" operator="in"/></filter>
-</defs></svg>
+<!-- OVERLAY MENU -->
+<div class="nav-overlay" id="nav-overlay">
+  <button class="overlay-close" onclick="closeMenu()">✕</button>
+  <nav class="overlay-nav">
+    <a href="sobre.html">Sobre</a>
+    <a href="programas.html">Programas</a>
+    <a href="festas.html">Festas</a>
+    <a href="rezas.html">Rezas &amp; Horários</a>
+    <a href="aulas.html">Aulas</a>
+    <a href="espaco.html">Espaço</a>
+    <a href="eventos.html">Eventos</a>
+    <a href="kidush.html">Kidush</a>
+  </nav>
+  <p class="overlay-tag">Centro Chabad · Higienópolis · São Paulo</p>
+</div>
 
+<!-- HEADER -->
 <header class="page-nav">
-  <a class="brand" href="variante-clara.html" aria-label="Início — Chai Menachem"><span class="brand-mark"><img src="logo-transparent.png" alt="Chai Menachem"></span></a>
+  <a class="brand" href="index.html">
+    <span class="brand-mark"><img src="logo-transparent.png" alt="Chai Menachem"></span>
+  </a>
   <nav class="nav-links">
     <a href="sobre.html">Sobre</a>
-    <a href="programas.html" class="current">Programas</a>
+    <a href="programas.html" class="active">Programas</a>
     <a href="festas.html">Festas</a>
-    <a href="rezas-horarios.html">Rezas &amp; Horários</a>
+    <a href="rezas.html">Rezas &amp; Horários</a>
     <a href="aulas.html">Aulas</a>
-    <a href="galeria.html">Galeria</a>
+    <a href="kidush.html">Kidush</a>
   </nav>
   <div class="nav-right">
-    <a class="back-home" href="variante-clara.html">← Início</a>
-    <a class="ig-btn" href="https://instagram.com/chaimenachem" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+    <a href="https://wa.me/5511991969797" target="_blank" rel="noopener" class="btn btn-primary" style="padding:.6rem 1.1rem;font-size:.78rem">Fale Conosco</a>
+    <a href="https://instagram.com/chaimenachem" target="_blank" rel="noopener" class="ig-btn" title="@chaimenachem">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <button class="hamburger" id="hamburger" onclick="openMenu()"><span></span><span></span><span></span></button>
   </div>
 </header>
+<!-- BACK BUTTON -->
+<div style="max-width:var(--maxw);margin:0 auto;padding:.8rem clamp(1.4rem,5vw,3rem) 0">
+  <a href="index.html" onclick="if(history.length>1){event.preventDefault();history.back()}" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:500;letter-spacing:.04em;color:var(--muted);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Voltar
+  </a>
+</div>
 
+<!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="container">
-    <div class="crumbs"><a class="back-home" href="variante-clara.html">← Voltar ao início</a></div>
-    <span class="eyebrow">O que oferecemos</span>
-    <h1>Nossos <span class="accent">programas</span></h1>
-    <p class="lede">Para cada idade e cada momento da vida — há sempre um lugar para você no Chai Menachem.</p>
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;max-width:var(--maxw);margin:0 auto;width:100%">
+    <div>
+      <div class="eyebrow" style="justify-content:flex-start">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text">O que oferecemos</span>
+      </div>
+      <h1 style="text-align:left">Nossos<br><em>Programas</em></h1>
+    </div>
+    <a href="calendario.html" class="btn btn-ghost" style="align-self:flex-end">Ver Calendário</a>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="cards">
-      <div class="card reveal r1"><div class="ic">📖</div><h3>Aulas de Torá</h3><p>Encontros semanais para todos os níveis — Chumash, Tanya, Talmud e temas da vida judaica.</p><span class="tag">Toda semana</span></div>
-      <div class="card reveal r2"><div class="ic">🕯️</div><h3>Refeições de Shabat</h3><p>Mesas calorosas de sexta à noite e sábado, abertas a todos. Venha viver um Shabat em família.</p><span class="tag">Sextas &amp; sábados</span></div>
-      <div class="card reveal r3"><div class="ic">👩</div><h3>Círculo de Mulheres</h3><p>Encontros de Rosh Chodesh, estudo e convívio — inspiração e amizade entre mulheres.</p><span class="tag">Mensal</span></div>
-      <div class="card reveal r1"><div class="ic">🎓</div><h3>Jovens &amp; Universitários</h3><p>Programas, viagens e encontros para a nova geração descobrir suas raízes com orgulho.</p><span class="tag">Quinzenal</span></div>
-      <div class="card reveal r2"><div class="ic">🧒</div><h3>Clube das Crianças</h3><p>Atividades, histórias e festas que fazem as crianças amarem ser judias.</p><span class="tag">Domingos</span></div>
-      <div class="card reveal r3"><div class="ic">💛</div><h3>Apoio &amp; Ciclos da Vida</h3><p>Bar/Bat Mitzvá, casamentos, visitas e apoio em todos os momentos — estamos ao seu lado.</p><span class="tag">Sob demanda</span></div>
-    </div>
-    <div class="cta-band reveal r4">
-      <a href="#" class="btn btn-primary">Quero participar</a>
-      <a href="rezas-horarios.html" class="btn btn-ghost">Ver horários</a>
-    </div>
-  </div>
-</section>
+<main style="padding:4rem clamp(1.4rem,5vw,3rem) 6rem">
+  <div class="prog-grid">
 
+    <div class="prog-card reveal">
+      <div class="prog-num">01</div>
+      <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="16" r="6"/><circle cx="30" cy="16" r="6"/><path d="M6 38C6 30 12 26 18 26C22 26 26 28 28 32"/><path d="M28 32C30 28 36 26 42 38"/></svg>
+      <h3 class="prog-name">Eventos para Casais</h3>
+      <p class="prog-desc">Uma noite descontraída e gostosa para casais! Muita conversa boa, risadas e momentos especiais — tudo isso com um toque de sabedoria judaica que enriquece e fortalece o lar.</p>
+      <a href="https://wa.me/5511991969797?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Chai%20Menachem%20e%20gostaria%20de%20participar%20dos%20Eventos%20para%20Casais%20%F0%9F%98%8A" target="_blank" rel="noopener" class="participar-btn">Participar</a>
+    </div>
+
+    <div class="prog-card reveal" style="transition-delay:.1s">
+      <div class="prog-num">02</div>
+      <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 6C14 6 8 14 8 22C8 30 14 36 24 36C34 36 40 30 40 22C40 14 34 6 24 6Z"/><path d="M16 22L20 26L32 14" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 36L24 44M16 44L32 44"/></svg>
+      <h3 class="prog-name">Voz de Rachel</h3>
+      <p class="prog-desc">Encontro mensal exclusivo para mulheres. Lemos o Tehilim juntas, seguido de almoço especial e uma palestra inspiradora com uma convidada diferente a cada mês.</p>
+      <a href="https://wa.me/5511991969797?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Chai%20Menachem%20e%20gostaria%20de%20participar%20da%20Voz%20de%20Rachel%20%F0%9F%98%8A" target="_blank" rel="noopener" class="participar-btn">Participar</a>
+    </div>
+
+    <div class="prog-card reveal" style="transition-delay:.2s">
+      <div class="prog-num">03</div>
+      <svg class="prog-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="14" r="6"/><path d="M12 42C12 32 18 28 24 28C30 28 36 32 36 42"/><path d="M16 22L10 30M32 22L38 30"/><path d="M10 30L8 38M38 30L40 38"/></svg>
+      <h3 class="prog-name">Chai Teens</h3>
+      <p class="prog-desc">Programa especial para jovens que desejam explorar sua identidade judaica de forma divertida e significativa. Atividades, encontros e experiências que conectam os teenagers à comunidade.</p>
+      <a href="https://wa.me/5511946508880?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Chai%20Menachem%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20Chai%20Teens%20%F0%9F%98%8A" target="_blank" rel="noopener" class="participar-btn">Participar</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
 <footer class="site-footer">
-  <div class="f-grid">
-    <div class="f-brand">
-      <span class="brand-mark"><img src="logo-transparent.png" alt="Chai Menachem"></span>
-      <p class="f-blurb">Centro Chabad de Higienópolis — um lar de Torá, luz e calor humano, onde cada alma encontra o seu lar.</p>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Chai Menachem</div>
+      <div class="footer-tagline">Centro Chabad · Higienópolis, São Paulo.</div>
     </div>
     <div>
-      <h4>Navegação</h4>
-      <ul>
-        <li><a href="variante-clara.html">Início</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="programas.html">Programas</a></li>
-        <li><a href="festas.html">Festas</a></li>
-        <li><a href="rezas-horarios.html">Rezas &amp; Horários</a></li>
-        <li><a href="aulas.html">Aulas</a></li>
-        <li><a href="galeria.html">Galeria</a></li>
-      </ul>
+      <div class="footer-col-title">Contato</div>
+      <a href="https://wa.me/5511991969797" target="_blank" rel="noopener" class="footer-link">+55 (11) 99196-9797</a>
+      <a href="mailto:chaimenachemadm@gmail.com" class="footer-link">chaimenachemadm@gmail.com</a>
+      <span class="footer-link" style="cursor:default">R. Cons. Brotero, 932 — Higienópolis</span>
     </div>
-    <div class="f-contact">
-      <h4>Contato</h4>
-      <p>Higienópolis · São Paulo · SP</p>
-      <p>Fale conosco no WhatsApp para horários, eventos e como participar.</p>
-      <div class="f-social">
-        <a href="#" aria-label="WhatsApp"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg></a>
-        <a href="https://instagram.com/chaimenachem" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+    <div>
+      <div class="footer-col-title">Redes Sociais</div>
+      <div style="display:flex;gap:1rem;margin-top:.5rem">
+        <a href="https://wa.me/5511991969797" target="_blank" rel="noopener" title="WhatsApp" style="color:var(--ink-soft);transition:color .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--ink-soft)'"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="https://instagram.com/chaimenachem" target="_blank" rel="noopener" title="Instagram @chaimenachem" style="color:var(--ink-soft);transition:color .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--ink-soft)'"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
       </div>
     </div>
   </div>
-  <div class="f-bottom">
-    <span>© 2026 Chai Menachem · Centro Chabad Higienópolis</span>
-    <a href="variante-clara.html">Voltar ao início ↑</a>
+  <div class="footer-bottom">
+    <span>© 2026 Chai Menachem Centro Chabad</span>
+    <span>Higienópolis · São Paulo</span>
   </div>
 </footer>
 
-<script src="site.js" defer></script>
+<script>
+function openMenu(){document.getElementById('nav-overlay').classList.add('open');document.getElementById('hamburger').classList.add('open')}
+function closeMenu(){document.getElementById('nav-overlay').classList.remove('open');document.getElementById('hamburger').classList.remove('open')}
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>
+

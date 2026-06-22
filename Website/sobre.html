@@ -1,109 +1,178 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sobre — Chai Menachem</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sobre — Chai Menachem Centro Chabad</title>
+<link rel="icon" type="image/png" href="logo.png"/>
+<link rel="stylesheet" href="nova.css">
+<style>
+.sobre-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+@media(max-width:800px){.sobre-layout{grid-template-columns:1fr;gap:3rem}}
+.sobre-photo-wrap{border-radius:2px;overflow:hidden;aspect-ratio:4/3}
+.sobre-photo{width:100%;height:100%;object-fit:cover}
+.sobre-stats{display:flex;gap:2rem;margin-top:2.5rem;flex-wrap:wrap}
+.stat-box{display:flex;flex-direction:column;gap:.3rem}
+.stat-n{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--gold)}
+.stat-l{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.rabino-layout{display:flex;flex-direction:column;align-items:center;gap:2rem;text-align:center;max-width:600px;margin:0 auto}
+.rabino-circle{width:220px;height:220px;border-radius:50%;overflow:hidden;border:3px solid var(--line-2);margin:0 auto;flex-shrink:0}
+.rabino-circle img{width:100%;height:100%;object-fit:cover;object-position:15% 5%}
+.rabino-quote{margin-top:1.5rem;padding:1.2rem 1.5rem;border-left:3px solid var(--gold);font-size:.92rem;line-height:1.8;color:var(--ink-soft);font-style:italic;background:var(--bg-warm)}
+.espaco-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;gap:4px;background:var(--bg)}
+@media(max-width:700px){.espaco-grid{grid-template-columns:repeat(2,1fr)}}
+.espaco-item{position:relative;overflow:hidden;aspect-ratio:4/3}
+.espaco-item--tall{grid-row:span 2;aspect-ratio:auto}
+.espaco-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}
+.espaco-item:hover img{transform:scale(1.04)}
+.espaco-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,24,19,.6),transparent);display:flex;align-items:flex-end;padding:1rem;opacity:0;transition:opacity .3s}
+.espaco-item:hover .espaco-overlay{opacity:1}
+.espaco-overlay span{color:#fff;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
+</style>
 </head>
-<body class="page">
+<body>
 
-<svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs>
-<filter id="gold-soft" color-interpolation-filters="sRGB"><feFlood flood-color="#E1B877" flood-opacity="1" result="g"/><feComposite in="g" in2="SourceGraphic" operator="in"/></filter>
-</defs></svg>
+<!-- OVERLAY MENU -->
+<div class="nav-overlay" id="nav-overlay">
+  <button class="overlay-close" onclick="closeMenu()">✕</button>
+  <nav class="overlay-nav">
+    <a href="sobre.html">Sobre</a>
+    <a href="programas.html">Programas</a>
+    <a href="festas.html">Festas</a>
+    <a href="rezas.html">Rezas &amp; Horários</a>
+    <a href="aulas.html">Aulas</a>
+    <a href="espaco.html">Espaço</a>
+    <a href="eventos.html">Eventos</a>
+    <a href="kidush.html">Kidush</a>
+  </nav>
+  <p class="overlay-tag">Centro Chabad · Higienópolis · São Paulo</p>
+</div>
 
 <!-- HEADER -->
 <header class="page-nav">
-  <a class="brand" href="variante-clara.html" aria-label="Início — Chai Menachem"><span class="brand-mark"><img src="logo-transparent.png" alt="Chai Menachem"></span></a>
+  <a class="brand" href="index.html">
+    <span class="brand-mark"><img src="logo-transparent.png" alt="Chai Menachem"></span>
+  </a>
   <nav class="nav-links">
-    <a href="sobre.html" class="current">Sobre</a>
+    <a href="sobre.html" class="active">Sobre</a>
     <a href="programas.html">Programas</a>
     <a href="festas.html">Festas</a>
-    <a href="rezas-horarios.html">Rezas &amp; Horários</a>
+    <a href="rezas.html">Rezas &amp; Horários</a>
     <a href="aulas.html">Aulas</a>
-    <a href="galeria.html">Galeria</a>
+    <a href="kidush.html">Kidush</a>
   </nav>
   <div class="nav-right">
-    <a class="back-home" href="variante-clara.html">← Início</a>
-    <a class="ig-btn" href="https://instagram.com/chaimenachem" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+    <a href="https://wa.me/5511991969797" target="_blank" rel="noopener" class="btn btn-primary" style="padding:.6rem 1.1rem;font-size:.78rem">Fale Conosco</a>
+    <a href="https://instagram.com/chaimenachem" target="_blank" rel="noopener" class="ig-btn" title="@chaimenachem">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <button class="hamburger" id="hamburger" onclick="openMenu()"><span></span><span></span><span></span></button>
   </div>
 </header>
+<!-- BACK BUTTON -->
+<div style="max-width:var(--maxw);margin:0 auto;padding:.8rem clamp(1.4rem,5vw,3rem) 0">
+  <a href="index.html" onclick="if(history.length>1){event.preventDefault();history.back()}" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:500;letter-spacing:.04em;color:var(--muted);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Voltar
+  </a>
+</div>
 
-<!-- HERO -->
+<!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="container">
-    <div class="crumbs"><a class="back-home" href="variante-clara.html">← Voltar ao início</a></div>
-    <span class="eyebrow">Quem somos</span>
-    <h1>Sobre o <span class="accent">Chai&nbsp;Menachem</span></h1>
-    <p class="lede">Um Centro Chabad no coração de Higienópolis — uma casa aberta onde a tradição judaica encontra o calor de uma família, e onde cada pessoa é bem-vinda exatamente como é.</p>
+  <div class="eyebrow">
+    <span class="eyebrow-line"></span>
+    <span class="eyebrow-text">Quem somos</span>
+    <span class="eyebrow-line"></span>
   </div>
+  <h1>Sobre o<br><em>Chai Menachem</em></h1>
 </section>
 
-<!-- MISSÃO -->
-<section class="section">
-  <div class="container">
-    <span class="sub reveal">Nossa missão</span>
-    <p class="lede-big reveal r1">Levar luz, alegria e Torá a cada judeu de Higienópolis — sem julgamentos, com portas e corações abertos.</p>
-    <p class="reveal r2">O Chai Menachem nasceu de um princípio simples e profundo do movimento Chabad: cada alma é preciosa, e um pouco de luz afasta muita escuridão. Aqui, ninguém precisa de rótulos ou de um nível mínimo de observância — basta vir como é.</p>
-    <p class="reveal r3">Seja para uma reza, uma aula, uma refeição de Shabat ou simplesmente um café e uma conversa, nossa casa está sempre aberta. É um lugar para aprender, celebrar, encontrar apoio e fazer parte de algo maior.</p>
-  </div>
-</section>
+<main style="padding:5rem 0">
 
-<!-- VALEURS -->
-<section class="section">
-  <div class="container">
-    <span class="sub">No que acreditamos</span>
-    <h2>Três pilares</h2>
-    <div class="cards">
-      <div class="card reveal r1"><div class="ic">✦</div><h3>Acolhimento</h3><p>Cada pessoa é recebida como família, sem condições. A porta está sempre aberta — a sua também.</p></div>
-      <div class="card reveal r2"><div class="ic">📖</div><h3>Torá &amp; Sabedoria</h3><p>Aulas para todos os níveis, do primeiro passo ao estudo profundo — aplicadas à vida de hoje.</p></div>
-      <div class="card reveal r3"><div class="ic">🤝</div><h3>Comunidade</h3><p>Festas, refeições, momentos de alegria e de apoio. Aqui constrói-se um verdadeiro lar coletivo.</p></div>
+<!-- SOBRE -->
+<section style="padding:0 clamp(1.4rem,5vw,3rem);max-width:var(--maxw);margin:0 auto 6rem">
+  <div class="sobre-layout">
+    <div class="reveal">
+      <p class="sec-body" style="text-align:left;max-width:none">O Chai Menachem é um Centro Comunitário afiliado ao movimento Chabad mundial, localizado no coração de Higienópolis, São Paulo. Nossa missão é criar um espaço onde cada indivíduo — independentemente de seu nível de observância — possa vivenciar a riqueza, a profundidade e a alegria do Judaísmo.</p>
+      <div class="orn"><div class="orn-line"></div><span class="orn-star">✦</span><div class="orn-line"></div></div>
+      <p class="sec-body" style="text-align:left;max-width:none">Oferecemos uma vasta gama de programas educativos, eventos comunitários, serviços religiosos e recursos de aprendizado — tudo com o calor e a abertura que caracterizam a filosofia Chabad.</p>
+      <div class="sobre-stats">
+        <div class="stat-box"><span class="stat-n">∞</span><span class="stat-l">Portas Abertas</span></div>
+        <div class="stat-box"><span class="stat-n">SP</span><span class="stat-l">Higienópolis</span></div>
+        <div class="stat-box"><span class="stat-n">932</span><span class="stat-l">R. Cons. Brotero</span></div>
+      </div>
     </div>
-    <div class="cta-band reveal r4">
-      <a href="programas.html" class="btn btn-primary">Conheça nossos programas</a>
-      <a href="variante-clara.html" class="btn btn-ghost">Voltar ao início</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="f-grid">
-    <div class="f-brand">
-      <span class="brand-mark"><img src="logo-transparent.png" alt="Chai Menachem"></span>
-      <p class="f-blurb">Centro Chabad de Higienópolis — um lar de Torá, luz e calor humano, onde cada alma encontra o seu lar.</p>
-    </div>
-    <div>
-      <h4>Navegação</h4>
-      <ul>
-        <li><a href="variante-clara.html">Início</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="programas.html">Programas</a></li>
-        <li><a href="festas.html">Festas</a></li>
-        <li><a href="rezas-horarios.html">Rezas &amp; Horários</a></li>
-        <li><a href="aulas.html">Aulas</a></li>
-        <li><a href="galeria.html">Galeria</a></li>
-      </ul>
-    </div>
-    <div class="f-contact">
-      <h4>Contato</h4>
-      <p>Higienópolis · São Paulo · SP</p>
-      <p>Fale conosco no WhatsApp para horários, eventos e como participar.</p>
-      <div class="f-social">
-        <a href="#" aria-label="WhatsApp"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg></a>
-        <a href="https://instagram.com/chaimenachem" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+    <div class="sobre-visual reveal" style="transition-delay:.15s">
+      <div class="sobre-photo-wrap">
+        <img src="WhatsApp Image 2026-05-19 at 10.27.21 (3).jpeg" alt="Chai Menachem" class="sobre-photo"/>
       </div>
     </div>
   </div>
-  <div class="f-bottom">
-    <span>© 2026 Chai Menachem · Centro Chabad Higienópolis</span>
-    <a href="variante-clara.html">Voltar ao início ↑</a>
+</section>
+
+<!-- RABINO -->
+<section style="background:var(--bg-warm);padding:5rem clamp(1.4rem,5vw,3rem)">
+  <div style="max-width:var(--maxw);margin:0 auto">
+    <div class="rabino-layout reveal">
+      <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Liderança</span></div>
+      <div class="rabino-circle"><img src="rabino foto.jpg" alt="Rabino Belinow" style="width:100%;height:100%;object-fit:cover;object-position:0% 5%"/></div>
+      <h2 class="sec-title">Rabino<br><em>Belinow</em></h2>
+      <div class="orn"><div class="orn-line"></div><span class="orn-star">✦</span><div class="orn-line"></div></div>
+      <p class="sec-body">O Rabino Belinow nasceu em Milão, em uma família ligada aos valores da Torá e da tradição judaica. Desde jovem, dedicou-se aos estudos judaicos e à formação rabínica, desenvolvendo uma forte paixão pelo trabalho comunitário e pela missão de aproximar judeus de suas raízes.</p>
+      <p class="sec-body" style="margin-top:.8rem">Posteriormente, casou-se com Chanie nos Estados Unidos, e juntos decidiram dedicar suas vidas à shlichut do movimento Chabad-Lubavitch.</p>
+      <blockquote class="rabino-quote" style="text-align:left">Com esse propósito, vieram para o Brasil, estabelecendo-se em São Paulo, onde passaram a atuar no fortalecimento da vida judaica da comunidade.</blockquote>
+      <a href="https://wa.me/5511980808880" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:1.5rem;display:inline-flex">Fale com o Rabino</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA ESPAÇO -->
+<section style="padding:0">
+  <div class="espaco-grid">
+    <div class="espaco-item"><img src="WhatsApp Image 2026-05-19 at 10.27.20 (1).jpeg" alt="Salão de Rezas Masculino"/><div class="espaco-overlay"><span>Salão de Rezas Masculino</span></div></div>
+    <div class="espaco-item"><img src="WhatsApp Image 2026-05-19 at 10.27.20 (2).jpeg" alt="Salão de Rezas Feminino"/><div class="espaco-overlay"><span>Salão de Rezas Feminino</span></div></div>
+    <div class="espaco-item espaco-item--tall"><img src="WhatsApp Image 2026-05-19 at 10.27.21 (4).jpeg" alt="O Rebe"/><div class="espaco-overlay"><span>O Rebe — O Nosso Líder</span></div></div>
+    <div class="espaco-item"><img src="WhatsApp Image 2026-05-19 at 10.27.20 (3).jpeg" alt="Netilat Yadaim"/><div class="espaco-overlay"><span>Netilat Yadaim</span></div></div>
+    <div class="espaco-item"><img src="WhatsApp Image 2026-05-19 at 10.27.21 (1).jpeg" alt="Entrada"/><div class="espaco-overlay"><span>Entrada</span></div></div>
+    <div class="espaco-item"><img src="WhatsApp Image 2026-05-19 at 10.27.20.jpeg" alt="Bimá"/><div class="espaco-overlay"><span>Bimá</span></div></div>
+    <div class="espaco-item"><img src="WhatsApp Image 2026-05-19 at 10.27.21 (2).jpeg" alt="Sidurim"/><div class="espaco-overlay"><span>Sidurim</span></div></div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Chai Menachem</div>
+      <div class="footer-tagline">Centro Chabad · Higienópolis, São Paulo.</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Contato</div>
+      <a href="https://wa.me/5511991969797" target="_blank" rel="noopener" class="footer-link">+55 (11) 99196-9797</a>
+      <a href="mailto:chaimenachemadm@gmail.com" class="footer-link">chaimenachemadm@gmail.com</a>
+      <span class="footer-link" style="cursor:default">R. Cons. Brotero, 932 — Higienópolis</span>
+    </div>
+    <div>
+      <div class="footer-col-title">Redes Sociais</div>
+      <div style="display:flex;gap:1rem;margin-top:.5rem">
+        <a href="https://wa.me/5511991969797" target="_blank" rel="noopener" title="WhatsApp" style="color:var(--ink-soft);transition:color .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--ink-soft)'"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="https://instagram.com/chaimenachem" target="_blank" rel="noopener" title="Instagram @chaimenachem" style="color:var(--ink-soft);transition:color .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--ink-soft)'"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Chai Menachem Centro Chabad</span>
+    <span>Higienópolis · São Paulo</span>
   </div>
 </footer>
 
-<script src="site.js" defer></script>
+<script>
+function openMenu(){document.getElementById('nav-overlay').classList.add('open');document.getElementById('hamburger').classList.add('open')}
+function closeMenu(){document.getElementById('nav-overlay').classList.remove('open');document.getElementById('hamburger').classList.remove('open')}
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>
+

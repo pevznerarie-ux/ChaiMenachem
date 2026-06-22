@@ -2,22 +2,22 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Aulas — Chai Menachem</title>
+<title>Rezas &amp; Horários — Chai Menachem</title>
 <link rel="icon" type="image/png" href="logo.png"/>
 <link rel="stylesheet" href="nova.css">
 <style>
-.aulas-table{border:1px solid var(--line);max-width:860px;margin:0 auto}
-.aula-row{display:grid;grid-template-columns:1fr 1fr 140px;align-items:center;gap:1rem;padding:.95rem 1.4rem;border-bottom:1px solid var(--line);transition:background .2s}
-.aula-row:last-child{border-bottom:none}
-.aula-row:hover{background:var(--bg-warm)}
-.aula-row--sh{background:rgba(176,130,58,.04)}
-.aula-row--sh:hover{background:rgba(176,130,58,.09)}
-.aula-nome{font-size:.88rem;color:var(--ink);line-height:1.4;font-weight:500}
-.aula-prof{font-size:.78rem;color:var(--muted);font-style:italic}
-.aula-pub{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;text-align:right;color:var(--muted)}
-.aula-pub--h{color:#4a7fc1}
-.aula-pub--m{color:#c17a9e}
-@media(max-width:680px){.aula-row{grid-template-columns:1fr;gap:.25rem}.aula-pub{display:none}}
+.rezas-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;max-width:var(--maxw);margin:0 auto;padding:5rem clamp(1.4rem,5vw,3rem)}
+@media(max-width:800px){.rezas-layout{grid-template-columns:1fr;gap:3rem}}
+.svc-label{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem;margin-top:2rem}
+.svc-list{border:1px solid var(--line)}
+.svc-row{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.2rem;border-bottom:1px solid var(--line);gap:1rem}
+.svc-row:last-child{border-bottom:none}
+.svc-left{display:flex;align-items:center;gap:.8rem}
+.svc-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.svc-name{font-size:.88rem;color:var(--ink-soft)}
+.svc-time{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--gold);white-space:nowrap}
+.big-quote{font-family:'DM Serif Display',serif;font-size:5rem;color:var(--gold);line-height:.8;opacity:.3}
+.blockquote-text{font-family:'DM Serif Display',serif;font-size:1.3rem;font-style:italic;line-height:1.65;color:var(--ink);max-width:32ch}
 </style>
 </head>
 <body>
@@ -47,8 +47,8 @@
     <a href="sobre.html">Sobre</a>
     <a href="programas.html">Programas</a>
     <a href="festas.html">Festas</a>
-    <a href="rezas.html">Rezas &amp; Horários</a>
-    <a href="aulas.html" class="active">Aulas</a>
+    <a href="rezas.html" class="active">Rezas &amp; Horários</a>
+    <a href="aulas.html">Aulas</a>
     <a href="kidush.html">Kidush</a>
   </nav>
   <div class="nav-right">
@@ -71,39 +71,49 @@
 <section class="page-hero">
   <div class="eyebrow">
     <span class="eyebrow-line"></span>
-    <span class="eyebrow-text">Conhecimento</span>
+    <span class="eyebrow-text">Serviços Religiosos</span>
     <span class="eyebrow-line"></span>
   </div>
-  <h1>Programação<br><em>de Aulas</em></h1>
-  <p style="font-size:1rem;color:var(--ink-soft);max-width:44ch;margin:0 auto;line-height:1.7">Aulas semanais para todos os níveis, presenciais e abertas à comunidade.</p>
+  <h1>Rezas &amp;<br><em>Horários</em></h1>
 </section>
 
-<main style="padding:4rem clamp(1.4rem,5vw,3rem) 6rem">
-
-  <div class="aulas-table reveal">
-    <div class="aula-row"><span class="aula-nome">Fatos Fundamentais do Judaísmo</span><span class="aula-prof">Rabino Mendi Simonowits</span><span class="aula-pub">Homens e Mulheres</span></div>
-    <div class="aula-row"><span class="aula-nome">O mapa de um bom relacionamento segundo a Cabala</span><span class="aula-prof">Chanie Belinow</span><span class="aula-pub aula-pub--m">Mulheres</span></div>
-    <div class="aula-row"><span class="aula-nome">Aula de Talmud</span><span class="aula-prof">Joe Faintuch</span><span class="aula-pub">Homens e Mulheres</span></div>
-    <div class="aula-row"><span class="aula-nome">Mashiach</span><span class="aula-prof">Chanie Belinow</span><span class="aula-pub aula-pub--m">Mulheres</span></div>
-    <div class="aula-row"><span class="aula-nome">Curso de Cabala para Vida Real</span><span class="aula-prof">Rabino Mendi Simonowits</span><span class="aula-pub">Homens e Mulheres</span></div>
-    <div class="aula-row"><span class="aula-nome">Aula de Tanya</span><span class="aula-prof">Rafa Susskind</span><span class="aula-pub">Homens e Mulheres</span></div>
-    <div class="aula-row aula-row--sh"><span class="aula-nome">Aula de Chassidut</span><span class="aula-prof">Rabino Mendi Simonowits</span><span class="aula-pub aula-pub--h">Homens</span></div>
-    <div class="aula-row aula-row--sh"><span class="aula-nome">Aula sobre Parasha</span><span class="aula-prof">Rabino Belinow</span><span class="aula-pub aula-pub--h">Homens</span></div>
-    <div class="aula-row aula-row--sh"><span class="aula-nome">Aula sobre Parasha</span><span class="aula-prof">Chanie Belinow / Chana Labkowski</span><span class="aula-pub aula-pub--m">Mulheres</span></div>
+<!-- CONTENT -->
+<div class="rezas-layout">
+  <div class="reveal">
+    <span class="big-quote">"</span>
+    <blockquote class="blockquote-text">O lugar mais elevado onde um ser humano pode estar é quando ele está em plena conexão com sua essência judaica — e esse lugar está sempre disponível para você, aqui e agora.</blockquote>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:1.5rem;line-height:1.7">Nossos serviços religiosos são abertos a toda a comunidade judaica. Venha participar em um ambiente caloroso e acolhedor.</p>
   </div>
 
-  <div style="max-width:860px;margin:2.5rem auto 0;padding:1.8rem 2rem;background:var(--bg-warm);border:1px solid var(--line-2);text-align:center" class="reveal">
-    <p style="font-size:.9rem;color:var(--ink-soft);line-height:1.9;margin-bottom:1.5rem">Para mais detalhes sobre dias e horários, entre em contato:</p>
-    <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center">
-      <a href="https://wa.me/5511991969797" target="_blank" rel="noopener" class="btn btn-primary">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        +55 (11) 99196-9797
-      </a>
-      <a href="mailto:chaimenachemadm@gmail.com" class="btn btn-ghost">chaimenachemadm@gmail.com</a>
+  <div class="reveal" style="transition-delay:.15s">
+    <div class="svc-label">Shacharit</div>
+    <div class="svc-list">
+      <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Domingo e feriados</span></div><span class="svc-time">8h</span></div>
+      <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Segunda a sexta</span></div><span class="svc-time">6h30</span></div>
+      <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Segunda e quinta</span></div><span class="svc-time">7h45</span></div>
+      <div class="svc-row" style="background:var(--bg-warm)"><div class="svc-left"><div class="svc-dot" style="background:var(--gold-2)"></div><span class="svc-name" style="color:var(--gold)">☕ Café da manhã após Shacharit</span></div></div>
+    </div>
+
+    <div class="svc-label">Minchá e Arvit</div>
+    <div class="svc-list">
+      <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Domingo a quinta</span></div><span class="svc-time">17h25</span></div>
+    </div>
+
+    <div class="svc-label">Shabat</div>
+    <div class="svc-list">
+      <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Acendimento de velas</span></div><span class="svc-time" style="font-size:.78rem">Ver calendário</span></div>
+      <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Cabalat Shabat — seguido de Kidush</span></div><span class="svc-time">18h30</span></div>
+      <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Tehilim</span></div><span class="svc-time">9h</span></div>
+      <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Shacharit — seguido de Kidush</span></div><span class="svc-time">9h30</span></div>
+      <div class="svc-row"><div class="svc-left"><div class="svc-dot"></div><span class="svc-name">Minchá + Seudat Shlishit</span></div><span class="svc-time" style="font-size:.75rem;text-align:right">1h05 antes<br>do pôr do sol</span></div>
+    </div>
+
+    <div style="margin-top:2.5rem;padding:1.5rem;background:var(--bg-warm);border:1px solid var(--line-2)">
+      <p style="font-size:.85rem;color:var(--ink-soft);line-height:1.8;margin-bottom:1rem">Para mais informações ou confirmação de horários:</p>
+      <a href="https://wa.me/5511991969797" target="_blank" rel="noopener" class="btn btn-primary">Fale Conosco</a>
     </div>
   </div>
-
-</main>
+</div>
 
 <!-- FOOTER -->
 <footer class="site-footer">
