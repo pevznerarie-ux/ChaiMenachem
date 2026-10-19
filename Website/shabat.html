@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shabat em Casa · Chai Menachem</title>
+<meta name="description" content="Shabat em Casa — Chalot, velas e Kidush entregues com carinho a quem não pode se deslocar sozinho. Um projeto da Chai Menachem, Higienópolis.">
+<meta name="theme-color" content="#101b2c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Frank+Ruhl+Libre:wght@500;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#15243a; --night:#0b1422; --night2:#101b2c;
+    --cream:#f5efe3; --paper:#fffdf8;
+    --gold:#b1873f; --gold-d:#8f6a2c; --gold-l:#e9c987; --gold-xl:#f6e2b4;
+    --ink2:#44515f; --line:rgba(21,36,58,0.10);
+    --ease:cubic-bezier(.16,.84,.44,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;padding:0;}
+  html,body{overflow-x:hidden;}
+  @supports (overflow:clip){html,body{overflow-x:clip;}}
+  body{background:var(--cream);font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--navy);-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  button,input,select,textarea{font:inherit;color:inherit;}
+  .serif{font-family:'Cormorant Garamond',serif;}
+  .heb{font-family:'Frank Ruhl Libre','Cormorant Garamond',serif;direction:rtl;}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 40px;}
+  .eyebrow{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-d);margin-bottom:16px;}
+  .eyebrow::before{content:"";width:30px;height:1.5px;background:var(--gold);}
+  .eyebrow.center{justify-content:center;}
+  .eyebrow.center::after{content:"";width:30px;height:1.5px;background:var(--gold);}
+  .on-dark .eyebrow{color:var(--gold-l);}
+  .on-dark .eyebrow::before,.on-dark .eyebrow::after{background:var(--gold-l);}
+  h2.title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:52px;line-height:1.02;letter-spacing:-.01em;margin:0 0 20px;}
+  h2.title em{font-style:italic;color:var(--gold-d);}
+  .on-dark h2.title{color:var(--paper);}
+  .on-dark h2.title em{color:var(--gold-l);}
+  .lead{font-size:18px;line-height:1.65;color:var(--ink2);max-width:60ch;margin:0;}
+  .on-dark .lead{color:rgba(245,239,227,.75);}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;font-size:15.5px;font-weight:700;letter-spacing:.02em;padding:16px 30px;border-radius:999px;border:none;cursor:pointer;position:relative;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s;}
+  .btn:focus-visible{outline:3px solid var(--gold-l);outline-offset:3px;}
+  .btn-gold{background:linear-gradient(135deg,#e9c987,#b1873f 60%,#8f6a2c);color:var(--night);box-shadow:0 14px 34px -14px rgba(233,201,135,.7);}
+  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 22px 44px -16px rgba(233,201,135,.85);}
+  .btn-gold::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);animation:sheen 3.6s var(--ease) infinite 1.5s;}
+  .btn-ghost{background:transparent;color:var(--paper);border:1.5px solid rgba(233,201,135,.45);}
+  .btn-ghost:hover{border-color:var(--gold-l);background:rgba(233,201,135,.08);transform:translateY(-3px);}
+  .btn-navy{background:var(--navy);color:var(--paper);}
+  .btn-navy:hover{background:#0f1b2d;transform:translateY(-3px);}
+  @keyframes sheen{0%{transform:translateX(-120%);}55%,100%{transform:translateX(120%);}}
+
+  /* ============ HEADER ============ */
+  header.top{position:fixed;inset:0 0 auto 0;z-index:60;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent;}
+  header.top.scrolled{background:rgba(11,20,34,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:rgba(233,201,135,.14);}
+  header.top .bar{max-width:1240px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+  /* logo-transparent.png: 2048² avec le logo dans la zone (533,696)-(1531,1218) → recadrage */
+  .logo-crop{display:block;overflow:hidden;height:var(--h);width:calc(var(--h) * 998 / 522);}
+  .logo-crop img{max-width:none;height:calc(var(--h) * 2048 / 522);width:auto;margin:calc(var(--h) * -696 / 522) 0 0 calc(var(--h) * -533 / 522);}
+  header.top nav{display:flex;gap:26px;font-size:14.5px;font-weight:500;color:rgba(245,239,227,.82);}
+  header.top nav a{padding:4px 0;border-bottom:1.5px solid transparent;transition:color .3s,border-color .3s;}
+  header.top nav a:hover{color:var(--paper);border-color:var(--gold-l);}
+  header.top .cta{font-size:14px;font-weight:700;color:var(--night);background:var(--gold-l);padding:10px 20px;border-radius:999px;transition:background .3s;}
+  header.top .cta:hover{background:var(--gold-xl);}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;min-height:100vh;min-height:100svh;background:radial-gradient(120% 80% at 50% 110%,#2a2416 0%,#141a26 38%,var(--night) 70%);color:var(--cream);overflow:hidden;display:flex;align-items:center;}
+  #sky{position:absolute;inset:0;width:100%;height:100%;}
+  .hero .glow{position:absolute;left:50%;bottom:-18vh;width:110vw;height:70vh;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(255,190,90,.30),rgba(255,170,60,.08) 60%,transparent);filter:blur(10px);animation:breathe 5s ease-in-out infinite;pointer-events:none;}
+  @keyframes breathe{0%,100%{opacity:.75;transform:translateX(-50%) scale(1);}50%{opacity:1;transform:translateX(-50%) scale(1.06);}}
+  .hero-inner{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;padding:130px 40px 90px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:86px;line-height:.95;letter-spacing:-.015em;margin:0 0 26px;color:var(--paper);}
+  .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em;}
+  .hero h1 .ln>span{display:inline-block;transform:translateY(110%);animation:lineUp 1.2s var(--ease) forwards;}
+  .hero h1 .ln:nth-child(2)>span{animation-delay:.18s;}
+  .hero h1 .ln:nth-child(3)>span{animation-delay:.36s;}
+  @keyframes lineUp{to{transform:translateY(0);}}
+  .gold-text{font-style:italic;background:linear-gradient(100deg,#b1873f 0%,#f6e2b4 25%,#e9c987 45%,#fff3d1 55%,#b1873f 80%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite;}
+  @keyframes shimmer{0%{background-position:100% 0;}100%{background-position:-150% 0;}}
+  .hero .heb-big{text-align:left;font-size:34px;color:var(--gold-l);margin-bottom:18px;opacity:0;animation:fadeUp 1s var(--ease) .1s forwards;text-shadow:0 0 24px rgba(233,201,135,.45);}
+  .hero p.sub{font-size:20px;line-height:1.6;color:rgba(245,239,227,.78);max-width:40ch;margin:0 0 34px;opacity:0;animation:fadeUp 1s var(--ease) .6s forwards;}
+  .hero .ctas{display:flex;flex-wrap:wrap;gap:14px;opacity:0;animation:fadeUp 1s var(--ease) .8s forwards;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+
+  /* countdown */
+  .countdown{margin-top:44px;display:inline-flex;align-items:center;gap:22px;padding:16px 22px;border-radius:16px;background:rgba(255,253,248,.05);border:1px solid rgba(233,201,135,.22);backdrop-filter:blur(6px);opacity:0;animation:fadeUp 1s var(--ease) 1s forwards;flex-wrap:wrap;}
+  .countdown .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,227,.6);line-height:1.5;}
+  .countdown .lbl b{display:block;color:var(--gold-l);font-size:14px;letter-spacing:.04em;text-transform:none;font-weight:600;}
+  .cd-units{display:flex;gap:10px;}
+  .cd-u{min-width:58px;text-align:center;}
+  .cd-u .n{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;line-height:1;color:var(--paper);display:block;font-variant-numeric:tabular-nums;}
+  .cd-u .t{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,227,.5);}
+  .cd-live{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--gold-l);}
+
+  /* candles */
+  .candles{position:relative;height:600px;padding-bottom:150px;display:flex;align-items:flex-end;justify-content:center;gap:70px;perspective:900px;}
+  .candle{position:relative;width:62px;cursor:pointer;transform-style:preserve-3d;transition:transform .6s var(--ease);opacity:0;animation:fadeUp 1.2s var(--ease) forwards;}
+  .candle:nth-child(1){animation-delay:.4s;}
+  .candle:nth-child(2){animation-delay:.6s;}
+  .candle .wax{height:250px;border-radius:8px 8px 4px 4px;background:linear-gradient(90deg,#d9cdb5 0%,#fffaf0 30%,#fffdf8 45%,#e8dcc4 80%,#cbbd9f 100%);box-shadow:inset 0 10px 18px -8px rgba(255,190,100,.55),0 30px 50px -20px rgba(0,0,0,.6);position:relative;}
+  .candle .wax::before{content:"";position:absolute;top:-6px;left:0;right:0;height:14px;border-radius:50%;background:radial-gradient(ellipse at 50% 40%,#fff6e0,#e9dcc0 70%);}
+  .candle .drip{position:absolute;top:2px;left:12px;width:9px;height:34px;border-radius:0 0 6px 6px;background:linear-gradient(90deg,#efe4cd,#fffdf8);}
+  .candle .drip.d2{left:38px;height:22px;width:7px;}
+  .candle .wick{position:absolute;left:50%;top:-20px;width:3px;height:18px;margin-left:-1.5px;background:linear-gradient(#2a1d10,#5a4128);border-radius:2px;}
+  .holder{width:118px;height:30px;margin:0 -28px;border-radius:50%/60%;background:linear-gradient(180deg,#f6e2b4,#b1873f 45%,#6d5022);box-shadow:0 18px 30px -10px rgba(0,0,0,.6),inset 0 2px 0 rgba(255,255,255,.5);position:relative;top:-6px;}
+  .holder::after{content:"";position:absolute;left:50%;top:22px;width:30px;height:120px;margin-left:-15px;background:linear-gradient(90deg,#6d5022,#e9c987 45%,#8f6a2c);border-radius:4px;}
+  .holder .base{position:absolute;left:50%;top:136px;width:130px;height:22px;margin-left:-65px;border-radius:50%;background:linear-gradient(180deg,#f6e2b4,#b1873f 50%,#5b431c);box-shadow:0 20px 30px -12px rgba(0,0,0,.7);}
+  .flame-wrap{position:absolute;left:50%;top:-104px;width:60px;height:100px;margin-left:-30px;pointer-events:none;transform:scale(0);transform-origin:50% 95%;transition:transform 1s var(--ease);}
+  .candle.lit .flame-wrap{transform:scale(1);}
+  .flame{position:absolute;left:50%;bottom:4px;width:26px;height:70px;margin-left:-13px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:radial-gradient(ellipse at 50% 85%,#fff 0%,#fff6c8 18%,#ffd36b 38%,#ff9a2e 62%,rgba(255,80,20,.0) 78%);filter:blur(.6px);transform-origin:50% 90%;animation:flicker 2.6s ease-in-out infinite;mix-blend-mode:screen;}
+  .flame.inner{width:12px;height:30px;margin-left:-6px;bottom:6px;background:radial-gradient(ellipse at 50% 80%,#bfe1ff 0%,rgba(140,190,255,.7) 35%,transparent 70%);animation-duration:1.9s;}
+  .halo{position:absolute;left:50%;top:-70px;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,200,110,.42),rgba(255,170,70,.12) 55%,transparent);opacity:0;transition:opacity 1.4s;animation:haloPulse 3s ease-in-out infinite;pointer-events:none;}
+  .candle.lit .halo{opacity:1;}
+  @keyframes flicker{0%,100%{transform:rotate(-2deg) scaleY(1) scaleX(1);}20%{transform:rotate(3deg) scaleY(1.08) scaleX(.94);}40%{transform:rotate(-3deg) scaleY(.95) scaleX(1.04);}60%{transform:rotate(2deg) scaleY(1.05) scaleX(.97);}80%{transform:rotate(-1deg) scaleY(.98) scaleX(1.02);}}
+  @keyframes haloPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
+  .candle-hint{position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,227,.5);transition:opacity .6s;}
+  .scroll-cue{position:absolute;left:50%;bottom:26px;z-index:3;width:26px;height:42px;margin-left:-13px;border:1.5px solid rgba(233,201,135,.5);border-radius:14px;}
+  .scroll-cue::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--gold-l);animation:cue 1.8s ease-in-out infinite;}
+  @keyframes cue{0%{opacity:0;transform:translateY(0);}30%{opacity:1;}100%{opacity:0;transform:translateY(14px);}}
+
+  /* ============ MARQUEE ============ */
+  .marquee{background:var(--navy);color:var(--gold-l);overflow:hidden;border-top:1px solid rgba(233,201,135,.18);border-bottom:1px solid rgba(233,201,135,.18);}
+  .marquee .track{display:flex;width:max-content;animation:marq 38s linear infinite;}
+  .marquee span{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;padding:18px 26px;white-space:nowrap;display:flex;align-items:center;gap:52px;}
+  .marquee span::after{content:"✦";font-style:normal;font-size:14px;color:var(--gold);}
+  @keyframes marq{to{transform:translateX(-50%);}}
+
+  /* ============ REVEAL ============ */
+  [data-reveal]{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease);}
+  [data-reveal="left"]{transform:translateX(-40px);}
+  [data-reveal="right"]{transform:translateX(40px);}
+  [data-reveal="zoom"]{transform:scale(.92);}
+  [data-reveal].in{opacity:1;transform:none;}
+
+  section.blk{padding:110px 0;}
+
+  /* ============ POUR QUI ============ */
+  .who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px;}
+  .tilt{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:30px 28px;position:relative;overflow:hidden;transform-style:preserve-3d;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .4s;will-change:transform;}
+  .tilt:hover{border-color:rgba(177,135,63,.55);box-shadow:0 30px 60px -32px rgba(21,36,58,.45);}
+  .tilt::before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(233,201,135,.28),transparent 45%);opacity:0;transition:opacity .4s;pointer-events:none;}
+  .tilt:hover::before{opacity:1;}
+  .tilt .ic{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;font-size:28px;background:linear-gradient(135deg,#fbf3e1,#f1e2c0);margin-bottom:18px;transform:translateZ(30px);box-shadow:0 10px 20px -12px rgba(143,106,44,.6);}
+  .tilt h3{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;margin:0 0 8px;transform:translateZ(20px);}
+  .tilt p{font-size:15.5px;line-height:1.6;color:var(--ink2);margin:0;transform:translateZ(10px);}
+
+  /* ============ KIT / CHALLAH ============ */
+  .kit{background:linear-gradient(180deg,var(--cream),#efe5d2);}
+  .kit-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .challah-stage{position:relative;aspect-ratio:1/1;max-width:520px;margin:0 auto;width:100%;}
+  .challah-stage .board{position:absolute;inset:16% 2% 14%;border-radius:50%;background:radial-gradient(ellipse at 50% 40%,#fffdf8,#f1e6cf 70%,#e0cfae);box-shadow:0 40px 70px -40px rgba(21,36,58,.55);}
+  .challah-stage .cover-ring{position:absolute;inset:0;border-radius:50%;border:1.5px dashed rgba(177,135,63,.45);animation:spin 40s linear infinite;}
+  .challah-stage .cover-ring.r2{inset:7%;border-style:solid;border-color:rgba(177,135,63,.18);animation-duration:60s;animation-direction:reverse;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  #challah{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+  #challah .lobe{stroke:#8f5a1c;stroke-width:2.2;fill:url(#crust);fill-opacity:0;stroke-dasharray:1;stroke-dashoffset:1;transition:fill-opacity 1s ease;}
+  #challah .seed{opacity:0;transition:opacity .5s ease,transform .5s var(--ease);transform-box:fill-box;transform-origin:center;transform:scale(0);}
+  #challah.baked .lobe{fill-opacity:1;}
+  #challah.baked .seed{opacity:1;transform:scale(1);}
+  #challah .steam{fill:none;stroke:rgba(143,106,44,.35);stroke-width:2.4;stroke-linecap:round;opacity:0;}
+  #challah.baked .steam{animation:steam 3.2s ease-in-out infinite;}
+  #challah.baked .steam.s2{animation-delay:1s;}
+  #challah.baked .steam.s3{animation-delay:2s;}
+  @keyframes steam{0%{opacity:0;transform:translateY(10px);}40%{opacity:1;}100%{opacity:0;transform:translateY(-30px);}}
+  .kit-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:34px;}
+  .kit-item{display:flex;gap:14px;align-items:flex-start;background:rgba(255,253,248,.75);border:1px solid var(--line);border-radius:14px;padding:16px 16px;transition:transform .4s var(--ease),border-color .3s;}
+  .kit-item:hover{transform:translateY(-4px);border-color:rgba(177,135,63,.5);}
+  .kit-item .e{font-size:26px;line-height:1;flex:none;}
+  .kit-item b{display:block;font-size:15.5px;margin-bottom:3px;}
+  .kit-item small{font-size:13.5px;line-height:1.45;color:var(--ink2);}
+
+  /* ============ HAFRASHAT CHALLAH ============ */
+  .mitzva{background:var(--night);color:var(--cream);position:relative;overflow:hidden;}
+  .mitzva .orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;pointer-events:none;}
+  .mitzva .orb.o1{width:420px;height:420px;background:#8f6a2c;top:-120px;right:-80px;animation:drift 14s ease-in-out infinite;}
+  .mitzva .orb.o2{width:360px;height:360px;background:#2c4a78;bottom:-140px;left:-100px;animation:drift 18s ease-in-out infinite reverse;}
+  @keyframes drift{0%,100%{transform:translate(0,0);}50%{transform:translate(40px,30px);}}
+  .mitzva-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .blessing{position:relative;border-radius:22px;padding:40px 36px;background:linear-gradient(160deg,rgba(255,253,248,.07),rgba(255,253,248,.02));border:1px solid rgba(233,201,135,.28);box-shadow:0 40px 80px -40px rgba(0,0,0,.8);}
+  .blessing::before{content:"";position:absolute;inset:-1px;border-radius:22px;padding:1px;background:conic-gradient(from var(--ang,0deg),transparent 0 70%,#e9c987 80%,transparent 90%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rot 6s linear infinite;pointer-events:none;}
+  @property --ang{syntax:'<angle>';inherits:false;initial-value:0deg;}
+  @keyframes rot{to{--ang:360deg;}}
+  .blessing .tabs{display:flex;gap:8px;margin-bottom:26px;flex-wrap:wrap;}
+  .blessing .tab{padding:8px 16px;border-radius:999px;border:1px solid rgba(233,201,135,.3);background:transparent;color:rgba(245,239,227,.75);font-size:13.5px;font-weight:600;cursor:pointer;transition:all .3s;}
+  .blessing .tab[aria-selected="true"]{background:var(--gold-l);color:var(--night);border-color:var(--gold-l);}
+  .blessing .heb{font-size:30px;line-height:1.7;color:var(--gold-xl);text-align:right;margin:0 0 20px;min-height:3.4em;}
+  .blessing .heb .w{display:inline-block;opacity:0;transform:translateY(10px);filter:blur(4px);transition:opacity .6s,transform .6s var(--ease),filter .6s;}
+  .blessing .heb .w.on{opacity:1;transform:none;filter:none;}
+  .blessing .translit{font-style:italic;font-family:'Cormorant Garamond',serif;font-size:20px;line-height:1.5;color:rgba(245,239,227,.85);margin:0 0 10px;}
+  .blessing .trad{font-size:15px;line-height:1.6;color:rgba(245,239,227,.6);margin:0;}
+  .steps-m{display:flex;flex-direction:column;gap:14px;margin-top:30px;}
+  .step-m{display:flex;gap:16px;align-items:flex-start;padding:16px 18px;border-radius:14px;background:rgba(255,253,248,.04);border:1px solid rgba(233,201,135,.14);}
+  .step-m .num{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;color:var(--night);background:var(--gold-l);}
+  .step-m p{margin:0;font-size:15.5px;line-height:1.55;color:rgba(245,239,227,.82);}
+  .step-m b{color:var(--paper);}
+
+  /* ============ TIMELINE ============ */
+  .tl{position:relative;margin-top:70px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
+  .tl .rail{position:absolute;left:6%;right:6%;top:38px;height:3px;background:rgba(21,36,58,.10);border-radius:3px;}
+  .tl .rail i{position:absolute;inset:0;width:0;background:linear-gradient(90deg,var(--gold-l),var(--gold));border-radius:3px;transition:width 2.4s var(--ease);}
+  .tl .van{position:absolute;top:-24px;left:0;font-size:30px;transition:left 2.4s var(--ease);transform:translateX(-50%) scaleX(-1);}
+  .tl.go .rail i{width:100%;}
+  .tl.go .van{left:100%;}
+  .tl-step{text-align:center;position:relative;}
+  .tl-step .dot{width:78px;height:78px;margin:0 auto 22px;border-radius:50%;background:var(--paper);border:2px solid rgba(177,135,63,.35);display:grid;place-items:center;font-size:30px;position:relative;z-index:1;transition:transform .6s var(--ease),border-color .6s,box-shadow .6s;}
+  .tl.go .tl-step .dot{border-color:var(--gold);box-shadow:0 0 0 8px rgba(233,201,135,.22);}
+  .tl-step:hover .dot{transform:translateY(-6px) rotate(-6deg);}
+  .tl-step .k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d);font-weight:700;margin-bottom:6px;}
+  .tl-step h3{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;margin:0 0 8px;}
+  .tl-step p{font-size:15px;line-height:1.55;color:var(--ink2);margin:0 auto;max-width:26ch;}
+
+  /* ============ FORM ============ */
+  .form-sec{background:var(--navy);color:var(--cream);position:relative;overflow:hidden;}
+  .form-sec::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 85% 0%,rgba(233,201,135,.16),transparent 70%),radial-gradient(50% 40% at 0% 100%,rgba(233,201,135,.10),transparent 70%);pointer-events:none;}
+  .form-grid{position:relative;display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start;}
+  .side-points{margin-top:30px;display:flex;flex-direction:column;gap:14px;}
+  .side-points div{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.5;color:rgba(245,239,227,.82);}
+  .side-points span{color:var(--gold-l);font-weight:700;}
+  .card-form{background:var(--paper);color:var(--navy);border-radius:24px;padding:34px 34px 30px;box-shadow:0 50px 90px -40px rgba(0,0,0,.75);position:relative;}
+  .mode{display:grid;grid-template-columns:1fr 1fr;background:#f1e9da;border-radius:999px;padding:5px;margin-bottom:26px;position:relative;}
+  .mode button{position:relative;z-index:1;border:none;background:transparent;padding:12px 10px;border-radius:999px;font-weight:700;font-size:14.5px;cursor:pointer;color:var(--ink2);transition:color .35s;}
+  .mode button[aria-pressed="true"]{color:var(--paper);}
+  .mode .pill{position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);border-radius:999px;background:var(--navy);transition:transform .5s var(--ease);}
+  .mode.vol .pill{transform:translateX(100%);}
+  .progress{height:4px;border-radius:4px;background:#efe6d4;margin-bottom:24px;overflow:hidden;}
+  .progress i{display:block;height:100%;width:33%;background:linear-gradient(90deg,var(--gold-l),var(--gold));transition:width .6s var(--ease);}
+  .stepper{position:relative;overflow:hidden;}
+  .fstep{display:none;animation:stepIn .6s var(--ease);}
+  .fstep.active{display:block;}
+  @keyframes stepIn{from{opacity:0;transform:translateX(30px);}to{opacity:1;transform:none;}}
+  .fstep h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;margin:0 0 4px;}
+  .fstep .hint{font-size:14px;color:var(--ink2);margin:0 0 20px;}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+  .field label{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--ink2);}
+  .field input,.field select,.field textarea{border:1.5px solid #e3d8c3;background:#fffefb;border-radius:12px;padding:13px 14px;font-size:16px;outline:none;transition:border-color .25s,box-shadow .25s;width:100%;}
+  .field textarea{resize:vertical;min-height:84px;}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(233,201,135,.35);}
+  .field.err input,.field.err select{border-color:#c0492f;animation:shake .4s;}
+  @keyframes shake{25%{transform:translateX(-5px);}75%{transform:translateX(5px);}}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
+  .chip{position:relative;}
+  .chip input{position:absolute;opacity:0;pointer-events:none;}
+  .chip label{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;border:1.5px solid #e3d8c3;background:#fffefb;font-size:14.5px;font-weight:500;cursor:pointer;transition:all .3s var(--ease);user-select:none;}
+  .chip label:hover{border-color:var(--gold);}
+  .chip input:checked+label{background:var(--navy);border-color:var(--navy);color:var(--paper);transform:scale(1.03);}
+  .chip input:focus-visible+label{outline:3px solid var(--gold-l);outline-offset:2px;}
+  .chip input:checked+label::before{content:"✓";color:var(--gold-l);font-weight:700;}
+  .fnav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px;}
+  .fnav .back{background:none;border:none;font-weight:600;color:var(--ink2);cursor:pointer;padding:10px 4px;}
+  .fnav .back:hover{color:var(--navy);}
+  .summary{background:#f7f0e2;border-radius:14px;padding:16px 18px;font-size:14.5px;line-height:1.65;white-space:pre-line;color:var(--ink2);margin-bottom:16px;max-height:220px;overflow:auto;}
+  .done{display:none;text-align:center;padding:30px 10px 10px;}
+  .done.show{display:block;animation:stepIn .7s var(--ease);}
+  .done .big{font-size:64px;animation:pop 1s var(--ease);}
+  @keyframes pop{0%{transform:scale(0) rotate(-30deg);}60%{transform:scale(1.2) rotate(8deg);}100%{transform:scale(1);}}
+  .done h3{font-family:'Cormorant Garamond',serif;font-size:34px;margin:8px 0;}
+  .done p{color:var(--ink2);line-height:1.6;margin:0 auto 20px;max-width:40ch;}
+  #burst{position:fixed;inset:0;pointer-events:none;z-index:90;}
+
+  /* ============ HELP / SPONSOR ============ */
+  .help-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:46px;}
+  .help-card{border-radius:18px;padding:28px 24px;background:var(--paper);border:1px solid var(--line);position:relative;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s;}
+  .help-card:hover{transform:translateY(-8px);box-shadow:0 30px 50px -30px rgba(21,36,58,.5);}
+  .help-card .e{font-size:34px;display:inline-block;transition:transform .6s var(--ease);}
+  .help-card:hover .e{transform:scale(1.2) rotate(-10deg);}
+  .help-card .when{display:table;margin-top:14px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-d);background:#f6ecd6;padding:5px 11px;border-radius:999px;}
+  .help-card h3{font-family:'Cormorant Garamond',serif;font-size:25px;margin:12px 0 6px;font-weight:600;}
+  .help-card p{font-size:14.5px;line-height:1.55;color:var(--ink2);margin:0 0 14px;}
+  .help-card a{font-size:14px;font-weight:700;color:var(--gold-d);border-bottom:1.5px solid rgba(177,135,63,.45);padding-bottom:2px;}
+  .sponsor{margin-top:60px;border-radius:26px;background:linear-gradient(120deg,#15243a,#1d3150 60%,#2b3d5a);color:var(--cream);padding:54px 50px;display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center;position:relative;overflow:hidden;}
+  .sponsor::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(closest-side,rgba(233,201,135,.35),transparent);animation:breatheS 4s ease-in-out infinite;}
+  @keyframes breatheS{50%{transform:scale(1.25);}}
+  .sponsor h3{font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1.05;margin:0 0 12px;color:var(--paper);font-weight:600;}
+  .sponsor h3 em{color:var(--gold-l);}
+  .sponsor p{margin:0;color:rgba(245,239,227,.75);font-size:16.5px;line-height:1.6;max-width:52ch;}
+  .sponsor .act{position:relative;z-index:1;display:flex;flex-direction:column;gap:12px;align-items:flex-start;}
+
+  /* ============ FAQ ============ */
+  .faq{max-width:860px;margin:44px auto 0;}
+  .faq details{border-bottom:1px solid rgba(21,36,58,.14);padding:4px 0;}
+  .faq summary{list-style:none;cursor:pointer;padding:20px 40px 20px 0;font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;position:relative;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);font-family:'Hanken Grotesk';font-size:26px;font-weight:400;color:var(--gold);transition:transform .4s var(--ease);}
+  .faq details[open] summary::after{transform:translateY(-50%) rotate(45deg);}
+  .faq .ans{overflow:hidden;font-size:16px;line-height:1.7;color:var(--ink2);padding:0 0 22px;margin:0;}
+  .faq details[open] .ans{animation:fadeUp .5s var(--ease);}
+
+  /* ============ QUOTE ============ */
+  .quote{text-align:center;padding:100px 0 110px;}
+  .quote blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:36px;line-height:1.4;max-width:30ch;margin:0 auto 14px;}
+  .quote cite{font-style:normal;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d);}
+
+  footer.foot{background:var(--night2);color:rgba(245,239,227,.72);}
+  footer.foot .g{max-width:1240px;margin:0 auto;padding:64px 40px 40px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;}
+  footer.foot .h{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-l);margin-bottom:16px;}
+  footer.foot p{font-size:15px;line-height:1.9;margin:0;}
+  footer.foot a:hover{color:var(--paper);}
+  footer.foot .copy{max-width:1240px;margin:0 auto;padding:0 40px 40px;border-top:1px solid rgba(245,239,227,.12);}
+  footer.foot .copy p{font-size:13px;color:rgba(245,239,227,.45);margin:24px 0 0;}
+
+  .wa-float{position:fixed;right:22px;bottom:22px;z-index:70;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.45);transition:transform .4s var(--ease);}
+  .wa-float:hover{transform:scale(1.1) rotate(-8deg);}
+  .wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:ring 2.2s ease-out infinite;}
+  @keyframes ring{from{transform:scale(1);opacity:.8;}to{transform:scale(1.7);opacity:0;}}
+
+  [hidden]{display:none !important;}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:1020px){
+    .hero-inner{grid-template-columns:1fr;text-align:center;padding-top:110px;}
+    .hero p.sub{margin-left:auto;margin-right:auto;}
+    .hero .ctas{justify-content:center;}
+    .hero .heb-big{text-align:center;}
+    .candles{order:-1;zoom:.72;margin-top:20px;}
+    .who-grid{grid-template-columns:1fr 1fr;}
+    .kit-grid,.mitzva-grid,.form-grid{grid-template-columns:1fr;}
+    .help-grid{grid-template-columns:1fr 1fr;}
+    .tl{gap:12px;}
+    .tl-step p{font-size:14px;}
+    .sponsor{grid-template-columns:1fr;}
+    header.top nav{display:none;}
+  }
+  @media (max-width:720px){
+    .wrap{padding:0 20px;}
+    header.top .bar{padding:14px 20px;}
+    header.top .logo-crop{--h:34px !important;}
+    .hero-inner{padding:96px 20px 90px;}
+    .hero h1{font-size:54px;}
+    .hero .heb-big{font-size:26px;}
+    .hero p.sub{font-size:17.5px;}
+    .candles{zoom:.5;gap:56px;margin-top:40px;}
+    .candle-hint{font-size:22px;}
+    .countdown{justify-content:center;gap:12px;padding:14px;}
+    .cd-u{min-width:48px;}
+    .cd-u .n{font-size:30px;}
+    h2.title{font-size:38px;}
+    section.blk{padding:80px 0;}
+    .who-grid,.help-grid,.kit-list,.row{grid-template-columns:1fr;}
+    .tl{grid-template-columns:1fr;gap:34px;}
+    .tl .rail{left:38px;right:auto;top:0;bottom:0;width:3px;height:auto;}
+    .tl .rail i{width:100% !important;height:0;transition:height 2.4s var(--ease);}
+    .tl.go .rail i{height:100%;}
+    .tl .van{display:none;}
+    .tl-step{text-align:left;display:grid;grid-template-columns:78px 1fr;gap:18px;align-items:start;}
+    .tl-step .dot{margin:0;}
+    .tl-step p{margin:0;}
+    .card-form{padding:26px 20px 22px;border-radius:20px;}
+    .blessing{padding:30px 22px;}
+    .blessing .heb{font-size:24px;}
+    .sponsor{padding:38px 24px;}
+    .sponsor h3{font-size:32px;}
+    .quote blockquote{font-size:27px;}
+    .marquee span{font-size:22px;padding:14px 18px;gap:36px;}
+    footer.foot .g{grid-template-columns:1fr;gap:32px;padding:54px 20px 30px;}
+    footer.foot .copy{padding:0 20px 30px;}
+    .faq summary{font-size:21px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
+    [data-reveal]{opacity:1;transform:none;}
+    .hero h1 .ln>span{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="bar">
+    <a href="index.html" aria-label="Chai Menachem — início" class="logo-crop" style="--h:42px"><img src="logo-transparent.png" alt="Chai Menachem"></a>
+    <nav aria-label="Seções">
+      <a href="#para-quem">Para quem</a>
+      <a href="#kit">O kit</a>
+      <a href="#chala">Hafrashat Chalá</a>
+      <a href="#como">Como funciona</a>
+      <a href="#ajudar">Ajudar</a>
+    </nav>
+    <a class="cta" href="#pedido">Pedir agora</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" aria-label="Shabat em Casa">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="heb heb-big" lang="he">שַׁבַּת שָׁלוֹם</div>
+      <h1>
+        <span class="ln"><span>O Shabat</span></span>
+        <span class="ln"><span>chega até</span></span>
+        <span class="ln"><span class="gold-text">você.</span></span>
+      </h1>
+      <p class="sub">Chalot fresquinhas, velas, Kidush e uma visita amiga — entregues com carinho a quem não pode se deslocar sozinho. Ninguém fica sem Shabat.</p>
+      <div class="ctas">
+        <a class="btn btn-gold" href="#pedido" data-mode="pedido">🕯️ Pedir meu kit de Shabat</a>
+        <a class="btn btn-ghost" href="#pedido" data-mode="vol">👐 Quero pôr a mão na massa</a>
+      </div>
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div class="lbl">Acendimento das velas<b id="cd-when">São Paulo · sexta-feira</b></div>
+        <div class="cd-units" id="cd-units">
+          <div class="cd-u"><span class="n" id="cd-d">–</span><span class="t">dias</span></div>
+          <div class="cd-u"><span class="n" id="cd-h">–</span><span class="t">horas</span></div>
+          <div class="cd-u"><span class="n" id="cd-m">–</span><span class="t">min</span></div>
+          <div class="cd-u"><span class="n" id="cd-s">–</span><span class="t">seg</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="candles" id="candles" aria-label="Velas de Shabat — toque para acender">
+      <div class="candle" role="button" tabindex="0" aria-label="Acender vela">
+        <div class="halo"></div>
+        <div class="flame-wrap"><div class="flame"></div><div class="flame inner"></div></div>
+        <div class="wax"><div class="wick"></div><div class="drip"></div><div class="drip d2"></div></div>
+        <div class="holder"><div class="base"></div></div>
+      </div>
+      <div class="candle" role="button" tabindex="0" aria-label="Acender vela">
+        <div class="halo"></div>
+        <div class="flame-wrap"><div class="flame"></div><div class="flame inner"></div></div>
+        <div class="wax"><div class="wick"></div><div class="drip"></div><div class="drip d2"></div></div>
+        <div class="holder"><div class="base"></div></div>
+      </div>
+      <div class="candle-hint" id="candle-hint">Toque nas velas ✦</div>
+    </div>
+  </div>
+  <a href="#para-quem" class="scroll-cue" aria-label="Rolar para baixo"></a>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Chalot fresquinhas</span><span>Velas de Shabat</span><span>Kidush</span><span>Hafrashat Chalá</span><span>Uma visita amiga</span><span>Refeição de Shabat</span><span>Ninguém fica sozinho</span>
+    <span>Chalot fresquinhas</span><span>Velas de Shabat</span><span>Kidush</span><span>Hafrashat Chalá</span><span>Uma visita amiga</span><span>Refeição de Shabat</span><span>Ninguém fica sozinho</span>
+  </div>
+</div>
+
+<!-- ================= PARA QUEM ================= -->
+<section class="blk" id="para-quem">
+  <div class="wrap">
+    <div class="eyebrow" data-reveal>Para quem é</div>
+    <h2 class="title" data-reveal>Para quem não pode ir até o Shabat, <em>o Shabat vai até lá</em></h2>
+    <p class="lead" data-reveal>Idade, saúde, mobilidade reduzida ou simplesmente um momento difícil: se sair de casa sozinho não é possível, a nossa equipe e os nossos voluntários levam a luz do Shabat até a sua porta.</p>
+    <div class="who-grid">
+      <div class="tilt" data-reveal data-d="0"><div class="ic">👵</div><h3>Idosos</h3><p>Que moram sozinhos ou têm dificuldade de sair às compras antes do Shabat.</p></div>
+      <div class="tilt" data-reveal data-d="90"><div class="ic">♿</div><h3>Mobilidade reduzida</h3><p>Pessoas com deficiência ou que dependem de ajuda para se deslocar.</p></div>
+      <div class="tilt" data-reveal data-d="180"><div class="ic">🩺</div><h3>Recuperação</h3><p>Pós-cirurgia, tratamento ou doença — em casa ou no hospital.</p></div>
+      <div class="tilt" data-reveal data-d="0"><div class="ic">👶</div><h3>Mães recentes</h3><p>Nas primeiras semanas após o parto, quando cada minuto conta.</p></div>
+      <div class="tilt" data-reveal data-d="90"><div class="ic">🏠</div><h3>Quem está sozinho</h3><p>Para que ninguém passe a sexta-feira à noite sem Kidush e sem companhia.</p></div>
+      <div class="tilt" data-reveal data-d="180"><div class="ic">🤝</div><h3>Famílias e cuidadores</h3><p>Peça para um pai, uma avó ou um vizinho — nós cuidamos da entrega.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KIT ================= -->
+<section class="blk kit" id="kit">
+  <div class="wrap kit-grid">
+    <div class="challah-stage" data-reveal="zoom">
+      <div class="cover-ring"></div><div class="cover-ring r2"></div>
+      <div class="board"></div>
+      <svg id="challah" viewBox="0 0 440 440" aria-label="Chalá trançada">
+        <defs>
+          <radialGradient id="crust" cx="45%" cy="35%" r="70%">
+            <stop offset="0" stop-color="#f3c47a"/>
+            <stop offset=".45" stop-color="#d48f3e"/>
+            <stop offset=".85" stop-color="#9b5a1f"/>
+            <stop offset="1" stop-color="#7a4314"/>
+          </radialGradient>
+        </defs>
+        <g transform="translate(0,20)">
+          <path class="steam s1" d="M170 150 q-12 -20 0 -40 q12 -20 0 -40"/>
+          <path class="steam s2" d="M220 140 q-12 -20 0 -40 q12 -20 0 -40"/>
+          <path class="steam s3" d="M270 150 q-12 -20 0 -40 q12 -20 0 -40"/>
+          <g id="lobes"></g>
+          <g id="seeds"></g>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <div class="eyebrow" data-reveal>O kit de Shabat</div>
+      <h2 class="title" data-reveal>Tudo o que o Shabat pede, <em>numa entrega só</em></h2>
+      <p class="lead" data-reveal>Toda sexta-feira, antes do pôr do sol, preparamos e entregamos um kit completo. Você escolhe o que precisa no pedido.</p>
+      <div class="kit-list">
+        <div class="kit-item" data-reveal data-d="0"><span class="e">🍞</span><div><b>2 Chalot</b><small>Feitas à mão por voluntários na Chai Menachem, com muito amor.</small></div></div>
+        <div class="kit-item" data-reveal data-d="80"><span class="e">🕯️</span><div><b>Velas de Shabat</b><small>Com o horário exato do acendimento em São Paulo.</small></div></div>
+        <div class="kit-item" data-reveal data-d="160"><span class="e">🍷</span><div><b>Vinho ou suco de uva</b><small>Casher, para fazer o Kidush em casa.</small></div></div>
+        <div class="kit-item" data-reveal data-d="240"><span class="e">📜</span><div><b>Folheto de bênçãos</b><small>Hebraico, transliteração e português, em letra grande.</small></div></div>
+        <div class="kit-item" data-reveal data-d="320"><span class="e">🍲</span><div><b>Refeição de Shabat</b><small>Opcional, conforme disponibilidade da semana.</small></div></div>
+        <div class="kit-item" data-reveal data-d="400"><span class="e">🤍</span><div><b>Visita e companhia</b><small>Um voluntário para conversar, fazer o Kidush junto ou ajudar.</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HAFRASHAT CHALLAH ================= -->
+<section class="blk mitzva on-dark" id="chala">
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <div class="wrap mitzva-grid">
+    <div>
+      <div class="eyebrow" data-reveal>Hafrashat Chalá · A mitzvá da massa</div>
+      <h2 class="title" data-reveal>Fazer Chalá em casa, <em>sem estar sozinha</em></h2>
+      <p class="lead" data-reveal>Quer cumprir a mitzvá de separar a Chalá mas não consegue sair ou sovar a massa sozinha? Levamos a massa pronta, ou uma voluntária vem fazer junto com você — também podemos acompanhar por videochamada.</p>
+      <div class="steps-m">
+        <div class="step-m" data-reveal data-d="0"><span class="num">1</span><p><b>A massa.</b> Para a bênção, usa-se a massa feita com cerca de 1,2 kg de farinha ou mais (consulte o rabino em caso de dúvida).</p></div>
+        <div class="step-m" data-reveal data-d="100"><span class="num">2</span><p><b>A bênção.</b> Antes de separar, recita-se a brachá — veja ao lado.</p></div>
+        <div class="step-m" data-reveal data-d="200"><span class="num">3</span><p><b>Separar.</b> Retira-se um pedacinho de massa (do tamanho de uma azeitona) dizendo <i>“Harei zu chalá”</i>.</p></div>
+        <div class="step-m" data-reveal data-d="300"><span class="num">4</span><p><b>Um momento de prece.</b> Tradicionalmente, um momento especial para rezar pela família, pela saúde e por quem precisa.</p></div>
+      </div>
+    </div>
+    <div class="blessing" data-reveal="right">
+      <div class="tabs" role="tablist" aria-label="Bênçãos">
+        <button class="tab" role="tab" aria-selected="true" data-b="chala">Separar a Chalá</button>
+        <button class="tab" role="tab" aria-selected="false" data-b="velas">Velas de Shabat</button>
+        <button class="tab" role="tab" aria-selected="false" data-b="motzi">Hamotzi</button>
+      </div>
+      <p class="heb" id="b-heb" lang="he"></p>
+      <p class="translit" id="b-tr"></p>
+      <p class="trad" id="b-pt"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMO FUNCIONA ================= -->
+<section class="blk" id="como">
+  <div class="wrap">
+    <div class="eyebrow center" data-reveal>Como funciona</div>
+    <h2 class="title" style="text-align:center" data-reveal>Simples para você, <em>com carinho da nossa parte</em></h2>
+    <p class="lead" style="text-align:center;margin:0 auto" data-reveal>Toda semana, da massa às tranças até a sua porta — feito por voluntários da comunidade.</p>
+    <div class="tl" id="tl">
+      <div class="rail"><i></i><span class="van" aria-hidden="true">🚗</span></div>
+      <div class="tl-step" data-reveal data-d="0"><div class="dot">📝</div><div><div class="k">Até quarta</div><h3>Você pede</h3><p>Pelo formulário ou WhatsApp, até quarta-feira — para você ou alguém querido.</p></div></div>
+      <div class="tl-step" data-reveal data-d="150"><div class="dot">🍞</div><div><div class="k">Quinta · 14h30</div><h3>A massa</h3><p>Voluntários preparam a massa juntos na Chai Menachem.</p></div></div>
+      <div class="tl-step" data-reveal data-d="300"><div class="dot">👐</div><div><div class="k">Quinta · 17h30</div><h3>As tranças</h3><p>Cada chalá é trançada à mão, com uma prece por quem vai recebê-la.</p></div></div>
+      <div class="tl-step" data-reveal data-d="450"><div class="dot">🚗</div><div><div class="k">Sexta-feira</div><h3>A entrega</h3><p>Voluntários levam as Chalot e o kit antes do Shabat, com um sorriso.</p></div></div>
+      <div class="tl-step" data-reveal data-d="600"><div class="dot">🕯️</div><div><div class="k">Pôr do sol</div><h3>Shabat Shalom!</h3><p>As velas se acendem — e ninguém fica sem Chalá.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FORM ================= -->
+<section class="blk form-sec on-dark" id="pedido">
+  <div class="wrap form-grid">
+    <div>
+      <div class="eyebrow" data-reveal>Pedido · Voluntariado</div>
+      <h2 class="title" data-reveal>Um pedido, <em>e cuidamos do resto</em></h2>
+      <p class="lead" data-reveal>Preencha em menos de um minuto. A mensagem é enviada direto para a equipe da Chai Menachem pelo WhatsApp.</p>
+      <div class="side-points">
+        <div data-reveal data-d="0"><span>✓</span>Pedidos até quarta-feira para a entrega da sexta</div>
+        <div data-reveal data-d="100"><span>✓</span>Pode pedir só esta semana ou toda semana</div>
+        <div data-reveal data-d="200"><span>✓</span>Pode pedir para um familiar, vizinho ou amigo</div>
+        <div data-reveal data-d="300"><span>✓</span>Tudo com discrição e respeito</div>
+      </div>
+    </div>
+
+    <div class="card-form" data-reveal="right">
+      <div class="mode" id="mode">
+        <span class="pill"></span>
+        <button type="button" aria-pressed="true" data-m="pedido">🕯️ Receber o Shabat</button>
+        <button type="button" aria-pressed="false" data-m="vol">👐 Mãos na massa</button>
+      </div>
+      <div class="progress"><i id="prog"></i></div>
+
+      <form id="form" novalidate>
+        <div class="stepper">
+          <!-- STEP 1 -->
+          <div class="fstep active" data-s="1">
+            <h3 id="s1-title">Quem vai receber?</h3>
+            <p class="hint" id="s1-hint">Dados de quem recebe a entrega.</p>
+            <div class="chips" id="for-whom">
+              <div class="chip"><input type="radio" name="para" id="p-eu" value="Para mim" checked><label for="p-eu">Para mim</label></div>
+              <div class="chip"><input type="radio" name="para" id="p-fam" value="Para um familiar / conhecido"><label for="p-fam">Para outra pessoa</label></div>
+            </div>
+            <div class="row">
+              <div class="field"><label for="nome">Nome completo *</label><input id="nome" name="nome" autocomplete="name" required></div>
+              <div class="field"><label for="tel">WhatsApp / telefone *</label><input id="tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="(11) 9…" required></div>
+            </div>
+            <div class="field" id="f-quem" hidden><label for="quem">Seu nome (quem está pedindo)</label><input id="quem" name="quem"></div>
+            <div class="field" id="f-end"><label for="end">Endereço completo *</label><input id="end" name="end" autocomplete="street-address" placeholder="Rua, número, apto" required></div>
+            <div class="row">
+              <div class="field"><label for="bairro">Bairro *</label><input id="bairro" name="bairro" required></div>
+              <div class="field" id="f-acesso"><label for="acesso">Acesso</label>
+                <select id="acesso" name="acesso">
+                  <option>Portaria / interfone</option>
+                  <option>Casa térrea</option>
+                  <option>Precisa subir até o apartamento</option>
+                  <option>Hospital / casa de repouso</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="fstep" data-s="2">
+            <h3 id="s2-title">Do que você precisa?</h3>
+            <p class="hint" id="s2-hint">Escolha tudo o que fizer sentido.</p>
+            <div class="chips" id="needs"></div>
+            <div class="field" id="f-freq">
+              <label for="freq">Frequência</label>
+              <select id="freq" name="freq">
+                <option>Só neste Shabat</option>
+                <option>Toda semana</option>
+                <option>Para as festas (Chaguim)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="fstep" data-s="3">
+            <h3>Algo mais?</h3>
+            <p class="hint">Alergias, horário preferido, número de pessoas, observações…</p>
+            <div class="field"><label for="obs">Observações</label><textarea id="obs" name="obs" placeholder="Ex.: moramos em 2, prefiro entrega até 14h, sem gergelim…"></textarea></div>
+            <div class="summary" id="summary"></div>
+          </div>
+        </div>
+
+        <div class="fnav">
+          <button type="button" class="back" id="back" style="visibility:hidden">← Voltar</button>
+          <button type="button" class="btn btn-navy" id="next">Continuar →</button>
+        </div>
+      </form>
+
+      <div class="done" id="done">
+        <div class="big">🕯️</div>
+        <h3>Shabat Shalom!</h3>
+        <p>Abrimos o WhatsApp com a sua mensagem pronta — é só tocar em <b>enviar</b>. A equipe entra em contato para confirmar.</p>
+        <button type="button" class="btn btn-navy" id="again">Fazer outro pedido</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AJUDAR ================= -->
+<section class="blk" id="ajudar">
+  <div class="wrap">
+    <div class="eyebrow" data-reveal>Challah Project · Mãos na massa</div>
+    <h2 class="title" data-reveal>Venha pôr <em>a mão na massa</em></h2>
+    <p class="lead" data-reveal>Venha à Chai Menachem e faça parte deste projeto de amor e carinho. Nosso objetivo: preparar Chalot e levar esse gesto de afeto a quem mais precisa. 🥖❤️</p>
+    <div class="help-grid">
+      <div class="help-card" data-reveal data-d="0"><span class="e">🍞</span><div class="when">Quintas · 14h30</div><h3>Fazer a massa</h3><p>Prepare a massa das Chalot junto com o grupo, na Chai Menachem.</p><a href="#pedido" data-mode="vol" data-pick="0">Quero participar →</a></div>
+      <div class="help-card" data-reveal data-d="100"><span class="e">👐</span><div class="when">Quintas · 17h30</div><h3>Trançar as Chalot</h3><p>Trance as Chalot à mão — um momento lindo de mitzvá e prece.</p><a href="#pedido" data-mode="vol" data-pick="1">Quero trançar →</a></div>
+      <div class="help-card" data-reveal data-d="200"><span class="e">🚗</span><div class="when">Sextas-feiras</div><h3>Fazer entregas</h3><p>Leve as Chalot e o kit de Shabat até quem não pode sair de casa.</p><a href="#pedido" data-mode="vol" data-pick="2">Quero entregar →</a></div>
+      <div class="help-card" data-reveal data-d="300"><span class="e">💛</span><div class="when">Quando quiser</div><h3>Doar ao projeto</h3><p>Ajude a cobrir farinha, vinho, velas e transporte.</p><a href="#pedido" data-mode="vol" data-pick="3">Quero doar →</a></div>
+    </div>
+
+    <div class="sponsor" data-reveal="zoom">
+      <div style="position:relative;z-index:1">
+        <h3>Patrocine um <em>Shabat</em></h3>
+        <p>Dedique os kits de uma semana em homenagem a alguém querido, por uma refuá shlemá ou em memória de um ente querido. O nome é mencionado na entrega.</p>
+      </div>
+      <div class="act">
+        <a class="btn btn-gold" target="_blank" rel="noopener" href="https://wa.me/5511991969797?text=Ol%C3%A1!%20Gostaria%20de%20patrocinar%20os%20kits%20do%20Shabat%20em%20Casa%20%F0%9F%95%AF%EF%B8%8F">Patrocinar pelo WhatsApp</a>
+        <button type="button" class="btn btn-ghost" id="pix-btn" data-key="32.157.390/0001-02">Copiar chave PIX</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="blk" style="padding-top:20px">
+  <div class="wrap">
+    <div class="eyebrow center" data-reveal>Perguntas frequentes</div>
+    <h2 class="title" style="text-align:center" data-reveal>Tire suas dúvidas</h2>
+    <div class="faq">
+      <details data-reveal><summary>Até quando posso pedir?</summary><p class="ans">Idealmente até quarta-feira à noite: a massa é preparada na quinta às 14h30 e as entregas saem na sexta. Pedidos de última hora: fale conosco pelo WhatsApp, faremos o possível.</p></details>
+      <details data-reveal><summary>Quais bairros são atendidos?</summary><p class="ans">Atendemos principalmente Higienópolis e bairros próximos de São Paulo. Para outras regiões, envie o pedido mesmo assim — vamos verificar com os voluntários disponíveis.</p></details>
+      <details data-reveal><summary>Posso pedir para outra pessoa?</summary><p class="ans">Sim! Muitos pedidos são feitos por filhos, netos, vizinhos ou cuidadores. Basta escolher “Para outra pessoa” no formulário e deixar o seu contato.</p></details>
+      <details data-reveal><summary>Vocês ajudam a ir à sinagoga?</summary><p class="ans">Quando possível, organizamos um acompanhamento para a reza ou o Kidush na Chai Menachem. Marque “Acompanhamento à sinagoga” no pedido e combinaremos os detalhes.</p></details>
+      <details data-reveal><summary>Os produtos são casher?</summary><p class="ans">Sim. Todos os produtos do kit são casher, preparados sob a supervisão da Chai Menachem.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="wrap">
+    <blockquote data-reveal>“Uma pequena luz afasta muita escuridão.”</blockquote>
+    <cite data-reveal>Ensinamento chassídico</cite>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="g">
+    <div>
+      <span class="logo-crop" style="--h:52px;margin-bottom:18px"><img src="logo-transparent.png" alt="Chai Menachem"></span>
+      <p style="line-height:1.6;max-width:34ch;">Centro Chabad · Higienópolis, São Paulo. Um espaço de luz, aprendizado e comunidade.</p>
+    </div>
+    <div>
+      <div class="h">Navegação</div>
+      <p>
+        <a href="index.html">Início</a> · <a href="sobre.html">Sobre</a> · <a href="rezas.html">Rezas</a><br>
+        <a href="programas.html">Programas</a> · <a href="festas.html">Festas</a> · <a href="kidush.html">Kidush</a><br>
+        <a href="espaco.html">Espaço</a> · <a href="rebe.html">O Rebe</a>
+      </p>
+    </div>
+    <div>
+      <div class="h">Contato</div>
+      <p>
+        <a href="https://wa.me/5511991969797">+55 (11) 99196-9797</a><br>
+        <a href="mailto:chaimenachemadm@gmail.com">chaimenachemadm@gmail.com</a><br>
+        R. Cons. Brotero, 932 — Higienópolis<br>
+        <a href="https://instagram.com/chaimenachem">Instagram @chaimenachem</a>
+      </p>
+    </div>
+  </div>
+  <div class="copy"><p>© 2026 Chai Menachem Centro Chabad Higienópolis · São Paulo</p></div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5511991969797?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Shabat%20em%20Casa%20%F0%9F%95%AF%EF%B8%8F" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.523 5.263l-.999 3.648 3.741-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+<canvas id="burst" aria-hidden="true"></canvas>
+
+<script>
+(function(){
+  'use strict';
+  var WA = '5511991969797';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  /* ---------- header on scroll ---------- */
+  var top = $('#top');
+  var onScroll = function(){ top.classList.toggle('scrolled', window.scrollY > 40); };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* ---------- starry sky + rising embers ---------- */
+  (function sky(){
+    var c = $('#sky'), ctx = c.getContext('2d'), W, H, dpr, stars = [], embers = [], mx = 0, my = 0;
+    function size(){
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = c.clientWidth; H = c.clientHeight;
+      c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      stars = [];
+      var n = Math.round(W * H / 4200);
+      for (var i = 0; i < n; i++) stars.push({ x: Math.random() * W, y: Math.random() * H * .85, r: Math.random() * 1.3 + .2, p: Math.random() * 6.28, s: .6 + Math.random() * 1.6, z: Math.random() * .8 + .2 });
+    }
+    function ember(){ return { x: W * (.25 + Math.random() * .5), y: H + 10, vx: (Math.random() - .5) * .35, vy: -(.35 + Math.random() * .9), r: Math.random() * 2.2 + .6, life: 0, max: 260 + Math.random() * 260 }; }
+    size(); window.addEventListener('resize', size);
+    window.addEventListener('mousemove', function(e){ mx = (e.clientX / window.innerWidth - .5); my = (e.clientY / window.innerHeight - .5); }, { passive: true });
+    var shoot = null, t = 0;
+    function frame(){
+      t += 1;
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < stars.length; i++){
+        var s = stars[i], a = .35 + .65 * Math.abs(Math.sin(s.p + t * .012 * s.s));
+        ctx.globalAlpha = a; ctx.fillStyle = '#fff6dc';
+        ctx.beginPath(); ctx.arc(s.x - mx * 26 * s.z, s.y - my * 18 * s.z, s.r, 0, 6.283); ctx.fill();
+      }
+      // shooting star
+      if (!shoot && Math.random() < .004) shoot = { x: Math.random() * W * .7, y: Math.random() * H * .3, l: 0 };
+      if (shoot){
+        shoot.l += 1;
+        var sx = shoot.x + shoot.l * 9, sy = shoot.y + shoot.l * 4;
+        var g = ctx.createLinearGradient(sx, sy, sx - 120, sy - 54);
+        g.addColorStop(0, 'rgba(255,240,200,.9)'); g.addColorStop(1, 'rgba(255,240,200,0)');
+        ctx.globalAlpha = Math.max(0, 1 - shoot.l / 50); ctx.strokeStyle = g; ctx.lineWidth = 1.6;
+        ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(sx - 120, sy - 54); ctx.stroke();
+        if (shoot.l > 50) shoot = null;
+      }
+      // embers
+      if (embers.length < 70 && Math.random() < .5) embers.push(ember());
+      for (var j = embers.length - 1; j >= 0; j--){
+        var e = embers[j]; e.life++; e.x += e.vx + Math.sin((e.life + j * 20) * .03) * .3; e.y += e.vy;
+        var k = e.life / e.max, al = k < .15 ? k / .15 : 1 - (k - .15) / .85;
+        if (k >= 1){ embers.splice(j, 1); continue; }
+        var rg = ctx.createRadialGradient(e.x, e.y, 0, e.x, e.y, e.r * 4);
+        rg.addColorStop(0, 'rgba(255,214,140,1)'); rg.addColorStop(1, 'rgba(255,160,60,0)');
+        ctx.globalAlpha = al * .85; ctx.fillStyle = rg;
+        ctx.beginPath(); ctx.arc(e.x, e.y, e.r * 4, 0, 6.283); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      if (!reduce) requestAnimationFrame(frame);
+    }
+    frame();
+  })();
+
+  /* ---------- candles: light on load + on tap ---------- */
+  var candles = $$('.candle'), hint = $('#candle-hint');
+  function toggle(cnd){ cnd.classList.toggle('lit'); cnd.setAttribute('aria-label', cnd.classList.contains('lit') ? 'Apagar vela' : 'Acender vela'); if (hint) hint.style.opacity = 0; }
+  candles.forEach(function(cnd, i){
+    setTimeout(function(){ cnd.classList.add('lit'); cnd.setAttribute('aria-label', 'Apagar vela'); }, 1400 + i * 650);
+    cnd.addEventListener('click', function(){ toggle(cnd); });
+    cnd.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(cnd); } });
+  });
+  // candle parallax tilt
+  var cWrap = $('#candles');
+  if (!reduce && cWrap){
+    window.addEventListener('mousemove', function(e){
+      var x = (e.clientX / window.innerWidth - .5), y = (e.clientY / window.innerHeight - .5);
+      candles.forEach(function(cnd, i){ cnd.style.transform = 'rotateY(' + (x * 14) + 'deg) rotateX(' + (-y * 8) + 'deg) translateX(' + (x * (i ? 14 : 8)) + 'px)'; });
+    }, { passive: true });
+  }
+
+  /* ---------- countdown (Hebcal · São Paulo) ---------- */
+  (function countdown(){
+    var target = null, havdala = null;
+    var dias = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+    var hm = function(d){ return d.getHours() + 'h' + String(d.getMinutes()).padStart(2, '0'); };
+    function fallback(){
+      var d = new Date(); var add = (5 - d.getDay() + 7) % 7; d.setDate(d.getDate() + add); d.setHours(17, 50, 0, 0);
+      if (d < new Date()) d.setDate(d.getDate() + 7);
+      target = d;
+    }
+    function render(){
+      if (!target) return;
+      var now = new Date(), diff = target - now;
+      if (diff <= 0){
+        if (havdala && now < havdala){
+          $('#cd-units').innerHTML = '<span class="cd-live">✦ Shabat Shalom! ✦</span>';
+          $('#cd-when').textContent = 'Havdalá às ' + hm(havdala);
+          return;
+        }
+        load(); return;
+      }
+      var s = Math.floor(diff / 1000);
+      $('#cd-d').textContent = Math.floor(s / 86400);
+      $('#cd-h').textContent = String(Math.floor(s % 86400 / 3600)).padStart(2, '0');
+      $('#cd-m').textContent = String(Math.floor(s % 3600 / 60)).padStart(2, '0');
+      $('#cd-s').textContent = String(s % 60).padStart(2, '0');
+    }
+    function load(){
+      fetch('https://www.hebcal.com/shabbat?cfg=json&geonameid=3448439&b=18&M=on')
+        .then(function(r){ return r.json(); })
+        .then(function(data){
+          (data.items || []).forEach(function(it){
+            if (it.category === 'candles' && !target) target = new Date(it.date);
+            if (it.category === 'havdalah') havdala = new Date(it.date);
+          });
+          if (!target) fallback();
+          $('#cd-when').textContent = 'São Paulo · ' + dias[target.getDay()] + ' às ' + hm(target);
+          render();
+        })
+        .catch(function(){ fallback(); $('#cd-when').textContent = 'São Paulo · sexta-feira'; render(); });
+    }
+    target = null; load();
+    setInterval(render, 1000);
+  })();
+
+  /* ---------- reveal on scroll ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      var d = en.target.getAttribute('data-d'); if (d) en.target.style.transitionDelay = d + 'ms';
+      en.target.classList.add('in'); io.unobserve(en.target);
+    });
+  }, { threshold: .14, rootMargin: '0px 0px -6% 0px' });
+  $$('[data-reveal]').forEach(function(el){ reduce ? el.classList.add('in') : io.observe(el); });
+
+  /* ---------- 3D tilt cards ---------- */
+  if (!reduce && window.matchMedia('(hover:hover)').matches){
+    $$('.tilt').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        card.style.setProperty('--mx', (x * 100) + '%'); card.style.setProperty('--my', (y * 100) + '%');
+        card.style.transitionDelay = '0ms';
+        card.style.transform = 'perspective(800px) rotateX(' + ((.5 - y) * 12) + 'deg) rotateY(' + ((x - .5) * 14) + 'deg) translateY(-6px)';
+      });
+      card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
+    });
+  }
+
+  /* ---------- braided challah: build + draw on scroll ---------- */
+  (function challah(){
+    var svg = $('#challah'), lobesG = $('#lobes'), seedsG = $('#seeds'), NS = 'http://www.w3.org/2000/svg';
+    // two rows of braided lobes, tapering at the ends
+    var lobes = [];
+    var n = 7;
+    for (var i = 0; i < n; i++){
+      var t = i / (n - 1), x = 70 + t * 300, taper = Math.sin(Math.PI * (.12 + t * .76));
+      var rx = 30 + 16 * taper, ry = 40 + 26 * taper;
+      lobes.push({ x: x, y: 230 - 14 * taper, rx: rx, ry: ry * .62, rot: (i % 2 ? 28 : -28) });
+    }
+    for (var j = 0; j < n - 1; j++){
+      var t2 = (j + .5) / (n - 1), x2 = 70 + t2 * 300, tp = Math.sin(Math.PI * (.12 + t2 * .76));
+      lobes.push({ x: x2, y: 192 - 22 * tp, rx: 22 + 14 * tp, ry: (30 + 20 * tp) * .62, rot: (j % 2 ? -32 : 32) });
+    }
+    lobes.forEach(function(l, k){
+      var e = document.createElementNS(NS, 'ellipse');
+      e.setAttribute('cx', l.x); e.setAttribute('cy', l.y); e.setAttribute('rx', l.rx); e.setAttribute('ry', l.ry);
+      e.setAttribute('transform', 'rotate(' + l.rot + ' ' + l.x + ' ' + l.y + ')');
+      e.setAttribute('pathLength', '1'); e.setAttribute('class', 'lobe');
+      e.style.transition = 'stroke-dashoffset 1.1s cubic-bezier(.16,.84,.44,1) ' + (k * 90) + 'ms, fill-opacity 1s ease ' + (k * 60) + 'ms';
+      lobesG.appendChild(e);
+      for (var s = 0; s < 5; s++){
+        var a = Math.random() * 6.283, rr = Math.random() * .6;
+        var sd = document.createElementNS(NS, 'ellipse');
+        sd.setAttribute('cx', (l.x + Math.cos(a) * l.rx * rr).toFixed(1));
+        sd.setAttribute('cy', (l.y + Math.sin(a) * l.ry * rr - 4).toFixed(1));
+        sd.setAttribute('rx', '2.6'); sd.setAttribute('ry', '1.3');
+        sd.setAttribute('fill', '#fff4dc');
+        sd.setAttribute('transform', 'rotate(' + (Math.random() * 180) + ' ' + l.x + ' ' + l.y + ')');
+        sd.setAttribute('class', 'seed');
+        sd.style.transitionDelay = (1300 + Math.random() * 900) + 'ms';
+        seedsG.appendChild(sd);
+      }
+    });
+    var obs = new IntersectionObserver(function(en){
+      if (!en[0].isIntersecting) return;
+      $$('.lobe', svg).forEach(function(l){ l.style.strokeDashoffset = 0; });
+      setTimeout(function(){ svg.classList.add('baked'); }, reduce ? 0 : 1300);
+      obs.disconnect();
+    }, { threshold: .35 });
+    obs.observe(svg);
+  })();
+
+  /* ---------- blessings with word-by-word reveal ---------- */
+  var B = {
+    chala: {
+      he: 'בָּרוּךְ אַתָּה ה׳ אֱ-לֹהֵינוּ מֶלֶךְ הָעוֹלָם אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו וְצִוָּנוּ לְהַפְרִישׁ חַלָּה',
+      tr: 'Baruch Atá A-do-nai E-lo-hê-nu Mêlech haolam, asher kideshánu bemitsvotav vetsivánu lehafrish chalá.',
+      pt: 'Bendito és Tu, Eterno, nosso D’us, Rei do Universo, que nos santificou com Seus mandamentos e nos ordenou separar a Chalá.'
+    },
+    velas: {
+      he: 'בָּרוּךְ אַתָּה ה׳ אֱ-לֹהֵינוּ מֶלֶךְ הָעוֹלָם אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו וְצִוָּנוּ לְהַדְלִיק נֵר שֶׁל שַׁבָּת קֹדֶשׁ',
+      tr: 'Baruch Atá A-do-nai E-lo-hê-nu Mêlech haolam, asher kideshánu bemitsvotav vetsivánu lehadlik ner shel Shabat kôdesh.',
+      pt: 'Bendito és Tu, Eterno, nosso D’us, Rei do Universo, que nos santificou com Seus mandamentos e nos ordenou acender a vela do sagrado Shabat.'
+    },
+    motzi: {
+      he: 'בָּרוּךְ אַתָּה ה׳ אֱ-לֹהֵינוּ מֶלֶךְ הָעוֹלָם הַמּוֹצִיא לֶחֶם מִן הָאָרֶץ',
+      tr: 'Baruch Atá A-do-nai E-lo-hê-nu Mêlech haolam, hamotsi lechem min haárets.',
+      pt: 'Bendito és Tu, Eterno, nosso D’us, Rei do Universo, que extrai o pão da terra.'
+    }
+  };
+  var bTimers = [];
+  function showB(key){
+    bTimers.forEach(clearTimeout); bTimers = [];
+    var b = B[key], heb = $('#b-heb');
+    heb.innerHTML = b.he.split(' ').map(function(w){ return '<span class="w">' + w + '</span>'; }).join(' ');
+    $('#b-tr').textContent = b.tr; $('#b-pt').textContent = b.pt;
+    $$('.w', heb).forEach(function(w, i){ bTimers.push(setTimeout(function(){ w.classList.add('on'); }, reduce ? 0 : 120 + i * 160)); });
+    $$('.blessing .tab').forEach(function(t){ t.setAttribute('aria-selected', t.getAttribute('data-b') === key ? 'true' : 'false'); });
+  }
+  $$('.blessing .tab').forEach(function(t){ t.addEventListener('click', function(){ showB(t.getAttribute('data-b')); }); });
+  var bObs = new IntersectionObserver(function(en){ if (en[0].isIntersecting){ showB('chala'); bObs.disconnect(); } }, { threshold: .3 });
+  bObs.observe($('.blessing'));
+
+  /* ---------- timeline ---------- */
+  var tlObs = new IntersectionObserver(function(en){ if (en[0].isIntersecting){ $('#tl').classList.add('go'); tlObs.disconnect(); } }, { threshold: .35 });
+  tlObs.observe($('#tl'));
+
+  /* ---------- form (2 modes, 3 steps) ---------- */
+  var NEEDS = {
+    pedido: ['🍞 Chalot', '🕯️ Velas', '🍷 Vinho / suco de uva', '📜 Folheto de bênçãos', '🍲 Refeição de Shabat', '🤍 Visita / companhia', '🥣 Hafrashat Chalá acompanhada', '🚶 Acompanhamento à sinagoga'],
+    vol: ['🍞 Fazer a massa — quintas às 14h30', '👐 Trançar as Chalot — quintas às 17h30', '🚗 Fazer entregas — sextas', '💛 Doar para o projeto']
+  };
+  var mode = 'pedido', step = 1, form = $('#form');
+  function buildNeeds(){
+    var box = $('#needs'); box.innerHTML = '';
+    NEEDS[mode].forEach(function(n, i){
+      var id = 'n' + i, d = document.createElement('div'); d.className = 'chip';
+      d.innerHTML = '<input type="checkbox" name="need" id="' + id + '" value="' + n + '"' + (mode === 'pedido' && i < 3 ? ' checked' : '') + '><label for="' + id + '">' + n + '</label>';
+      box.appendChild(d);
+    });
+  }
+  function setMode(m){
+    mode = m;
+    $('#mode').classList.toggle('vol', m === 'vol');
+    $$('#mode button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-m') === m ? 'true' : 'false'); });
+    var vol = m === 'vol';
+    $('#s1-title').textContent = vol ? 'Challah Project 🤎' : 'Quem vai receber?';
+    $('#s1-hint').textContent = vol ? 'Para a equipe entrar em contato com você.' : 'Dados de quem recebe a entrega.';
+    $('#for-whom').hidden = vol;
+    $('#f-acesso').hidden = vol;
+    $('#f-end').hidden = vol;
+    $('#end').required = !vol;
+    $('#f-quem').hidden = vol || !$('#p-fam').checked;
+    $('#s2-title').textContent = vol ? 'Como você quer participar?' : 'Do que você precisa?';
+    $('#s2-hint').textContent = vol ? 'Você pode escolher mais de uma opção.' : 'Escolha tudo o que fizer sentido.';
+    $('#freq').innerHTML = vol
+      ? '<option>Toda semana</option><option>A cada 15 dias</option><option>De vez em quando</option><option>Nas festas (Chaguim)</option>'
+      : '<option>Só neste Shabat</option><option>Toda semana</option><option>Para as festas (Chaguim)</option>';
+    buildNeeds(); go(1);
+  }
+  $$('#mode button').forEach(function(b){ b.addEventListener('click', function(){ setMode(b.getAttribute('data-m')); }); });
+  $$('[data-mode]').forEach(function(a){ a.addEventListener('click', function(){
+    setMode(a.getAttribute('data-mode'));
+    var pk = a.getAttribute('data-pick'); if (pk !== null){ var c = $('#n' + pk); if (c) c.checked = true; }
+  }); });
+  $$('input[name="para"]').forEach(function(r){ r.addEventListener('change', function(){ $('#f-quem').hidden = !$('#p-fam').checked; }); });
+
+  function go(s){
+    step = s;
+    $$('.fstep').forEach(function(f){ f.classList.toggle('active', +f.getAttribute('data-s') === s); });
+    $('#prog').style.width = (s / 3 * 100) + '%';
+    $('#back').style.visibility = s === 1 ? 'hidden' : 'visible';
+    $('#next').textContent = s === 3 ? 'Enviar pelo WhatsApp ✦' : 'Continuar →';
+    if (s === 3) $('#summary').textContent = message();
+  }
+  function valid(){
+    var ok = true;
+    $$('.fstep.active input[required]').forEach(function(inp){
+      var f = inp.closest('.field'); if (f.hidden) return;
+      var bad = !inp.value.trim() || (inp.type === 'tel' && inp.value.replace(/\D/g, '').length < 8);
+      f.classList.toggle('err', bad); if (bad && ok){ inp.focus(); ok = false; }
+    });
+    if (step === 2 && !$$('input[name="need"]:checked').length){ var n = $('#needs'); n.style.animation = 'none'; n.offsetWidth; n.style.animation = 'shake .4s'; ok = false; }
+    return ok;
+  }
+  $$('.field input').forEach(function(i){ i.addEventListener('input', function(){ i.closest('.field').classList.remove('err'); }); });
+  function val(id){ return ($('#' + id).value || '').trim(); }
+  function message(){
+    var needs = $$('input[name="need"]:checked').map(function(c){ return '• ' + c.value; }).join('\n');
+    var L = [];
+    if (mode === 'pedido'){
+      L.push('🕯️ *Shabat em Casa — Pedido*', '');
+      L.push('*Para:* ' + ($('#p-fam').checked ? 'outra pessoa' : 'mim'));
+      if ($('#p-fam').checked && val('quem')) L.push('*Pedido feito por:* ' + val('quem'));
+      L.push('*Nome:* ' + val('nome'), '*Telefone:* ' + val('tel'), '*Endereço:* ' + val('end'), '*Bairro:* ' + val('bairro'), '*Acesso:* ' + val('acesso'));
+      L.push('', '*Preciso de:*', needs, '', '*Frequência:* ' + val('freq'));
+    } else {
+      L.push('🤎 *Challah Project — Mãos na massa*', '');
+      L.push('*Nome:* ' + val('nome'), '*Telefone:* ' + val('tel'), '*Bairro:* ' + val('bairro'));
+      L.push('', '*Quero participar:*', needs, '', '*Frequência:* ' + val('freq'));
+    }
+    if (val('obs')) L.push('', '*Observações:* ' + val('obs'));
+    L.push('', 'Shabat Shalom! 🤍');
+    return L.join('\n');
+  }
+  $('#back').addEventListener('click', function(){ go(Math.max(1, step - 1)); });
+  $('#next').addEventListener('click', function(e){
+    if (step < 3){ if (valid()) go(step + 1); return; }
+    var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(message());
+    window.open(url, '_blank', 'noopener');
+    form.hidden = true; $('#mode').hidden = true; $('.progress').hidden = true;
+    $('#done').classList.add('show');
+    burst(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2);
+  });
+  $('#again').addEventListener('click', function(){
+    form.reset(); form.hidden = false; $('#mode').hidden = false; $('.progress').hidden = false;
+    $('#done').classList.remove('show'); setMode(mode);
+  });
+  setMode('pedido');
+
+  /* ---------- PIX copy ---------- */
+  var pix = $('#pix-btn');
+  if (pix) pix.addEventListener('click', function(){
+    var k = pix.getAttribute('data-key');
+    if (navigator.clipboard) navigator.clipboard.writeText(k).catch(function(){});
+    pix.textContent = '✓ PIX copiado: ' + k;
+    setTimeout(function(){ pix.textContent = 'Copiar chave PIX'; }, 3000);
+  });
+
+  /* ---------- golden burst ---------- */
+  function burst(x, y){
+    if (reduce) return;
+    var c = $('#burst'), ctx = c.getContext('2d'), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    c.width = innerWidth * dpr; c.height = innerHeight * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var cols = ['#e9c987', '#f6e2b4', '#b1873f', '#fffdf8', '#ffd36b'], P = [];
+    for (var i = 0; i < 140; i++){
+      var a = Math.random() * 6.283, sp = 3 + Math.random() * 9;
+      P.push({ x: x, y: y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 3, r: 2 + Math.random() * 4, c: cols[i % cols.length], rot: Math.random() * 6, vr: (Math.random() - .5) * .4, star: Math.random() < .35, life: 0 });
+    }
+    (function f(){
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      var alive = false;
+      P.forEach(function(p){
+        p.life++; p.vy += .18; p.vx *= .985; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+        var a = Math.max(0, 1 - p.life / 110); if (a > 0) alive = true;
+        ctx.save(); ctx.globalAlpha = a; ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.c;
+        if (p.star){ ctx.beginPath(); for (var k = 0; k < 10; k++){ var rr = k % 2 ? p.r : p.r * 2.4, an = k * Math.PI / 5; ctx.lineTo(Math.cos(an) * rr, Math.sin(an) * rr); } ctx.closePath(); ctx.fill(); }
+        else ctx.fillRect(-p.r, -p.r / 2, p.r * 2, p.r);
+        ctx.restore();
+      });
+      if (alive) requestAnimationFrame(f); else ctx.clearRect(0, 0, innerWidth, innerHeight);
+    })();
+  }
+})();
+</script>
+</body>
+</html>
