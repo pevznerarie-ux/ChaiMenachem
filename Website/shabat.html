@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shabat em Casa · Chai Menachem</title>
-<meta name="description" content="Shabat em Casa — Chalot, velas e Kidush entregues com carinho a quem não pode se deslocar sozinho. Um projeto da Chai Menachem, Higienópolis.">
+<title>Challah Project · Chai Menachem</title>
+<meta name="description" content="Challah Project — venha preparar Chalot na Chai Menachem e levar esse gesto de afeto a quem não pode se deslocar sozinho.">
 <meta name="theme-color" content="#101b2c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +19,7 @@
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
+  section[id]{scroll-margin-top:40px;}
   html,body{margin:0;padding:0;}
   html,body{overflow-x:hidden;}
   @supports (overflow:clip){html,body{overflow-x:clip;}}
@@ -198,7 +199,7 @@
   .step-m b{color:var(--paper);}
 
   /* ============ TIMELINE ============ */
-  .tl{position:relative;margin-top:70px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
+  .tl{position:relative;margin-top:70px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
   .tl .rail{position:absolute;left:6%;right:6%;top:38px;height:3px;background:rgba(21,36,58,.10);border-radius:3px;}
   .tl .rail i{position:absolute;inset:0;width:0;background:linear-gradient(90deg,var(--gold-l),var(--gold));border-radius:3px;transition:width 2.4s var(--ease);}
   .tl .van{position:absolute;top:-24px;left:0;font-size:30px;transition:left 2.4s var(--ease);transform:translateX(-50%) scaleX(-1);}
@@ -252,6 +253,23 @@
   .fnav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px;}
   .fnav .back{background:none;border:none;font-weight:600;color:var(--ink2);cursor:pointer;padding:10px 4px;}
   .fnav .back:hover{color:var(--navy);}
+  .opts-head{margin:6px 0 12px;}
+  .opts-head b{display:block;font-size:16px;}
+  .opts-head span{font-size:14px;color:var(--ink2);}
+  .opts{display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}
+  .opt{position:relative;}
+  .opt input{position:absolute;opacity:0;pointer-events:none;}
+  .opt label{display:flex;align-items:center;gap:14px;padding:15px 16px;border-radius:14px;border:1.5px solid #e3d8c3;background:#fffefb;cursor:pointer;transition:all .3s var(--ease);user-select:none;}
+  .opt label:hover{border-color:var(--gold);transform:translateX(4px);}
+  .opt .box{flex:none;width:26px;height:26px;border-radius:8px;border:2px solid #cdbf9f;display:grid;place-items:center;transition:all .3s var(--ease);}
+  .opt .e{font-size:24px;line-height:1;}
+  .opt b{display:block;font-size:15.5px;}
+  .opt small{font-size:13.5px;color:var(--ink2);}
+  .opt input:checked+label{border-color:var(--gold);background:#fbf3e1;box-shadow:0 10px 24px -16px rgba(143,106,44,.7);}
+  .opt input:checked+label .box{background:var(--navy);border-color:var(--navy);}
+  .opt input:checked+label .box::after{content:"✓";color:var(--gold-l);font-weight:700;font-size:15px;}
+  .opt input:focus-visible+label{outline:3px solid var(--gold-l);outline-offset:2px;}
+  .btn-block{width:100%;justify-content:center;padding:18px 30px;font-size:16.5px;}
   .summary{background:#f7f0e2;border-radius:14px;padding:16px 18px;font-size:14.5px;line-height:1.65;white-space:pre-line;color:var(--ink2);margin-bottom:16px;max-height:220px;overflow:auto;}
   .done{display:none;text-align:center;padding:30px 10px 10px;}
   .done.show{display:block;animation:stepIn .7s var(--ease);}
@@ -376,33 +394,32 @@
   <div class="bar">
     <a href="index.html" aria-label="Chai Menachem — início" class="logo-crop" style="--h:42px"><img src="logo-transparent.png" alt="Chai Menachem"></a>
     <nav aria-label="Seções">
-      <a href="#pedido">Participar</a>
-      <a href="#para-quem">Para quem</a>
-      <a href="#kit">O kit</a>
+      <a href="#participar">Participar</a>
+      <a href="#projeto">O projeto</a>
+      <a href="#semana">A semana</a>
       <a href="#chala">Hafrashat Chalá</a>
-      <a href="#como">Como funciona</a>
-      <a href="#ajudar">Ajudar</a>
+      <a href="#doar">Doar</a>
     </nav>
-    <a class="cta" href="#pedido">Pedir agora</a>
+    <a class="cta" href="#participar">Quero participar</a>
   </div>
 </header>
 
 <!-- ================= HERO ================= -->
-<section class="hero" aria-label="Shabat em Casa">
+<section class="hero" aria-label="Challah Project">
   <canvas id="sky" aria-hidden="true"></canvas>
   <div class="glow" aria-hidden="true"></div>
   <div class="hero-inner">
     <div>
       <div class="heb heb-big" lang="he">שַׁבַּת שָׁלוֹם</div>
       <h1>
-        <span class="ln"><span>O Shabat</span></span>
-        <span class="ln"><span>chega até</span></span>
-        <span class="ln"><span class="gold-text">você.</span></span>
+        <span class="ln"><span>Mãos na massa,</span></span>
+        <span class="ln"><span>amor em cada</span></span>
+        <span class="ln"><span class="gold-text">chalá.</span></span>
       </h1>
-      <p class="sub">Chalot fresquinhas, velas, Kidush e uma visita amiga — entregues com carinho a quem não pode se deslocar sozinho. Ninguém fica sem Shabat.</p>
+      <p class="sub">Challah Project 🤎 — venha à Chai Menachem preparar Chalot e levar esse gesto de afeto a quem mais precisa, a quem não pode se deslocar sozinho.</p>
       <div class="ctas">
-        <a class="btn btn-gold" href="#pedido" data-mode="pedido">🕯️ Pedir meu kit de Shabat</a>
-        <a class="btn btn-ghost" href="#pedido" data-mode="vol">👐 Quero pôr a mão na massa</a>
+        <a class="btn btn-gold" href="#participar">👐 Quero participar</a>
+        <a class="btn btn-ghost" href="#participar" data-pick="3">💛 Doar ao projeto</a>
       </div>
       <div class="countdown" id="countdown" aria-live="polite">
         <div class="lbl">Acendimento das velas<b id="cd-when">São Paulo · sexta-feira</b></div>
@@ -430,96 +447,47 @@
       <div class="candle-hint" id="candle-hint">Toque nas velas ✦</div>
     </div>
   </div>
-  <a href="#para-quem" class="scroll-cue" aria-label="Rolar para baixo"></a>
+  <a href="#participar" class="scroll-cue" aria-label="Rolar para baixo"></a>
 </section>
 
-<!-- ================= FORM ================= -->
-<section class="blk form-sec on-dark" id="pedido" style="padding-top:90px">
+<!-- ================= PARTICIPAR ================= -->
+<section class="blk form-sec on-dark" id="participar" style="padding-top:90px">
   <div class="wrap form-grid">
     <div>
-      <div class="eyebrow" data-reveal>Comece aqui · Pedido ou voluntariado</div>
-      <h2 class="title" data-reveal>Escolha <em>como participar</em></h2>
-      <p class="lead" data-reveal>Receber o Shabat em casa, ou pôr a mão na massa: massa às quintas 14h30, tranças às quintas 17h30, entregas às sextas, ou uma doação. Leva menos de um minuto — a mensagem vai direto para a equipe pelo WhatsApp.</p>
+      <div class="eyebrow" data-reveal>Challah Project · Mãos na massa</div>
+      <h2 class="title" data-reveal>Venha pôr <em>a mão na massa</em> 🤎</h2>
+      <p class="lead" data-reveal>Venha à Chai Menachem e faça parte deste projeto de amor e carinho! Nosso objetivo é preparar Chalot e levar esse gesto de afeto a quem mais precisa. 🥖❤️</p>
       <div class="side-points">
-        <div data-reveal data-d="0"><span>✓</span>Pedidos até quarta-feira para a entrega da sexta</div>
-        <div data-reveal data-d="100"><span>✓</span>Pode pedir só esta semana ou toda semana</div>
-        <div data-reveal data-d="200"><span>✓</span>Pode pedir para um familiar, vizinho ou amigo</div>
-        <div data-reveal data-d="300"><span>✓</span>Tudo com discrição e respeito</div>
+        <div data-reveal data-d="0"><span>🍞</span>Massa · quintas às 14h30</div>
+        <div data-reveal data-d="100"><span>👐</span>Tranças · quintas às 17h30</div>
+        <div data-reveal data-d="200"><span>🚗</span>Entregas · sextas-feiras</div>
+        <div data-reveal data-d="300"><span>📍</span>Chai Menachem · R. Cons. Brotero, 932</div>
       </div>
     </div>
 
     <div class="card-form" data-reveal="right">
-      <div class="mode" id="mode">
-        <span class="pill"></span>
-        <button type="button" aria-pressed="true" data-m="pedido">🕯️ Receber o Shabat</button>
-        <button type="button" aria-pressed="false" data-m="vol">👐 Mãos na massa</button>
-      </div>
-      <div class="progress"><i id="prog"></i></div>
-
       <form id="form" novalidate>
-        <div class="stepper">
-          <!-- STEP 1 -->
-          <div class="fstep active" data-s="1">
-            <h3 id="s2-title">Do que você precisa?</h3>
-            <p class="hint" id="s2-hint">Escolha tudo o que fizer sentido.</p>
-            <div class="chips" id="needs"></div>
-            <div class="field" id="f-freq">
-              <label for="freq">Frequência</label>
-              <select id="freq" name="freq">
-                <option>Só neste Shabat</option>
-                <option>Toda semana</option>
-                <option>Para as festas (Chaguim)</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- STEP 2 -->
-          <div class="fstep" data-s="2">
-            <h3 id="s1-title">Quem vai receber?</h3>
-            <p class="hint" id="s1-hint">Dados de quem recebe a entrega.</p>
-            <div class="chips" id="for-whom">
-              <div class="chip"><input type="radio" name="para" id="p-eu" value="Para mim" checked><label for="p-eu">Para mim</label></div>
-              <div class="chip"><input type="radio" name="para" id="p-fam" value="Para um familiar / conhecido"><label for="p-fam">Para outra pessoa</label></div>
-            </div>
-            <div class="row">
-              <div class="field"><label for="nome">Nome completo *</label><input id="nome" name="nome" autocomplete="name" required></div>
-              <div class="field"><label for="tel">WhatsApp / telefone *</label><input id="tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="(11) 9…" required></div>
-            </div>
-            <div class="field" id="f-quem" hidden><label for="quem">Seu nome (quem está pedindo)</label><input id="quem" name="quem"></div>
-            <div class="field" id="f-end"><label for="end">Endereço completo *</label><input id="end" name="end" autocomplete="street-address" placeholder="Rua, número, apto" required></div>
-            <div class="row">
-              <div class="field"><label for="bairro">Bairro *</label><input id="bairro" name="bairro" required></div>
-              <div class="field" id="f-acesso"><label for="acesso">Acesso</label>
-                <select id="acesso" name="acesso">
-                  <option>Portaria / interfone</option>
-                  <option>Casa térrea</option>
-                  <option>Precisa subir até o apartamento</option>
-                  <option>Hospital / casa de repouso</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <!-- STEP 3 -->
-          <div class="fstep" data-s="3">
-            <h3>Algo mais?</h3>
-            <p class="hint">Alergias, horário preferido, número de pessoas, observações…</p>
-            <div class="field"><label for="obs">Observações</label><textarea id="obs" name="obs" placeholder="Ex.: moramos em 2, prefiro entrega até 14h, sem gergelim…"></textarea></div>
-            <div class="summary" id="summary"></div>
-          </div>
+        <div class="field"><label for="nome">Nome completo *</label><input id="nome" name="nome" autocomplete="name" required></div>
+        <div class="field"><label for="tel">WhatsApp *</label><input id="tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="(11) 99999-9999" required></div>
+        <div class="opts-head">
+          <b>Como você quer participar?</b>
+          <span>Você pode escolher mais de uma opção.</span>
         </div>
-
-        <div class="fnav">
-          <button type="button" class="back" id="back" style="visibility:hidden">← Voltar</button>
-          <button type="button" class="btn btn-navy" id="next">Continuar →</button>
+        <div class="opts" id="opts">
+          <div class="opt"><input type="checkbox" name="part" id="o0" value="🍞 Fazer a massa — quintas às 14h30"><label for="o0"><span class="box"></span><span class="e">🍞</span><span><b>Fazer a massa</b><small>Quintas às 14h30</small></span></label></div>
+          <div class="opt"><input type="checkbox" name="part" id="o1" value="👐 Trançar as Chalot — quintas às 17h30"><label for="o1"><span class="box"></span><span class="e">👐</span><span><b>Trançar as Chalot</b><small>Quintas às 17h30</small></span></label></div>
+          <div class="opt"><input type="checkbox" name="part" id="o2" value="🚗 Fazer entregas — sextas"><label for="o2"><span class="box"></span><span class="e">🚗</span><span><b>Fazer entregas</b><small>Sextas-feiras</small></span></label></div>
+          <div class="opt"><input type="checkbox" name="part" id="o3" value="💛 Doar para o projeto"><label for="o3"><span class="box"></span><span class="e">💛</span><span><b>Doar para o projeto</b><small>Farinha, ingredientes e transporte</small></span></label></div>
         </div>
+        <div class="field"><label for="obs">Observações (opcional)</label><textarea id="obs" name="obs" placeholder="Tem algo que gostaria de nos contar?"></textarea></div>
+        <button type="submit" class="btn btn-navy btn-block" id="send">Enviar minha inscrição 🤎</button>
       </form>
 
       <div class="done" id="done">
-        <div class="big">🕯️</div>
-        <h3>Shabat Shalom!</h3>
-        <p>Abrimos o WhatsApp com a sua mensagem pronta — é só tocar em <b>enviar</b>. A equipe entra em contato para confirmar.</p>
-        <button type="button" class="btn btn-navy" id="again">Fazer outro pedido</button>
+        <div class="big">🥖</div>
+        <h3>Obrigado! 🤎</h3>
+        <p>Abrimos o WhatsApp com a sua inscrição pronta — é só tocar em <b>enviar</b>. A equipe da Chai Menachem entra em contato.</p>
+        <button type="button" class="btn btn-navy" id="again">Fazer outra inscrição</button>
       </div>
     </div>
   </div>
@@ -527,30 +495,13 @@
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span>Chalot fresquinhas</span><span>Velas de Shabat</span><span>Kidush</span><span>Hafrashat Chalá</span><span>Uma visita amiga</span><span>Refeição de Shabat</span><span>Ninguém fica sozinho</span>
-    <span>Chalot fresquinhas</span><span>Velas de Shabat</span><span>Kidush</span><span>Hafrashat Chalá</span><span>Uma visita amiga</span><span>Refeição de Shabat</span><span>Ninguém fica sozinho</span>
+    <span>Mãos na massa</span><span>Tranças com amor</span><span>Entregas na sexta</span><span>Hafrashat Chalá</span><span>Para quem mais precisa</span><span>Shabat Shalom</span>
+    <span>Mãos na massa</span><span>Tranças com amor</span><span>Entregas na sexta</span><span>Hafrashat Chalá</span><span>Para quem mais precisa</span><span>Shabat Shalom</span>
   </div>
 </div>
 
-<!-- ================= PARA QUEM ================= -->
-<section class="blk" id="para-quem">
-  <div class="wrap">
-    <div class="eyebrow" data-reveal>Para quem é</div>
-    <h2 class="title" data-reveal>Para quem não pode ir até o Shabat, <em>o Shabat vai até lá</em></h2>
-    <p class="lead" data-reveal>Idade, saúde, mobilidade reduzida ou simplesmente um momento difícil: se sair de casa sozinho não é possível, a nossa equipe e os nossos voluntários levam a luz do Shabat até a sua porta.</p>
-    <div class="who-grid">
-      <div class="tilt" data-reveal data-d="0"><div class="ic">👵</div><h3>Idosos</h3><p>Que moram sozinhos ou têm dificuldade de sair às compras antes do Shabat.</p></div>
-      <div class="tilt" data-reveal data-d="90"><div class="ic">♿</div><h3>Mobilidade reduzida</h3><p>Pessoas com deficiência ou que dependem de ajuda para se deslocar.</p></div>
-      <div class="tilt" data-reveal data-d="180"><div class="ic">🩺</div><h3>Recuperação</h3><p>Pós-cirurgia, tratamento ou doença — em casa ou no hospital.</p></div>
-      <div class="tilt" data-reveal data-d="0"><div class="ic">👶</div><h3>Mães recentes</h3><p>Nas primeiras semanas após o parto, quando cada minuto conta.</p></div>
-      <div class="tilt" data-reveal data-d="90"><div class="ic">🏠</div><h3>Quem está sozinho</h3><p>Para que ninguém passe a sexta-feira à noite sem Kidush e sem companhia.</p></div>
-      <div class="tilt" data-reveal data-d="180"><div class="ic">🤝</div><h3>Famílias e cuidadores</h3><p>Peça para um pai, uma avó ou um vizinho — nós cuidamos da entrega.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= KIT ================= -->
-<section class="blk kit" id="kit">
+<!-- ================= O PROJETO ================= -->
+<section class="blk kit" id="projeto">
   <div class="wrap kit-grid">
     <div class="challah-stage" data-reveal="zoom">
       <div class="cover-ring"></div><div class="cover-ring r2"></div>
@@ -574,17 +525,48 @@
       </svg>
     </div>
     <div>
-      <div class="eyebrow" data-reveal>O kit de Shabat</div>
-      <h2 class="title" data-reveal>Tudo o que o Shabat pede, <em>numa entrega só</em></h2>
-      <p class="lead" data-reveal>Toda sexta-feira, antes do pôr do sol, preparamos e entregamos um kit completo. Você escolhe o que precisa no pedido.</p>
+      <div class="eyebrow" data-reveal>O projeto</div>
+      <h2 class="title" data-reveal>Uma chalá feita à mão <em>vale mais que mil palavras</em></h2>
+      <p class="lead" data-reveal>Para quem não pode sair de casa, receber uma chalá fresquinha na sexta é sentir que a comunidade não esqueceu. Cada Chalá é preparada, trançada e entregue por voluntários da Chai Menachem.</p>
       <div class="kit-list">
-        <div class="kit-item" data-reveal data-d="0"><span class="e">🍞</span><div><b>2 Chalot</b><small>Feitas à mão por voluntários na Chai Menachem, com muito amor.</small></div></div>
-        <div class="kit-item" data-reveal data-d="80"><span class="e">🕯️</span><div><b>Velas de Shabat</b><small>Com o horário exato do acendimento em São Paulo.</small></div></div>
-        <div class="kit-item" data-reveal data-d="160"><span class="e">🍷</span><div><b>Vinho ou suco de uva</b><small>Casher, para fazer o Kidush em casa.</small></div></div>
-        <div class="kit-item" data-reveal data-d="240"><span class="e">📜</span><div><b>Folheto de bênçãos</b><small>Hebraico, transliteração e português, em letra grande.</small></div></div>
-        <div class="kit-item" data-reveal data-d="320"><span class="e">🍲</span><div><b>Refeição de Shabat</b><small>Opcional, conforme disponibilidade da semana.</small></div></div>
-        <div class="kit-item" data-reveal data-d="400"><span class="e">🤍</span><div><b>Visita e companhia</b><small>Um voluntário para conversar, fazer o Kidush junto ou ajudar.</small></div></div>
+        <div class="kit-item" data-reveal data-d="0"><span class="e">🍞</span><div><b>Feita à mão</b><small>A massa é preparada em grupo, toda quinta à tarde.</small></div></div>
+        <div class="kit-item" data-reveal data-d="80"><span class="e">👐</span><div><b>Trançada com prece</b><small>Cada trança leva uma brachá para quem vai recebê-la.</small></div></div>
+        <div class="kit-item" data-reveal data-d="160"><span class="e">🚗</span><div><b>Entregue na sexta</b><small>Fresquinha, antes do Shabat, com um sorriso.</small></div></div>
+        <div class="kit-item" data-reveal data-d="240"><span class="e">🤍</span><div><b>Para quem mais precisa</b><small>Idosos, doentes e quem não pode se deslocar sozinho.</small></div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PARA QUEM ================= -->
+<section class="blk" id="para-quem">
+  <div class="wrap">
+    <div class="eyebrow" data-reveal>Para quem vão as Chalot</div>
+    <h2 class="title" data-reveal>Quem não pode ir até o Shabat <em>recebe o Shabat em casa</em></h2>
+    <p class="lead" data-reveal>Conhece alguém que deveria receber uma chalá? Fale com a equipe pelo WhatsApp.</p>
+    <div class="who-grid">
+      <div class="tilt" data-reveal data-d="0"><div class="ic">👵</div><h3>Idosos</h3><p>Que moram sozinhos ou têm dificuldade de sair antes do Shabat.</p></div>
+      <div class="tilt" data-reveal data-d="90"><div class="ic">♿</div><h3>Mobilidade reduzida</h3><p>Pessoas que dependem de ajuda para se deslocar.</p></div>
+      <div class="tilt" data-reveal data-d="180"><div class="ic">🩺</div><h3>Recuperação</h3><p>Pós-cirurgia, tratamento ou doença — em casa ou no hospital.</p></div>
+      <div class="tilt" data-reveal data-d="0"><div class="ic">👶</div><h3>Mães recentes</h3><p>Nas primeiras semanas após o parto.</p></div>
+      <div class="tilt" data-reveal data-d="90"><div class="ic">🏠</div><h3>Quem está sozinho</h3><p>Para que ninguém passe a sexta-feira sem uma chalá na mesa.</p></div>
+      <div class="tilt" data-reveal data-d="180"><div class="ic">🕊️</div><h3>Momentos difíceis</h3><p>Famílias em luto ou passando por um período delicado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= A SEMANA ================= -->
+<section class="blk" id="semana" style="padding-top:20px">
+  <div class="wrap">
+    <div class="eyebrow center" data-reveal>A semana do projeto</div>
+    <h2 class="title" style="text-align:center" data-reveal>Da massa <em>até a porta</em></h2>
+    <p class="lead" style="text-align:center;margin:0 auto" data-reveal>Toda semana, na Chai Menachem — escolha a etapa em que quer participar.</p>
+    <div class="tl" id="tl">
+      <div class="rail"><i></i><span class="van" aria-hidden="true">🚗</span></div>
+      <div class="tl-step" data-reveal data-d="0"><div class="dot">🍞</div><div><div class="k">Quinta · 14h30</div><h3>A massa</h3><p>Voluntários preparam a massa juntos — e fazemos a Hafrashat Chalá.</p></div></div>
+      <div class="tl-step" data-reveal data-d="150"><div class="dot">👐</div><div><div class="k">Quinta · 17h30</div><h3>As tranças</h3><p>Cada chalá é trançada à mão, com uma prece por quem vai recebê-la.</p></div></div>
+      <div class="tl-step" data-reveal data-d="300"><div class="dot">🚗</div><div><div class="k">Sexta-feira</div><h3>As entregas</h3><p>Voluntários levam as Chalot fresquinhas a quem não pode sair de casa.</p></div></div>
+      <div class="tl-step" data-reveal data-d="450"><div class="dot">🕯️</div><div><div class="k">Pôr do sol</div><h3>Shabat Shalom!</h3><p>As velas se acendem — e ninguém fica sem Chalá.</p></div></div>
     </div>
   </div>
 </section>
@@ -595,13 +577,13 @@
   <div class="wrap mitzva-grid">
     <div>
       <div class="eyebrow" data-reveal>Hafrashat Chalá · A mitzvá da massa</div>
-      <h2 class="title" data-reveal>Fazer Chalá em casa, <em>sem estar sozinha</em></h2>
-      <p class="lead" data-reveal>Quer cumprir a mitzvá de separar a Chalá mas não consegue sair ou sovar a massa sozinha? Levamos a massa pronta, ou uma voluntária vem fazer junto com você — também podemos acompanhar por videochamada.</p>
+      <h2 class="title" data-reveal>Uma mitzvá <em>feita em grupo</em></h2>
+      <p class="lead" data-reveal>Toda quinta, ao preparar a massa, separamos juntos a Chalá — um momento especial de prece pela família, pela saúde e por quem vai receber cada chalá.</p>
       <div class="steps-m">
         <div class="step-m" data-reveal data-d="0"><span class="num">1</span><p><b>A massa.</b> Para a bênção, usa-se a massa feita com cerca de 1,2 kg de farinha ou mais (consulte o rabino em caso de dúvida).</p></div>
         <div class="step-m" data-reveal data-d="100"><span class="num">2</span><p><b>A bênção.</b> Antes de separar, recita-se a brachá — veja ao lado.</p></div>
         <div class="step-m" data-reveal data-d="200"><span class="num">3</span><p><b>Separar.</b> Retira-se um pedacinho de massa (do tamanho de uma azeitona) dizendo <i>“Harei zu chalá”</i>.</p></div>
-        <div class="step-m" data-reveal data-d="300"><span class="num">4</span><p><b>Um momento de prece.</b> Tradicionalmente, um momento especial para rezar pela família, pela saúde e por quem precisa.</p></div>
+        <div class="step-m" data-reveal data-d="300"><span class="num">4</span><p><b>Um momento de prece.</b> Tradicionalmente, um momento especial para rezar por quem precisa.</p></div>
       </div>
     </div>
     <div class="blessing" data-reveal="right">
@@ -617,44 +599,17 @@
   </div>
 </section>
 
-<!-- ================= COMO FUNCIONA ================= -->
-<section class="blk" id="como">
+<!-- ================= DOAR ================= -->
+<section class="blk" id="doar">
   <div class="wrap">
-    <div class="eyebrow center" data-reveal>Como funciona</div>
-    <h2 class="title" style="text-align:center" data-reveal>Simples para você, <em>com carinho da nossa parte</em></h2>
-    <p class="lead" style="text-align:center;margin:0 auto" data-reveal>Toda semana, da massa às tranças até a sua porta — feito por voluntários da comunidade.</p>
-    <div class="tl" id="tl">
-      <div class="rail"><i></i><span class="van" aria-hidden="true">🚗</span></div>
-      <div class="tl-step" data-reveal data-d="0"><div class="dot">📝</div><div><div class="k">Até quarta</div><h3>Você pede</h3><p>Pelo formulário ou WhatsApp, até quarta-feira — para você ou alguém querido.</p></div></div>
-      <div class="tl-step" data-reveal data-d="150"><div class="dot">🍞</div><div><div class="k">Quinta · 14h30</div><h3>A massa</h3><p>Voluntários preparam a massa juntos na Chai Menachem.</p></div></div>
-      <div class="tl-step" data-reveal data-d="300"><div class="dot">👐</div><div><div class="k">Quinta · 17h30</div><h3>As tranças</h3><p>Cada chalá é trançada à mão, com uma prece por quem vai recebê-la.</p></div></div>
-      <div class="tl-step" data-reveal data-d="450"><div class="dot">🚗</div><div><div class="k">Sexta-feira</div><h3>A entrega</h3><p>Voluntários levam as Chalot e o kit antes do Shabat, com um sorriso.</p></div></div>
-      <div class="tl-step" data-reveal data-d="600"><div class="dot">🕯️</div><div><div class="k">Pôr do sol</div><h3>Shabat Shalom!</h3><p>As velas se acendem — e ninguém fica sem Chalá.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= AJUDAR ================= -->
-<section class="blk" id="ajudar">
-  <div class="wrap">
-    <div class="eyebrow" data-reveal>Challah Project · Mãos na massa</div>
-    <h2 class="title" data-reveal>Venha pôr <em>a mão na massa</em></h2>
-    <p class="lead" data-reveal>Venha à Chai Menachem e faça parte deste projeto de amor e carinho. Nosso objetivo: preparar Chalot e levar esse gesto de afeto a quem mais precisa. 🥖❤️</p>
-    <div class="help-grid">
-      <div class="help-card" data-reveal data-d="0"><span class="e">🍞</span><div class="when">Quintas · 14h30</div><h3>Fazer a massa</h3><p>Prepare a massa das Chalot junto com o grupo, na Chai Menachem.</p><a href="#pedido" data-mode="vol" data-pick="0">Quero participar →</a></div>
-      <div class="help-card" data-reveal data-d="100"><span class="e">👐</span><div class="when">Quintas · 17h30</div><h3>Trançar as Chalot</h3><p>Trance as Chalot à mão — um momento lindo de mitzvá e prece.</p><a href="#pedido" data-mode="vol" data-pick="1">Quero trançar →</a></div>
-      <div class="help-card" data-reveal data-d="200"><span class="e">🚗</span><div class="when">Sextas-feiras</div><h3>Fazer entregas</h3><p>Leve as Chalot e o kit de Shabat até quem não pode sair de casa.</p><a href="#pedido" data-mode="vol" data-pick="2">Quero entregar →</a></div>
-      <div class="help-card" data-reveal data-d="300"><span class="e">💛</span><div class="when">Quando quiser</div><h3>Doar ao projeto</h3><p>Ajude a cobrir farinha, vinho, velas e transporte.</p><a href="#pedido" data-mode="vol" data-pick="3">Quero doar →</a></div>
-    </div>
-
-    <div class="sponsor" data-reveal="zoom">
+    <div class="sponsor" data-reveal="zoom" style="margin-top:0">
       <div style="position:relative;z-index:1">
-        <h3>Patrocine um <em>Shabat</em></h3>
-        <p>Dedique os kits de uma semana em homenagem a alguém querido, por uma refuá shlemá ou em memória de um ente querido. O nome é mencionado na entrega.</p>
+        <h3>Patrocine as <em>Chalot</em> da semana</h3>
+        <p>Farinha, ingredientes e transporte: cada doação vira chalá na mesa de quem mais precisa. Dedique uma semana em homenagem a alguém querido, por uma refuá shlemá ou em memória de um ente querido.</p>
       </div>
       <div class="act">
-        <a class="btn btn-gold" target="_blank" rel="noopener" href="https://wa.me/5511991969797?text=Ol%C3%A1!%20Gostaria%20de%20patrocinar%20os%20kits%20do%20Shabat%20em%20Casa%20%F0%9F%95%AF%EF%B8%8F">Patrocinar pelo WhatsApp</a>
-        <button type="button" class="btn btn-ghost" id="pix-btn" data-key="32.157.390/0001-02">Copiar chave PIX</button>
+        <button type="button" class="btn btn-gold" id="pix-btn" data-key="32.157.390/0001-02">Copiar chave PIX</button>
+        <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://wa.me/5511991969797?text=Ol%C3%A1!%20Gostaria%20de%20patrocinar%20as%20Chalot%20do%20Challah%20Project%20%F0%9F%A4%8E">Patrocinar pelo WhatsApp</a>
       </div>
     </div>
   </div>
@@ -666,11 +621,11 @@
     <div class="eyebrow center" data-reveal>Perguntas frequentes</div>
     <h2 class="title" style="text-align:center" data-reveal>Tire suas dúvidas</h2>
     <div class="faq">
-      <details data-reveal><summary>Até quando posso pedir?</summary><p class="ans">Idealmente até quarta-feira à noite: a massa é preparada na quinta às 14h30 e as entregas saem na sexta. Pedidos de última hora: fale conosco pelo WhatsApp, faremos o possível.</p></details>
-      <details data-reveal><summary>Quais bairros são atendidos?</summary><p class="ans">Atendemos principalmente Higienópolis e bairros próximos de São Paulo. Para outras regiões, envie o pedido mesmo assim — vamos verificar com os voluntários disponíveis.</p></details>
-      <details data-reveal><summary>Posso pedir para outra pessoa?</summary><p class="ans">Sim! Muitos pedidos são feitos por filhos, netos, vizinhos ou cuidadores. Basta escolher “Para outra pessoa” no formulário e deixar o seu contato.</p></details>
-      <details data-reveal><summary>Vocês ajudam a ir à sinagoga?</summary><p class="ans">Quando possível, organizamos um acompanhamento para a reza ou o Kidush na Chai Menachem. Marque “Acompanhamento à sinagoga” no pedido e combinaremos os detalhes.</p></details>
-      <details data-reveal><summary>Os produtos são casher?</summary><p class="ans">Sim. Todos os produtos do kit são casher, preparados sob a supervisão da Chai Menachem.</p></details>
+      <details data-reveal><summary>Preciso saber fazer chalá?</summary><p class="ans">Não! A equipe ensina tudo na hora — da massa às tranças. Basta vir com vontade de ajudar.</p></details>
+      <details data-reveal><summary>Onde acontece?</summary><p class="ans">Na Chai Menachem — R. Cons. Brotero, 932, Higienópolis, São Paulo. A massa é às quintas às 14h30 e as tranças às quintas às 17h30.</p></details>
+      <details data-reveal><summary>Preciso vir toda semana?</summary><p class="ans">Não. Você pode participar quando puder — uma vez, de vez em quando ou toda semana. Avise pela inscrição ou pelo WhatsApp.</p></details>
+      <details data-reveal><summary>Como funcionam as entregas?</summary><p class="ans">Na sexta-feira, voluntários com carro (ou a pé, perto da Chai Menachem) levam as Chalot até as casas, antes do Shabat. Combinamos rotas próximas de você.</p></details>
+      <details data-reveal><summary>Conheço alguém que deveria receber. Como faço?</summary><p class="ans">Fale com a equipe pelo WhatsApp +55 (11) 99196-9797, com o nome, o endereço e um contato da pessoa.</p></details>
     </div>
   </div>
 </section>
@@ -943,98 +898,36 @@
   var tlObs = new IntersectionObserver(function(en){ if (en[0].isIntersecting){ $('#tl').classList.add('go'); tlObs.disconnect(); } }, { threshold: .35 });
   tlObs.observe($('#tl'));
 
-  /* ---------- form (2 modes, 3 steps) ---------- */
-  var NEEDS = {
-    pedido: ['🍞 Chalot', '🕯️ Velas', '🍷 Vinho / suco de uva', '📜 Folheto de bênçãos', '🍲 Refeição de Shabat', '🤍 Visita / companhia', '🥣 Hafrashat Chalá acompanhada', '🚶 Acompanhamento à sinagoga'],
-    vol: ['🍞 Fazer a massa — quintas às 14h30', '👐 Trançar as Chalot — quintas às 17h30', '🚗 Fazer entregas — sextas', '💛 Doar para o projeto']
-  };
-  var mode = 'pedido', step = 1, form = $('#form');
-  function buildNeeds(){
-    var box = $('#needs'); box.innerHTML = '';
-    NEEDS[mode].forEach(function(n, i){
-      var id = 'n' + i, d = document.createElement('div'); d.className = 'chip';
-      d.innerHTML = '<input type="checkbox" name="need" id="' + id + '" value="' + n + '"' + (mode === 'pedido' && i < 3 ? ' checked' : '') + '><label for="' + id + '">' + n + '</label>';
-      box.appendChild(d);
-    });
-  }
-  function setMode(m){
-    mode = m;
-    $('#mode').classList.toggle('vol', m === 'vol');
-    $$('#mode button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-m') === m ? 'true' : 'false'); });
-    var vol = m === 'vol';
-    $('#s1-title').textContent = vol ? 'Seus dados' : 'Quem vai receber?';
-    $('#s1-hint').textContent = vol ? 'Para a equipe entrar em contato com você.' : 'Dados de quem recebe a entrega.';
-    $('#for-whom').hidden = vol;
-    $('#f-acesso').hidden = vol;
-    $('#f-end').hidden = vol;
-    $('#end').required = !vol;
-    $('#f-quem').hidden = vol || !$('#p-fam').checked;
-    $('#s2-title').textContent = vol ? 'Challah Project 🤎 Como você quer participar?' : 'Do que você precisa?';
-    $('#s2-hint').textContent = vol ? 'Você pode escolher mais de uma opção.' : 'Escolha tudo o que fizer sentido.';
-    $('#freq').innerHTML = vol
-      ? '<option>Toda semana</option><option>A cada 15 dias</option><option>De vez em quando</option><option>Nas festas (Chaguim)</option>'
-      : '<option>Só neste Shabat</option><option>Toda semana</option><option>Para as festas (Chaguim)</option>';
-    buildNeeds(); go(1);
-  }
-  $$('#mode button').forEach(function(b){ b.addEventListener('click', function(){ setMode(b.getAttribute('data-m')); }); });
-  $$('[data-mode]').forEach(function(a){ a.addEventListener('click', function(){
-    setMode(a.getAttribute('data-mode'));
-    var pk = a.getAttribute('data-pick'); if (pk !== null){ var c = $('#n' + pk); if (c) c.checked = true; }
-  }); });
-  $$('input[name="para"]').forEach(function(r){ r.addEventListener('change', function(){ $('#f-quem').hidden = !$('#p-fam').checked; }); });
-
-  function go(s){
-    step = s;
-    $$('.fstep').forEach(function(f){ f.classList.toggle('active', +f.getAttribute('data-s') === s); });
-    $('#prog').style.width = (s / 3 * 100) + '%';
-    $('#back').style.visibility = s === 1 ? 'hidden' : 'visible';
-    $('#next').textContent = s === 3 ? 'Enviar pelo WhatsApp ✦' : 'Continuar →';
-    if (s === 3) $('#summary').textContent = message();
-  }
-  function valid(){
-    var ok = true;
-    $$('.fstep.active input[required]').forEach(function(inp){
-      var f = inp.closest('.field'); if (f.hidden) return;
-      var bad = !inp.value.trim() || (inp.type === 'tel' && inp.value.replace(/\D/g, '').length < 8);
-      f.classList.toggle('err', bad); if (bad && ok){ inp.focus(); ok = false; }
-    });
-    if (step === 1 && !$$('input[name="need"]:checked').length){ var n = $('#needs'); n.style.animation = 'none'; n.offsetWidth; n.style.animation = 'shake .4s'; ok = false; }
-    return ok;
-  }
+  /* ---------- form (Challah Project) ---------- */
+  var form = $('#form');
+  $$('[data-pick]').forEach(function(a){ a.addEventListener('click', function(){ var c = $('#o' + a.getAttribute('data-pick')); if (c) c.checked = true; }); });
   $$('.field input').forEach(function(i){ i.addEventListener('input', function(){ i.closest('.field').classList.remove('err'); }); });
   function val(id){ return ($('#' + id).value || '').trim(); }
+  function valid(){
+    var ok = true;
+    $$('input[required]', form).forEach(function(inp){
+      var bad = !inp.value.trim() || (inp.type === 'tel' && inp.value.replace(/\D/g, '').length < 8);
+      inp.closest('.field').classList.toggle('err', bad); if (bad && ok){ inp.focus(); ok = false; }
+    });
+    if (ok && !$$('input[name="part"]:checked').length){ var o = $('#opts'); o.style.animation = 'none'; o.offsetWidth; o.style.animation = 'shake .4s'; ok = false; }
+    return ok;
+  }
   function message(){
-    var needs = $$('input[name="need"]:checked').map(function(c){ return '• ' + c.value; }).join('\n');
-    var L = [];
-    if (mode === 'pedido'){
-      L.push('🕯️ *Shabat em Casa — Pedido*', '');
-      L.push('*Para:* ' + ($('#p-fam').checked ? 'outra pessoa' : 'mim'));
-      if ($('#p-fam').checked && val('quem')) L.push('*Pedido feito por:* ' + val('quem'));
-      L.push('*Nome:* ' + val('nome'), '*Telefone:* ' + val('tel'), '*Endereço:* ' + val('end'), '*Bairro:* ' + val('bairro'), '*Acesso:* ' + val('acesso'));
-      L.push('', '*Preciso de:*', needs, '', '*Frequência:* ' + val('freq'));
-    } else {
-      L.push('🤎 *Challah Project — Mãos na massa*', '');
-      L.push('*Nome:* ' + val('nome'), '*Telefone:* ' + val('tel'), '*Bairro:* ' + val('bairro'));
-      L.push('', '*Quero participar:*', needs, '', '*Frequência:* ' + val('freq'));
-    }
+    var L = ['🤎 *Challah Project — Inscrição*', '', '*Nome:* ' + val('nome'), '*WhatsApp:* ' + val('tel'), '', '*Quero participar:*'];
+    $$('input[name="part"]:checked').forEach(function(c){ L.push('• ' + c.value); });
     if (val('obs')) L.push('', '*Observações:* ' + val('obs'));
     L.push('', 'Shabat Shalom! 🤍');
     return L.join('\n');
   }
-  $('#back').addEventListener('click', function(){ go(Math.max(1, step - 1)); });
-  $('#next').addEventListener('click', function(e){
-    if (step < 3){ if (valid()) go(step + 1); return; }
-    var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(message());
-    window.open(url, '_blank', 'noopener');
-    form.hidden = true; $('#mode').hidden = true; $('.progress').hidden = true;
-    $('#done').classList.add('show');
-    burst(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2);
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!valid()) return;
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(message()), '_blank', 'noopener');
+    form.hidden = true; $('#done').classList.add('show');
+    var r = $('#send').getBoundingClientRect();
+    burst(r.left + r.width / 2, r.top + r.height / 2);
   });
-  $('#again').addEventListener('click', function(){
-    form.reset(); form.hidden = false; $('#mode').hidden = false; $('.progress').hidden = false;
-    $('#done').classList.remove('show'); setMode(mode);
-  });
-  setMode('pedido');
+  $('#again').addEventListener('click', function(){ form.reset(); form.hidden = false; $('#done').classList.remove('show'); });
 
   /* ---------- PIX copy ---------- */
   var pix = $('#pix-btn');
