@@ -350,6 +350,9 @@
     .tl-step .dot{margin:0;}
     .tl-step p{margin:0;}
     .card-form{padding:26px 20px 22px;border-radius:20px;}
+    .form-sec .side-points{display:none;}
+    .form-sec .lead{font-size:16px;}
+    .form-grid{gap:26px;}
     .blessing{padding:30px 22px;}
     .blessing .heb{font-size:24px;}
     .sponsor{padding:38px 24px;}
@@ -373,6 +376,7 @@
   <div class="bar">
     <a href="index.html" aria-label="Chai Menachem — início" class="logo-crop" style="--h:42px"><img src="logo-transparent.png" alt="Chai Menachem"></a>
     <nav aria-label="Seções">
+      <a href="#pedido">Participar</a>
       <a href="#para-quem">Para quem</a>
       <a href="#kit">O kit</a>
       <a href="#chala">Hafrashat Chalá</a>
@@ -427,6 +431,98 @@
     </div>
   </div>
   <a href="#para-quem" class="scroll-cue" aria-label="Rolar para baixo"></a>
+</section>
+
+<!-- ================= FORM ================= -->
+<section class="blk form-sec on-dark" id="pedido" style="padding-top:90px">
+  <div class="wrap form-grid">
+    <div>
+      <div class="eyebrow" data-reveal>Comece aqui · Pedido ou voluntariado</div>
+      <h2 class="title" data-reveal>Escolha <em>como participar</em></h2>
+      <p class="lead" data-reveal>Receber o Shabat em casa, ou pôr a mão na massa: massa às quintas 14h30, tranças às quintas 17h30, entregas às sextas, ou uma doação. Leva menos de um minuto — a mensagem vai direto para a equipe pelo WhatsApp.</p>
+      <div class="side-points">
+        <div data-reveal data-d="0"><span>✓</span>Pedidos até quarta-feira para a entrega da sexta</div>
+        <div data-reveal data-d="100"><span>✓</span>Pode pedir só esta semana ou toda semana</div>
+        <div data-reveal data-d="200"><span>✓</span>Pode pedir para um familiar, vizinho ou amigo</div>
+        <div data-reveal data-d="300"><span>✓</span>Tudo com discrição e respeito</div>
+      </div>
+    </div>
+
+    <div class="card-form" data-reveal="right">
+      <div class="mode" id="mode">
+        <span class="pill"></span>
+        <button type="button" aria-pressed="true" data-m="pedido">🕯️ Receber o Shabat</button>
+        <button type="button" aria-pressed="false" data-m="vol">👐 Mãos na massa</button>
+      </div>
+      <div class="progress"><i id="prog"></i></div>
+
+      <form id="form" novalidate>
+        <div class="stepper">
+          <!-- STEP 1 -->
+          <div class="fstep active" data-s="1">
+            <h3 id="s2-title">Do que você precisa?</h3>
+            <p class="hint" id="s2-hint">Escolha tudo o que fizer sentido.</p>
+            <div class="chips" id="needs"></div>
+            <div class="field" id="f-freq">
+              <label for="freq">Frequência</label>
+              <select id="freq" name="freq">
+                <option>Só neste Shabat</option>
+                <option>Toda semana</option>
+                <option>Para as festas (Chaguim)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="fstep" data-s="2">
+            <h3 id="s1-title">Quem vai receber?</h3>
+            <p class="hint" id="s1-hint">Dados de quem recebe a entrega.</p>
+            <div class="chips" id="for-whom">
+              <div class="chip"><input type="radio" name="para" id="p-eu" value="Para mim" checked><label for="p-eu">Para mim</label></div>
+              <div class="chip"><input type="radio" name="para" id="p-fam" value="Para um familiar / conhecido"><label for="p-fam">Para outra pessoa</label></div>
+            </div>
+            <div class="row">
+              <div class="field"><label for="nome">Nome completo *</label><input id="nome" name="nome" autocomplete="name" required></div>
+              <div class="field"><label for="tel">WhatsApp / telefone *</label><input id="tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="(11) 9…" required></div>
+            </div>
+            <div class="field" id="f-quem" hidden><label for="quem">Seu nome (quem está pedindo)</label><input id="quem" name="quem"></div>
+            <div class="field" id="f-end"><label for="end">Endereço completo *</label><input id="end" name="end" autocomplete="street-address" placeholder="Rua, número, apto" required></div>
+            <div class="row">
+              <div class="field"><label for="bairro">Bairro *</label><input id="bairro" name="bairro" required></div>
+              <div class="field" id="f-acesso"><label for="acesso">Acesso</label>
+                <select id="acesso" name="acesso">
+                  <option>Portaria / interfone</option>
+                  <option>Casa térrea</option>
+                  <option>Precisa subir até o apartamento</option>
+                  <option>Hospital / casa de repouso</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="fstep" data-s="3">
+            <h3>Algo mais?</h3>
+            <p class="hint">Alergias, horário preferido, número de pessoas, observações…</p>
+            <div class="field"><label for="obs">Observações</label><textarea id="obs" name="obs" placeholder="Ex.: moramos em 2, prefiro entrega até 14h, sem gergelim…"></textarea></div>
+            <div class="summary" id="summary"></div>
+          </div>
+        </div>
+
+        <div class="fnav">
+          <button type="button" class="back" id="back" style="visibility:hidden">← Voltar</button>
+          <button type="button" class="btn btn-navy" id="next">Continuar →</button>
+        </div>
+      </form>
+
+      <div class="done" id="done">
+        <div class="big">🕯️</div>
+        <h3>Shabat Shalom!</h3>
+        <p>Abrimos o WhatsApp com a sua mensagem pronta — é só tocar em <b>enviar</b>. A equipe entra em contato para confirmar.</p>
+        <button type="button" class="btn btn-navy" id="again">Fazer outro pedido</button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <div class="marquee" aria-hidden="true">
@@ -534,98 +630,6 @@
       <div class="tl-step" data-reveal data-d="300"><div class="dot">👐</div><div><div class="k">Quinta · 17h30</div><h3>As tranças</h3><p>Cada chalá é trançada à mão, com uma prece por quem vai recebê-la.</p></div></div>
       <div class="tl-step" data-reveal data-d="450"><div class="dot">🚗</div><div><div class="k">Sexta-feira</div><h3>A entrega</h3><p>Voluntários levam as Chalot e o kit antes do Shabat, com um sorriso.</p></div></div>
       <div class="tl-step" data-reveal data-d="600"><div class="dot">🕯️</div><div><div class="k">Pôr do sol</div><h3>Shabat Shalom!</h3><p>As velas se acendem — e ninguém fica sem Chalá.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FORM ================= -->
-<section class="blk form-sec on-dark" id="pedido">
-  <div class="wrap form-grid">
-    <div>
-      <div class="eyebrow" data-reveal>Pedido · Voluntariado</div>
-      <h2 class="title" data-reveal>Um pedido, <em>e cuidamos do resto</em></h2>
-      <p class="lead" data-reveal>Preencha em menos de um minuto. A mensagem é enviada direto para a equipe da Chai Menachem pelo WhatsApp.</p>
-      <div class="side-points">
-        <div data-reveal data-d="0"><span>✓</span>Pedidos até quarta-feira para a entrega da sexta</div>
-        <div data-reveal data-d="100"><span>✓</span>Pode pedir só esta semana ou toda semana</div>
-        <div data-reveal data-d="200"><span>✓</span>Pode pedir para um familiar, vizinho ou amigo</div>
-        <div data-reveal data-d="300"><span>✓</span>Tudo com discrição e respeito</div>
-      </div>
-    </div>
-
-    <div class="card-form" data-reveal="right">
-      <div class="mode" id="mode">
-        <span class="pill"></span>
-        <button type="button" aria-pressed="true" data-m="pedido">🕯️ Receber o Shabat</button>
-        <button type="button" aria-pressed="false" data-m="vol">👐 Mãos na massa</button>
-      </div>
-      <div class="progress"><i id="prog"></i></div>
-
-      <form id="form" novalidate>
-        <div class="stepper">
-          <!-- STEP 1 -->
-          <div class="fstep active" data-s="1">
-            <h3 id="s1-title">Quem vai receber?</h3>
-            <p class="hint" id="s1-hint">Dados de quem recebe a entrega.</p>
-            <div class="chips" id="for-whom">
-              <div class="chip"><input type="radio" name="para" id="p-eu" value="Para mim" checked><label for="p-eu">Para mim</label></div>
-              <div class="chip"><input type="radio" name="para" id="p-fam" value="Para um familiar / conhecido"><label for="p-fam">Para outra pessoa</label></div>
-            </div>
-            <div class="row">
-              <div class="field"><label for="nome">Nome completo *</label><input id="nome" name="nome" autocomplete="name" required></div>
-              <div class="field"><label for="tel">WhatsApp / telefone *</label><input id="tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="(11) 9…" required></div>
-            </div>
-            <div class="field" id="f-quem" hidden><label for="quem">Seu nome (quem está pedindo)</label><input id="quem" name="quem"></div>
-            <div class="field" id="f-end"><label for="end">Endereço completo *</label><input id="end" name="end" autocomplete="street-address" placeholder="Rua, número, apto" required></div>
-            <div class="row">
-              <div class="field"><label for="bairro">Bairro *</label><input id="bairro" name="bairro" required></div>
-              <div class="field" id="f-acesso"><label for="acesso">Acesso</label>
-                <select id="acesso" name="acesso">
-                  <option>Portaria / interfone</option>
-                  <option>Casa térrea</option>
-                  <option>Precisa subir até o apartamento</option>
-                  <option>Hospital / casa de repouso</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <!-- STEP 2 -->
-          <div class="fstep" data-s="2">
-            <h3 id="s2-title">Do que você precisa?</h3>
-            <p class="hint" id="s2-hint">Escolha tudo o que fizer sentido.</p>
-            <div class="chips" id="needs"></div>
-            <div class="field" id="f-freq">
-              <label for="freq">Frequência</label>
-              <select id="freq" name="freq">
-                <option>Só neste Shabat</option>
-                <option>Toda semana</option>
-                <option>Para as festas (Chaguim)</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- STEP 3 -->
-          <div class="fstep" data-s="3">
-            <h3>Algo mais?</h3>
-            <p class="hint">Alergias, horário preferido, número de pessoas, observações…</p>
-            <div class="field"><label for="obs">Observações</label><textarea id="obs" name="obs" placeholder="Ex.: moramos em 2, prefiro entrega até 14h, sem gergelim…"></textarea></div>
-            <div class="summary" id="summary"></div>
-          </div>
-        </div>
-
-        <div class="fnav">
-          <button type="button" class="back" id="back" style="visibility:hidden">← Voltar</button>
-          <button type="button" class="btn btn-navy" id="next">Continuar →</button>
-        </div>
-      </form>
-
-      <div class="done" id="done">
-        <div class="big">🕯️</div>
-        <h3>Shabat Shalom!</h3>
-        <p>Abrimos o WhatsApp com a sua mensagem pronta — é só tocar em <b>enviar</b>. A equipe entra em contato para confirmar.</p>
-        <button type="button" class="btn btn-navy" id="again">Fazer outro pedido</button>
-      </div>
     </div>
   </div>
 </section>
@@ -958,14 +962,14 @@
     $('#mode').classList.toggle('vol', m === 'vol');
     $$('#mode button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-m') === m ? 'true' : 'false'); });
     var vol = m === 'vol';
-    $('#s1-title').textContent = vol ? 'Challah Project 🤎' : 'Quem vai receber?';
+    $('#s1-title').textContent = vol ? 'Seus dados' : 'Quem vai receber?';
     $('#s1-hint').textContent = vol ? 'Para a equipe entrar em contato com você.' : 'Dados de quem recebe a entrega.';
     $('#for-whom').hidden = vol;
     $('#f-acesso').hidden = vol;
     $('#f-end').hidden = vol;
     $('#end').required = !vol;
     $('#f-quem').hidden = vol || !$('#p-fam').checked;
-    $('#s2-title').textContent = vol ? 'Como você quer participar?' : 'Do que você precisa?';
+    $('#s2-title').textContent = vol ? 'Challah Project 🤎 Como você quer participar?' : 'Do que você precisa?';
     $('#s2-hint').textContent = vol ? 'Você pode escolher mais de uma opção.' : 'Escolha tudo o que fizer sentido.';
     $('#freq').innerHTML = vol
       ? '<option>Toda semana</option><option>A cada 15 dias</option><option>De vez em quando</option><option>Nas festas (Chaguim)</option>'
@@ -994,7 +998,7 @@
       var bad = !inp.value.trim() || (inp.type === 'tel' && inp.value.replace(/\D/g, '').length < 8);
       f.classList.toggle('err', bad); if (bad && ok){ inp.focus(); ok = false; }
     });
-    if (step === 2 && !$$('input[name="need"]:checked').length){ var n = $('#needs'); n.style.animation = 'none'; n.offsetWidth; n.style.animation = 'shake .4s'; ok = false; }
+    if (step === 1 && !$$('input[name="need"]:checked').length){ var n = $('#needs'); n.style.animation = 'none'; n.offsetWidth; n.style.animation = 'shake .4s'; ok = false; }
     return ok;
   }
   $$('.field input').forEach(function(i){ i.addEventListener('input', function(){ i.closest('.field').classList.remove('err'); }); });
